@@ -26,6 +26,17 @@ source env/bin/activate
 ```bash
 pip install -r requirements.txt
 ```
+## Configurer les variables d'environnements
+
+- Créer un fichier ".env" dans le dossier "/project" (au même niveau que le fichier settings.py) et copiez le contenu suivant
+- Adaptez les lignes selon votre environnement (nom de la base, nom d'utilisateur, mot de passe)
+
+```bash
+DATABASE_NAME=database_name
+DATABASE_USER=user_name
+DATABASE_PASSWORD=password
+```
+
 ## Migration BDD
 
 Créer une migration (Nommez-la par clarté)
