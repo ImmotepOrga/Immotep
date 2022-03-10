@@ -2,7 +2,7 @@
 # Setup
 
 - Quelques commandes utiles pour installer correctement ce projet
-- A lancer depuis "/<nomRepository>/project"
+- A lancer depuis "/project"
 
 
 
