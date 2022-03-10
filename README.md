@@ -30,7 +30,7 @@ pip install -r requirements.txt
 
 Créer une migration (Nommez-la par clarté)
 ```bash
-python manage.py makemigrations --name changed_my_model
+python manage.py makemigrations --name nom_exemple
 ```
 Migrer les changements vers la BDD
 ```bash
