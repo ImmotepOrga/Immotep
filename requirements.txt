@@ -1,0 +1,11 @@
+Django==4.0.3
+asgiref==3.5.0  
+autopep==81.6.0  
+Django==4.0.3  
+mysqlclient==2.1.0  
+pip==21.2.4 
+pycodestyle==2.8.0  
+setuptools==58.1.0 
+sqlparse==0.4.2  
+toml==0.10.2 
+tzdata==2021.5 
