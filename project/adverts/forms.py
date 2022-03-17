@@ -39,8 +39,8 @@ class CreateAdvertForm(ModelForm):
             "status": "Statut de l'annonce",
         }
         energy_categories = (('A', 'A'),('B', 'B'),('C', 'C'),('D', 'D'),('E', 'E'),('F', 'F'),('G', 'G'))
-        service_types = (('Appartemment', 'Appartemment'),('Maison', 'Maison'))
-        property_types = (('Location', 'Location'),('Achat', 'Achat'))
+        service_types = (('Location', 'Location'),('Achat', 'Achat'))
+        property_types = (('Appartemment', 'Appartemment'),('Maison', 'Maison'))
         statuses = (('Active', 'Active'),('Inactive', 'Inactive'))
         widgets = {
             'added_at': forms.DateInput(attrs={'type':'date'}),

@@ -37,3 +37,12 @@ def udpate_advert(request, id):
     else:
         form = CreateAdvertForm(instance=advert)
     return render(request,'update_advert_form.html',{'update_advert_form': form})
+
+
+def delete_advert(request, id):
+    advert = Advert.objects.get(id=id)
+
+    if request.method == 'POST':
+        advert.delete()
+        return HttpResponseRedirect(reverse('home'))
+    return render(request,'delete_advert.html',{'advert': advert})
