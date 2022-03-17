@@ -87,14 +87,10 @@ environ.Env.read_env()
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': env("DATABASE_NAME"),
-        'USER': env("DATABASE_USER"),
-        'PASSWORD': env("DATABASE_PASSWORD"),
-        'HOST': "localhost",
-        'PORT': "",
-        'OPTIONS': {
-            'init_command': "SET sql_mode='STRICT_TRANS_TABLES'"
-        }
+        'NAME': os.environ.get('MYSQL_DATABASE'),
+        'PASSWORD': os.environ.get('MYSQL_ROOT_PASSWORD'),
+        'PORT': os.environ.get('MYSQL_PORT'),
+        'HOST': os.environ.get('MYSQL_HOST')
     }
 }
 
