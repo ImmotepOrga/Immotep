@@ -1,57 +1,33 @@
-  <!-- Navbar -->
-  <div class="container position-sticky z-index-sticky top-0">
-    <div class="row">
-      <div class="col-12">
-        <nav class="navbar navbar-expand-lg  blur border-radius-xl mt-4 top-0 z-index-3 shadow position-absolute my-3 py-2 start-0 end-0 mx-4">
-          <div class="container-fluid px-0">
-            <a class="navbar-brand font-weight-bolder ms-sm-3" href="/" rel="tooltip" title="Designed and Coded by Creative Tim" data-placement="bottom">
-              IMMOTEP
-            </a>
-            <button class="navbar-toggler shadow-none ms-2" type="button" data-bs-toggle="collapse" data-bs-target="#navigation" aria-controls="navigation" aria-expanded="false" aria-label="Toggle navigation">
-              <span class="navbar-toggler-icon mt-2">
-                <span class="navbar-toggler-bar bar1"></span>
-                <span class="navbar-toggler-bar bar2"></span>
-                <span class="navbar-toggler-bar bar3"></span>
-              </span>
-            </button>
-            <div class="collapse navbar-collapse pt-3 pb-2 py-lg-0 w-100" id="navigation">
-              <ul class="navbar-nav navbar-nav-hover ms-auto">
-                <li class="nav-item mx-2">
-                    <a href="/" class="border-radius-md">
-                    <span>Accueil</span>
-                    </a>
-                </li>
-                <li class="nav-item mx-2">
-                    <a href="/" class="border-radius-md">
-                      <span>Annonces</span>
-                    </a>
-                </li>
-                <li class="nav-item mx-2">
-                    <a href="/" class="border-radius-md">
-                    <span>Mes favoris</span>
-                    </a>
-                </li>
-                <li class="nav-item mx-2">
-                    <a href="/" class="border-radius-md">
-                      <span>Se connecter</span>
-                    </a>
-                </li>
-              
-                {% if request.user.is_authenticated %}
-                  <li class="nav-item ms-lg-auto">
-                    <a class="nav-link nav-link-icon me-2" 
-                      href="{% url 'logout' %}">
-                      <i class="fa fa-sign-out me-1"></i>
-                      <p class="d-inline text-sm z-index-1 font-weight-bold" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Sign OUT">Logout</p>
-                    </a>
-                  </li>          
-                {% endif %}
-
-              </ul>
-            </div>
-          </div>
-        </nav>
-        <!-- End Navbar -->
-      </div>
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="#">Immotep</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarText">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <li class="nav-item">
+          <a class="nav-link active" aria-current="page" href="{% url 'adverts:home' %}">Accueil</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">Annonces</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">Favoris</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">Profil</a>
+        </li>
+        <li class="nav-item">
+          {% if request.user.is_authenticated %}   
+          <a class="nav-link" href="{% url 'adverts:logout' %}">Déconnexion</a>
+          {% else %}
+          <a class="nav-link" href="{% url 'adverts:login' %}">Connexion</a>
+          {% endif %}
+        </li>
+      </ul>
     </div>
   </div>
+</nav>           
+    
+
