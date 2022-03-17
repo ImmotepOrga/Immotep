@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+{% block title %}Créer une annonce{% endblock %}
+{% load crispy_forms_tags %}
+{% block content %}
+    <div class="container">
+        <form method="POST">
+            {% csrf_token %}
+            {{ create_advert_form.added_at|as_crispy_field }}
+            {{ create_advert_form.service_type|as_crispy_field }}
+            {{ create_advert_form.property_type|as_crispy_field }}
+            {{ create_advert_form.surface|as_crispy_field }}
+            {{ create_advert_form.room_count|as_crispy_field }}
+            {{ create_advert_form.bedroom_count|as_crispy_field }}
+            {{ create_advert_form.is_furnished|as_crispy_field }}
+            {{ create_advert_form.has_balcony|as_crispy_field }}
+            {{ create_advert_form.has_terrace|as_crispy_field }}
+            {{ create_advert_form.has_elevator|as_crispy_field }}
+            {{ create_advert_form.has_parking|as_crispy_field }}
+            {{ create_advert_form.description|as_crispy_field }}
+            {{ create_advert_form.price|as_crispy_field }}
+            {{ create_advert_form.warranty_deposit|as_crispy_field }}
+            {{ create_advert_form.energy_use|as_crispy_field }}
+            {{ create_advert_form.creator|as_crispy_field }}
+            {{ create_advert_form.street_number|as_crispy_field }}
+            {{ create_advert_form.street_name|as_crispy_field }}
+            {{ create_advert_form.postal_code|as_crispy_field }}
+            {{ create_advert_form.city|as_crispy_field }}
+            {{ create_advert_form.status|as_crispy_field }}
+            <button type="submit" class="btn btn-success mt-3">Créer l'annonce</button>
+        </form>
+    </div>
+{% endblock %}
