@@ -18,7 +18,7 @@ def create_advert(request):
         form = CreateAdvertForm(request.POST)
         if form.is_valid():
             form.save()
-            return HttpResponseRedirect(reverse('home'))
+            return HttpResponseRedirect(reverse('adverts:home'))
     else:
         form = CreateAdvertForm()
     return render(request, 'create_advert_form.html', {'create_advert_form': form})
@@ -32,7 +32,7 @@ def udpate_advert(request, id):
         if form.is_valid():
             form.save()
             # return HttpResponseRedirect(reverse('detail-advert', advert.id))
-            return HttpResponseRedirect(reverse('home'))
+            return HttpResponseRedirect(reverse('adverts:home'))
     else:
         form = CreateAdvertForm(instance=advert)
     return render(request,'update_advert_form.html',{'update_advert_form': form})
@@ -43,7 +43,7 @@ def delete_advert(request, id):
 
     if request.method == 'POST':
         advert.delete()
-        return HttpResponseRedirect(reverse('home'))
+        return HttpResponseRedirect(reverse('adverts:home'))
     return render(request,'delete_advert.html',{'advert': advert})
 
   
