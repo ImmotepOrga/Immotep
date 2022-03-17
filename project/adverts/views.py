@@ -2,11 +2,51 @@ from django.shortcuts import  render, redirect
 from .forms import NewUserForm, AccountForm
 from django.contrib.auth import login, logout, authenticate
 from django.contrib import messages
+from django.urls import reverse
+from django.http import HttpResponse, HttpResponseRedirect
 from django.contrib.auth.forms import AuthenticationForm
+from .models import Advert
+from .forms import CreateAdvertForm
+
 
 def home(request):
-    return render(request, "home.html",{})
+    return render(request, "home.html", {})
 
+
+def create_advert(request):
+    if request.method == 'POST':
+        form = CreateAdvertForm(request.POST)
+        if form.is_valid():
+            form.save()
+            return HttpResponseRedirect(reverse('home'))
+    else:
+        form = CreateAdvertForm()
+    return render(request, 'create_advert_form.html', {'create_advert_form': form})
+
+
+def udpate_advert(request, id):
+    advert = Advert.objects.get(id=id)
+
+    if request.method == 'POST':
+        form = CreateAdvertForm(request.POST, instance=advert)
+        if form.is_valid():
+            form.save()
+            # return HttpResponseRedirect(reverse('detail-advert', advert.id))
+            return HttpResponseRedirect(reverse('home'))
+    else:
+        form = CreateAdvertForm(instance=advert)
+    return render(request,'update_advert_form.html',{'update_advert_form': form})
+
+
+def delete_advert(request, id):
+    advert = Advert.objects.get(id=id)
+
+    if request.method == 'POST':
+        advert.delete()
+        return HttpResponseRedirect(reverse('home'))
+    return render(request,'delete_advert.html',{'advert': advert})
+
+  
 # REGISTER
 def register_request(request):
     if request.method == "POST":

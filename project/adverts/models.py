@@ -8,6 +8,9 @@ class Account(models.Model):
     postal_code = models.CharField(max_length=10)
     favorites = models.ManyToManyField('Advert')
 
+    def __str__(self):
+        return u'{0}'.format(self.user)
+
 
 class Advert(models.Model):
     added_at = models.DateTimeField('date published')
