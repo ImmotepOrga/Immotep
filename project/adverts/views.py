@@ -6,14 +6,15 @@ from django.contrib import messages
 from django.urls import reverse
 from django.http import HttpResponse, HttpResponseRedirect
 from django.contrib.auth.forms import AuthenticationForm
-from .models import Advert
+from .models import Advert, Account
 from .forms import CreateAdvertForm
 
 
 def home(request):
     return render(request, "home.html", {})
 
-@login_required(login_url='/login/')
+# CREER ANNONCE
+@login_required(login_url="adverts:login")
 def create_advert(request):
     if request.method == 'POST':
         form = CreateAdvertForm(request.POST)
@@ -24,7 +25,8 @@ def create_advert(request):
         form = CreateAdvertForm()
     return render(request, 'create_advert_form.html', {'create_advert_form': form})
 
-
+# MODIFIER ANNONCE
+@login_required(login_url="adverts:login")
 def udpate_advert(request, id):
     advert = Advert.objects.get(id=id)
 
@@ -38,7 +40,8 @@ def udpate_advert(request, id):
         form = CreateAdvertForm(instance=advert)
     return render(request,'update_advert_form.html',{'update_advert_form': form})
 
-
+# SUPPRIMER ANNONCE
+@login_required(login_url="adverts:login")
 def delete_advert(request, id):
     advert = Advert.objects.get(id=id)
 
@@ -90,7 +93,15 @@ def login_request(request):
     form = AuthenticationForm()
     return render(request, "login.html", {"login_form":form})
 
+# LOGOUT
+@login_required(login_url="adverts:login")
 def logout_request(request):
     logout(request)
     messages.info(request, f"Vous êtes déconnecté.")
     return redirect("adverts:home")
+
+# PROFIL
+@login_required(login_url="adverts:login")
+def account(request):
+    user_account = Account.objects.get(id=request.user.id)
+    return render(request, "account.html", {"user_account":user_account})
