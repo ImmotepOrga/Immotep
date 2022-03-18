@@ -9,7 +9,7 @@
     <div class="collapse navbar-collapse text-right" id="navbarText">
         <ul class="navbar-nav ms-5 mb-2 mb-lg-0">
           <li class="nav-item">
-            <a href="" class="nav-link btn btn-primary rounded-pill px-3 text-white"><span class="me-2 icon-add align-middle"></span>Poster une annonce</a>
+            <a href="" class="nav-link btn btn-primary rounded-pill px-3 text-white"><span class="me-2 icon-add align-middle"></span>Déposer une annonce</a>
           </li>
           <li class="nav-item ms-2">
             <a class="nav-link" href="">Voir les annonces</a>
@@ -21,7 +21,7 @@
             <a class="nav-link" href="" title="Favoris"><span class="icon-heart bg-primary rounded-circle text-white p-2"></span></a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="" title="Profil"><span class="icon-user bg-primary rounded-circle text-white p-2"></span></a>
+            <a class="nav-link" href="{% url 'adverts:account' %}" title="Profil"><span class="icon-user bg-primary rounded-circle text-white p-2"></span></a>
           </li>
           {% else %}
           <li class="nav-item">
