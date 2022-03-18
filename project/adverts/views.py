@@ -1,6 +1,7 @@
 from django.shortcuts import  render, redirect
 from .forms import NewUserForm, AccountForm
 from django.contrib.auth import login, logout, authenticate
+from django.contrib.auth.decorators import login_required
 from django.contrib import messages
 from django.urls import reverse
 from django.http import HttpResponse, HttpResponseRedirect
@@ -12,7 +13,7 @@ from .forms import CreateAdvertForm
 def home(request):
     return render(request, "home.html", {})
 
-
+@login_required(login_url='/login/')
 def create_advert(request):
     if request.method == 'POST':
         form = CreateAdvertForm(request.POST)
