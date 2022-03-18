@@ -1,3 +1,14 @@
+# DOCKERAZATIOOOOOOON !!
+
+- How to do maaan ?
+- Easy ! First step : go to the root of the project. 
+- Okaaay
+- Second step : write the following command "docker-compose build"
+- Yes yes yes ! Lots of lines appear !
+- Normaaaal boy, next write this command "docker-compose up"
+- It's done ! Next ?
+- That's all hehehe 😎
+
 
 # Setup
 

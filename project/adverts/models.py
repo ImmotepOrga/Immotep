@@ -6,7 +6,10 @@ class Account(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
     phone_number = models.CharField(max_length=45)
     postal_code = models.CharField(max_length=10)
-    favorites = models.ManyToManyField(Advert)
+    favorites = models.ManyToManyField('Advert')
+
+    def __str__(self):
+        return u'{0}'.format(self.user)
 
 
 class Advert(models.Model):
