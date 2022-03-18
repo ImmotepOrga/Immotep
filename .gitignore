@@ -3,7 +3,7 @@
 # Edit at https://www.toptal.com/developers/gitignore?templates=django
 
 #Docker
-*.yml
+docker-compose.yml
 
 ### Django ###
 *.log
