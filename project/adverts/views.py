@@ -5,12 +5,50 @@ from django.contrib import messages
 from django.urls import reverse
 from django.http import HttpResponse, HttpResponseRedirect
 from django.contrib.auth.forms import AuthenticationForm
-from .models import Advert
+from .models import Advert, ApiAdvert
 from .forms import CreateAdvertForm
+import requests
+from datetime import date
 
-
+#HOME
 def home(request):
-    return render(request, "home.html", {})
+    props = get_other_propertries().order_by('-id')[:3]
+    return render(request, "home.html", {'properties': props})
+
+def get_other_propertries():
+    res = ApiAdvert.objects.all()
+    return res
+
+def get_api_datas(request):
+    url = "https://realty-mole-property-api.p.rapidapi.com/saleListings"
+    querystring = {"state":"TX"}
+    headers = {
+        "X-RapidAPI-Host": "realty-mole-property-api.p.rapidapi.com",
+        "X-RapidAPI-Key": "f0a7b7d00dmsh96a7932c1eb5c47p156174jsndeceb283db84"
+    }
+
+    api = requests.request("GET", url, headers=headers, params=querystring).json()
+    for prop in api:
+        property = ApiAdvert()
+        property.adress_1 = prop["addressLine1"]
+        property.bathrooms = round(prop.get("bathrooms", 0))
+        property.bedrooms = round(prop.get("bedrooms", 0))
+        property.city = prop["city"]
+        property.county = prop["county"]
+        property.price = prop["price"]
+        property.property_type = prop["propertyType"]
+        property.state = prop["state"]
+        property.zip_code = prop["zipCode"]
+        property.last_seen = prop["lastSeen"]
+        property.created_date = prop.get("createdDate", date.today())
+        property.save()
+    props = ApiAdvert.objects.all()
+    return render(request, "home.html", {'properties': props})
+
+def delete_all_props(request):
+    props = ApiAdvert.objects.all()
+    props.delete()
+    return render(request, "home.html", {'properties': props})
 
 
 def create_advert(request):
