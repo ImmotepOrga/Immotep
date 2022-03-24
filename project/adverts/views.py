@@ -2,6 +2,7 @@ from django.shortcuts import render, redirect
 from .forms import NewUserForm, AccountForm
 from django.contrib.auth.models import User
 from django.contrib.auth import login, logout, authenticate
+from django.contrib.auth.decorators import login_required
 from django.contrib import messages
 from django.urls import reverse
 from django.http import HttpResponse, HttpResponseRedirect
@@ -29,10 +30,11 @@ def home(request):
     return render(request, "home.html", {'last_user_adverts': last_added_adverts, 'user_favs': user_favs})
 
 
-# CREATE AN ADVERT
+# CREER ANNONCE
 def create_advert(request):
     if not request.user.is_authenticated:
-        return HttpResponseRedirect(reverse('adverts:home'))
+        messages.warning(request, f"Vous devez être connecté pour poster une annonce")
+        return HttpResponseRedirect(reverse('adverts:login'))
     else:
         if request.method == 'POST':
             form = CreateAdvertForm(request.POST)
@@ -44,12 +46,13 @@ def create_advert(request):
         return render(request, 'create_advert_form.html', {'create_advert_form': form})
 
 
-# UPDATE AN ADVERT
+# MODIFIER ANNONCE
 def udpate_advert(request, id):
     advert = Advert.objects.get(id=id)
 
     if not request.user.is_authenticated:
-        return HttpResponseRedirect(reverse('adverts:home'))
+        messages.warning(request, f"Vous devez être connecté pour modifier une annonce")
+        return HttpResponseRedirect(reverse('adverts:login'))
     else:
         if request.user.id != advert.id:
             return HttpResponseRedirect(reverse('adverts:home'))
@@ -65,12 +68,13 @@ def udpate_advert(request, id):
             return render(request, 'update_advert_form.html', {'update_advert_form': form})
 
 
-# DELETE AN ADVERT
+# SUPPRIMER ANNONCE
 def delete_advert(request, id):
     advert = Advert.objects.get(id=id)
 
     if not request.user.is_authenticated:
-        return HttpResponseRedirect(reverse('adverts:home'))
+        messages.warning(request, f"Vous devez être connecté pour supprimer une annonce")
+        return HttpResponseRedirect(reverse('adverts:login'))
     else:
         if request.user.id != advert.id:
             return HttpResponseRedirect(reverse('adverts:home'))
@@ -128,15 +132,18 @@ def login_request(request):
     return render(request, "login.html", {"login_form": form})
 
 
+# LOGOUT
+@login_required(login_url="adverts:login")
 def logout_request(request):
     logout(request)
     messages.info(request, f"Vous êtes déconnecté.")
     return redirect("adverts:home")
 
 
+# AJOUTER UNE ANNONCE EN FAVORI
 def add_favorite(request, advert_id):
     if not request.user.is_authenticated:
-        return HttpResponseRedirect(reverse('adverts:home'))
+        return HttpResponseRedirect(reverse('adverts:login'))
     else:
         advert = Advert.objects.get(id=advert_id)
         logged_user = Account.objects.get(user = request.user.id)
@@ -144,12 +151,21 @@ def add_favorite(request, advert_id):
         messages.success(request, f"Annonce ajoutée en favori")
         return redirect("adverts:home")
 
-
+      
+# SUPPRIMER UNE ANNONCE DES FAVORIS
 def remove_favorite(request, advert_id):
     if not request.user.is_authenticated:
-        return HttpResponseRedirect(reverse('adverts:home'))
+        return HttpResponseRedirect(reverse('adverts:login'))
     else:
         advert = Advert.objects.get(id=advert_id)
         Account.favorites.through.objects.filter(advert_id = advert.id, account_id = request.user.id).delete()
         messages.warning(request, f"Annonce supprimée des favoris")
         return redirect("adverts:home")
+
+
+# PROFIL
+@login_required(login_url="adverts:login")
+def account(request):
+    user_account = Account.objects.get(id=request.user.id)
+    return render(request, "account.html", {"user_account":user_account})
+
