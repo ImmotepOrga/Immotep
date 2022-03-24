@@ -23,17 +23,33 @@
     <div class="container">
         <form method="POST">
             <div class="row justify-content-center" >    
-              <h2 class="mt-2 mt-5 text-center">Inscription</h3>        
-                <div class="col-8 borderCustom mt-5 pt-5 pb-5"> 
+              <h1 class="mt-2 mt-5 text-center">Inscription</h1>        
+                <div class="col-8 borderCustom mt-5 pt-5 pb-3"> 
                         <div class="row justify-content-center">
                             <div class="col-8 ">  
 								{% csrf_token %}
-                                {{ register_form|crispy }}
-       							{{ account_form|crispy }}  
+								<div class="row">
+									{{ register_form.username|as_crispy_field }}
+								</div>
+								<div class="row mt-4">
+									{{ register_form.email|as_crispy_field }}
+								</div>
+								<div class="row mt-4">
+									{{ register_form.password1|as_crispy_field }}
+									{{ register_form.password2|as_crispy_field }}
+								</div>
+								<div class="row mt-4">
+									<div class="col">
+										{{ account_form.postal_code|as_crispy_field }}
+									</div>
+									<div class="col">
+										{{ account_form.phone_number|as_crispy_field }}
+									</div>
+								</div>
                             </div>
                         </div>
                     <div class="row justify-content-center">
-                        <div class="col-4 text-center">
+                        <div class="col-8 text-center">
                             <button type="submit" class="btn buttonCustom mt-5">S'inscrire</button>
                             <p class="text-center mt-3">Si vous possédez déjà un compte, <a href="/login">connectez-vous</a>.</p>
                         </div>     
