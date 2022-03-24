@@ -30,6 +30,11 @@ def home(request):
     return render(request, "home.html", {'last_user_adverts': last_added_adverts, 'user_favs': user_favs})
 
 
+# USER ADVERTS DETAILS
+def details_advert(request, id):
+    return render(request, "login.html")
+
+
 # CREER ANNONCE
 def create_advert(request):
     if not request.user.is_authenticated:
@@ -39,7 +44,10 @@ def create_advert(request):
         if request.method == 'POST':
             form = CreateAdvertForm(request.POST)
             if form.is_valid():
-                form.save()
+                logged_user = Account.objects.get(user = request.user.id)
+                partial_advert = form.save(commit=False)
+                partial_advert.creator = logged_user
+                partial_advert.save()
                 # return HttpResponseRedirect(reverse('detail-advert', advert.id))
                 messages.success(request, f"L'annonce à bien été créée")
                 return HttpResponseRedirect(reverse('adverts:home'))
