@@ -92,3 +92,22 @@ class AccountForm(forms.ModelForm):
         if commit:
             user.save()
         return user
+
+# Formulaire d'édition de compte sans le mot de passe'
+class EditUserForm(forms.ModelForm):
+    email = forms.EmailField(required=True)
+
+    class Meta:
+        model = User
+        fields = ( "username", "email")
+        labels = {
+            "username":"Nom d'utilisateur",
+            "email":"Adresse e-mail"
+        }
+
+    def save(self, commit=True):
+        user = super(EditUserForm, self).save(commit=False)
+
+        if commit:
+            user.save()
+        return user

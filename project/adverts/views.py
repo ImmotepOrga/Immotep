@@ -1,5 +1,5 @@
 from django.shortcuts import render, redirect
-from .forms import NewUserForm, AccountForm
+from .forms import EditUserForm, NewUserForm, AccountForm
 from django.contrib.auth.models import User
 from django.contrib.auth import login, logout, authenticate
 from django.contrib.auth.decorators import login_required
@@ -106,8 +106,8 @@ def register_request(request):
             login(request, user)
             return redirect("adverts:home")
         else:
-            print(form.errors, account_form.errors)
-            args = {'form': form, 'account_form': account_form}
+            messages.warning(request, f"Erreur")
+            args = {'register_form': form, 'account_form': account_form}
             return render(request, 'register.html', args)
     else:
         form = NewUserForm()
@@ -175,3 +175,25 @@ def account(request):
     user_account = Account.objects.get(id=request.user.id)
     return render(request, "account.html", {"user_account":user_account})
 
+# MODIFIER PROFIL
+def update_account(request):
+    current_user=request.user
+    current_account = Account.objects.get(user = request.user.id)
+    if request.method == "POST":
+        form = EditUserForm(request.POST, instance=current_user)
+        account_form = AccountForm(request.POST, instance=current_account)
+        if form.is_valid() and account_form.is_valid():
+            user = form.save()
+            account = account_form.save(commit=False)
+            account.user = user
+            account.save()
+            account_form.save_m2m()
+            messages.success(request, f"Profil modifié avec succès")
+            return redirect("adverts:account")
+        else:
+            args = {'register_form': form, 'account_form': account_form}
+            return render(request, 'update_account.html', args)
+    else:
+        form = EditUserForm(instance=current_user)
+        account_form = AccountForm(instance=current_account)
+    return render(request, "update_account.html", {"register_form": form, "account_form": account_form})
