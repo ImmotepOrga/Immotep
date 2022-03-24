@@ -107,7 +107,7 @@ def register_request(request):
             return redirect("adverts:home")
         else:
             print(form.errors, account_form.errors)
-            args = {'form': form, 'account_form': account_form}
+            args = {'register_form': form, 'account_form': account_form}
             return render(request, 'register.html', args)
     else:
         form = NewUserForm()
