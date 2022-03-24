@@ -12,7 +12,7 @@
 	<form method="POST">
 		{% csrf_token %}
 		{{ register_form|crispy }}
-		<a href="">Modifier mot de passe</a>
+		<a href="{% url 'adverts:update-password' %}">Modifier mot de passe</a>
 		<hr />
         {{ account_form|crispy }}
 		<button class="btn btn-primary" type="submit">Mettre à jour</button>

@@ -1,5 +1,6 @@
 from django.urls import path, include
 from . import views
+from django.contrib.auth import views as auth_views
 
 app_name = "adverts" 
 
@@ -15,4 +16,8 @@ urlpatterns = [
     path('deconnexion', views.logout_request, name="logout"),
     path('compte', views.account, name="account"),
     path('compte/editer', views.update_account, name="update-account"),
+    path('compte/editer/mot-de-passe', auth_views.PasswordChangeView.as_view(
+            template_name='adverts/change-password.html',
+            success_url = '/'
+        ), name="update-password")
 ]
