@@ -24,7 +24,7 @@ def home(request):
     last_added_adverts = Advert.objects.all().order_by('-id')[:3]
     user_favs = [None] * 3
     if request.user.is_authenticated:
-        for i in range(3):
+        for i in range(len(last_added_adverts)):
             if Account.favorites.through.objects.filter(advert_id = last_added_adverts[i].id, account_id = request.user.id):
                 user_favs[i] = last_added_adverts[i].id
     return render(request, "home.html", {'last_user_adverts': last_added_adverts, 'user_favs': user_favs})
@@ -40,6 +40,8 @@ def create_advert(request):
             form = CreateAdvertForm(request.POST)
             if form.is_valid():
                 form.save()
+                # return HttpResponseRedirect(reverse('detail-advert', advert.id))
+                messages.success(request, f"L'annonce à bien été créée")
                 return HttpResponseRedirect(reverse('adverts:home'))
         else:
             form = CreateAdvertForm()
@@ -54,7 +56,8 @@ def udpate_advert(request, id):
         messages.warning(request, f"Vous devez être connecté pour modifier une annonce")
         return HttpResponseRedirect(reverse('adverts:login'))
     else:
-        if request.user.id != advert.id:
+        if request.user.id != advert.creator_id:
+            messages.warning(request, f"Vous ne pouvez pas éditer une annonce ne vous appartenant pas")
             return HttpResponseRedirect(reverse('adverts:home'))
         else:
             if request.method == 'POST':
@@ -62,6 +65,7 @@ def udpate_advert(request, id):
                 if form.is_valid():
                     form.save()
                     # return HttpResponseRedirect(reverse('detail-advert', advert.id))
+                    messages.success(request, f"L'annonce à bien été mise à jour")
                     return HttpResponseRedirect(reverse('adverts:home'))
             else:
                 form = CreateAdvertForm(instance=advert)
@@ -76,11 +80,13 @@ def delete_advert(request, id):
         messages.warning(request, f"Vous devez être connecté pour supprimer une annonce")
         return HttpResponseRedirect(reverse('adverts:login'))
     else:
-        if request.user.id != advert.id:
+        if request.user.id != advert.creator_id:
+            messages.warning(request, f"Vous ne pouvez pas supprimer une annonce ne vous appartenant pas")
             return HttpResponseRedirect(reverse('adverts:home'))
         else:
             if request.method == 'POST':
                 advert.delete()
+                messages.success(request, f"L'annonce à bien été supprimée")
                 return HttpResponseRedirect(reverse('adverts:home'))
             return render(request, 'delete_advert.html', {'advert': advert})
 
