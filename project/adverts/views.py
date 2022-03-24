@@ -106,7 +106,6 @@ def register_request(request):
             login(request, user)
             return redirect("adverts:home")
         else:
-            messages.warning(request, f"Erreur")
             args = {'register_form': form, 'account_form': account_form}
             return render(request, 'register.html', args)
     else:
