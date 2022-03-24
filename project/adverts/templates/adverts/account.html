@@ -1,0 +1,34 @@
+{% extends 'base.html' %}
+
+{% block title %} Profil {% endblock %}
+
+{% block content %} 
+
+{% include 'includes/navigation.html' %}   
+
+<!--Profile--> 
+<div class="container py-5">
+	<h1>Profil</h1>
+	<div class="container">
+		<div class="row bg-light p-5">
+			<div class="col-9">
+				<h2>Mes coordonnées</h2>
+				<div>Nom : {{ user.username }}</div>
+				<div>Adresse e-mail : {{ user.email }}</div>
+				<div>Mot de passe : ***************</div>
+				<div>Numéro de téléphone : {{ user_account.phone_number }}</div>
+				<div>Code postal : {{ user_account.postal_code }}</div>
+			</div>
+			<div class="col-3 text-end d-flex flex-column justify-content-between">
+				<div class="edit">
+					<a href="" title="Modifier"><span class="icon-pencil"></span></a>
+				</div>
+				<div class="logout">
+					<a href="{% url 'adverts:logout' %}"><span class="small">Se déconnecter</span></a>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+{% endblock %}
