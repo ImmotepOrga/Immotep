@@ -1,13 +1,13 @@
 {% extends 'base.html' %}
 {% block title %}Supprimer une annonce{% endblock %}
 {% block content %}
-    <div class="container">
+    <div class="container py-5">
         <h1>Supprimer l'annonce</h1>
         <div>Etes-vous sûr de vouloir supprimer cette annonce ? : 
             <div>{{ advert.service_type}} - {{advert.property_type}} à {{advert.city}} pour {{advert.price}} €</div>
         </div>
         <form action="" method="post">
             {% csrf_token %}
-        <input type="submit" value="Delete" class="btn btn-danger mt-2">
+        <input type="submit" value="Supprimer" class="btn btn-danger mt-2">
     </div>
 {% endblock %}
