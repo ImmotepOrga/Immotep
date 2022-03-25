@@ -28,7 +28,10 @@ SECRET_KEY = 'django-insecure-y!8w4-b$#v527&)gtx)qwl3bn+v(k%$w@b!g7x4krfysj^2=bz
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['*']
+# A REMPLACER EN PROD
+ALLOWED_HOSTS = [
+    '*'
+]
 
 
 # Application definition
@@ -87,11 +90,10 @@ environ.Env.read_env()
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'epiz_31371797_immotep',
-        'USER': 'epiz_31371797',
-        'PASSWORD': 'iiUqS4lSFBzg',
-        'PORT': '3306',
-        'HOST': 'sql100.epizy.com'
+        'NAME': os.environ.get('MYSQL_DATABASE'),
+        'PASSWORD': os.environ.get('MYSQL_ROOT_PASSWORD'),
+        'PORT': os.environ.get('MYSQL_PORT'),
+        'HOST': os.environ.get('MYSQL_HOST')
     }
 }
 
