@@ -2,11 +2,44 @@
 {% block title %}Créer une annonce{% endblock %}
 {% load crispy_forms_tags %}
 {% block content %}
+
+<style>
+.borderCustom {
+    border: 2px solid #D5BDAD;
+    box-sizing: border-box;
+    box-shadow: 3px 5px 5px rgba(0, 0, 0, 0.25);
+    border-radius: 15px;
+    color: #2A4252;
+}
+
+.buttonCustom {
+    background-color:#2A4252; 
+    border-radius: 30px;
+    box-shadow: 3px 5px 5px rgba(0, 0, 0, 0.25);
+    color:white;
+}
+</style>
+
+{% include 'includes/navigation.html' %}
     <div class="container">
         <form method="POST">
-            {% csrf_token %}
-            {{ create_advert_form|crispy }}
-            <button type="submit" class="btn btn-success mt-3">Créer l'annonce</button>
+            <div class="row justify-content-center" >            
+                <div class="col-8 borderCustom mt-5 pt-5 pb-5">
+                    <h2 class="mt-2 mb-5 text-center">Vous êtes à un formulaire de poster votre bien...</h3>
+                        <div class="row justify-content-center">
+                            <div class="col-8 ">  
+                                {% csrf_token %}
+                                {{ create_advert_form|crispy }}
+                            </div>
+                        </div>
+                    <div class="row justify-content-center">
+                        <div class="col-4 text-center">
+                            <button type="submit" class="btn buttonCustom mt-5">Créer l'annonce</button>
+                        </div>  
+                    </div>
+                </div>
+            </div>
         </form>
     </div>
 {% endblock %}
+

@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+
+{% block title %} Profil {% endblock %}
+
+{% block content %} 
+
+{% load crispy_forms_tags %}         
+
+<!--Edit profile--> 
+<div class="container py-5">
+	<h1>Modification du profil</h1>
+	<form method="POST">
+		{% csrf_token %}
+		{{ register_form|crispy }}
+		<a href="{% url 'adverts:update-password' %}">Modifier mot de passe</a>
+		<hr />
+        {{ account_form|crispy }}
+		<button class="btn btn-primary" type="submit">Mettre à jour</button>
+	</form>
+	<a href="{% url 'adverts:account' %}">Annuler</a>
+</div>
+
+{% endblock %}

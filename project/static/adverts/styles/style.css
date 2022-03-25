@@ -1,7 +1,16 @@
 /* STYLE */
 
-* {
-    font-family: 'Rubik', sans-serif;
-    text-decoration: none !important;
-    color: #2A4252;
+@import url('https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,400;0,700;1,400;1,700&display=swap');
+:root{
+    --bs-primary: #2a4252;
+    --bs-secondary:#d5bdad;
+    --bs-font-sans-serif: Rubik;
+}
+html{
+    font-family: Rubik !important;
+}
+
+.icon-user::before {
+    padding-left: 2.3px !important;
+    padding-right: 2.3px !important;
 }

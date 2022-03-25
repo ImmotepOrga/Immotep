@@ -1,17 +1,99 @@
 {% extends 'base.html' %}
-
-{% block title %} Immotep {% endblock %}
-
+{% block title %}Immotep{% endblock %}
 {% block content %}
+<style>
+    .advertBlock {
+        border: 2px solid #D5BDAD;
+        box-sizing: border-box;
+        box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+        border-radius: 15px;
+        color: #2A4252;
+    }
 
-{% include 'includes/navigation.html' %}
+    .advertBlock .carousel-control-next-icon, .advertBlock .carousel-control-prev-icon {
+        background-color: rgba(0, 0, 0, 0.25);
+        background-size: 60%;
+    }
 
-<div class="container py-5">
-    <div class="jumbotron py-100">
-        <div class="container">
-            <h1 class="display-3">Bienvenue sur Immotep</h1>
-            <p>Le site de référence des annonces immobilières entre particuliers.</p>
-            <p><a class="btn btn-primary btn-lg" href="#" role="button">Voir les annonces &raquo;</a></p>
+    .advertBlock img {
+        border-radius: 15px 0 0 15px;
+    }
+
+    #adsSlider {
+        background-image: url('https://via.placeholder.com/450x750/c4fffd/8F8F8F?text=pub1');
+        background-size: 100% 100%;
+    }
+</style>
+    {% include 'includes/navigation.html' %}
+    <div class="container py-5">
+        <div class="jumbotron py-100">
+            <div class="container px-0">
+                <h4>Aperçu des biens</h4>
+                <div class="d-flex mt-2 mx-0">
+                    <div class="col-9 px-0 me-5">
+                        {% for last_user_advert in last_user_adverts %}
+                            <div class="w-100 d-flex my-3 advertBlock">
+                                <div id="userAdvertCarousel{{ forloop.counter }}" class="carousel carousel-fade slide" data-bs-ride="carousel" data-bs-interval="false">
+                                    <div class="carousel-indicators">
+                                      <button type="button" data-bs-target="#userAdvertCarousel{{ forloop.counter }}" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+                                      <button type="button" data-bs-target="#userAdvertCarousel{{ forloop.counter }}" data-bs-slide-to="1" aria-label="Slide 2"></button>
+                                      <button type="button" data-bs-target="#userAdvertCarousel{{ forloop.counter }}" data-bs-slide-to="2" aria-label="Slide 3"></button>
+                                    </div>
+                                    <div class="carousel-inner" style="width: 350px; height: 250px">
+                                      <div class="carousel-item active h-100">
+                                        <img src="https://resize-elle.ladmedia.fr/rcrop/638,,forcex/img/var/plain_site/storage/images/deco/pieces/petits-espaces/10-idees-d-amenagements-d-appartements-de-30-m2/95773946-5-fre-FR/10-idees-d-amenagements-d-appartements-de-30-m2.jpg" class="d-block w-100 h-100" alt="Image annonce 1">
+                                      </div>
+                                      <div class="carousel-item h-100">
+                                        <img src="https://static.cotemaison.fr/medias_11962/w_640,c_fill,g_north/sejour-avec-cuisine-et-salon-chambre-separee-par-une-verriere-noire_6124688.jpg" class="d-block w-100 h-100" alt="Image annonce 2">
+                                      </div>
+                                      <div class="carousel-item h-100">
+                                        <img src="https://storage.gra.cloud.ovh.net/v1/AUTH_e0b83750570d4ff1986fe199b41300e4/kimono/b9cdfed4e6b0f532ec6dbf1998c915f64df40ffa/600x370-fit-cover-orientation-0deg?width=600&height=370&fit=cover" class="d-block w-100 h-100" alt="Image annonce 3">
+                                      </div>
+                                    </div>
+                                    <button class="carousel-control-prev" type="button" data-bs-target="#userAdvertCarousel{{ forloop.counter }}" data-bs-slide="prev">
+                                      <span class="carousel-control-prev-icon rounded-circle p-4 ms-3" aria-hidden="true"></span>
+                                      <span class="visually-hidden">Précédent</span>
+                                    </button>
+                                    <button class="carousel-control-next" type="button" data-bs-target="#userAdvertCarousel{{ forloop.counter }}" data-bs-slide="next">
+                                      <span class="carousel-control-next-icon rounded-circle p-4 me-3" aria-hidden="true"></span>
+                                      <span class="visually-hidden">Suivant</span>
+                                    </button>
+                                </div>
+                                <div class="px-5 d-flex flex-column justify-content-center w-100">
+                                    {% if request.user.is_authenticated %}   
+                                        <div class="d-flex justify-content-between">
+                                            <div class="h3 my-auto">{{ last_user_advert.price }}€</div>
+                                            {% if user_favs|index:forloop.counter0 == last_user_advert.id %}
+                                                <a class="text-dark" href="{% url 'adverts:remove-favorite' last_user_advert.id %}" title="Supprimer des favoris">
+                                                    <i class="bi bi-heart-fill" style="font-size: 2rem"></i>
+                                                </a>
+                                            {% else %}
+                                                <a class="text-dark" href="{% url 'adverts:add-favorite' last_user_advert.id %}" title="Ajouter en favori">
+                                                    <i class="bi bi-heart" style="font-size: 2rem"></i>
+                                                </a>
+                                            {% endif %}
+                                        </div>
+                                    {% else %}
+                                        <div class="h3">{{ last_user_advert.price }}€</div>
+                                    {% endif %}
+                                    <div class="fw-bold mb-2">{{ last_user_advert.service_type }} / {{ last_user_advert.property_type }}</div>
+                                    <div class="fw-bold">{{ last_user_advert.room_count }} pièce(s) - {{ last_user_advert.bedroom_count }} chambre(s) - {{ last_user_advert.surface }}m²</div>
+                                    <div class="fw-bold">
+                                        {% if last_user_advert.is_furnished %}Meublé{% endif %}
+                                        {% if last_user_advert.has_balcony %}Balcon{% endif %}
+                                        {% if last_user_advert.has_terrace %}Terasse{% endif %}
+                                        {% if last_user_advert.has_elevator %}Ascenseur{% endif %}
+                                        {% if last_user_advert.has_parking %}Parking{% endif %}
+                                    </div>   
+                                    <div class="mt-2">{{ last_user_advert.street_number }} {{ last_user_advert.street_name }} à {{ last_user_advert.city }} ({{ last_user_advert.postal_code }})</div>
+                                    <a class="link-info text-decoration-none mt-4" href="{% url 'adverts:details-advert' last_user_advert.id %}">Voir les infos</a>  
+                                </div>
+                            </div>
+                        {% endfor %}
+                    </div>
+                    <div class="w-100 px-0 my-3" id="adsSlider"></div>
+                </div>
+            </div>
         </div>
     </div>
 </div>
