@@ -23,7 +23,6 @@ env = environ.Env()
 
 environ.Env.read_env(os.path.join(BASE_DIR, '.env'))
 
-
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/4.0/howto/deployment/checklist/
 
@@ -31,11 +30,11 @@ environ.Env.read_env(os.path.join(BASE_DIR, '.env'))
 SECRET_KEY = 'django-insecure-y!8w4-b$#v527&)gtx)qwl3bn+v(k%$w@b!g7x4krfysj^2=bz'
 
 # SECURITY WARNING: don't run with debug turned on in production!
+
 DEBUG = os.environ.get('DEBUG')
 
 # A REMPLACER EN PROD
 ALLOWED_HOSTS = env.list('ALLOWED_HOSTS')
-
 
 # Application definition
 
@@ -84,9 +83,6 @@ TEMPLATES = [
 
 
 WSGI_APPLICATION = 'project.wsgi.application'
-
-
-
 
 
 DATABASES = {
