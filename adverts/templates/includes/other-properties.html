@@ -1,0 +1,48 @@
+<div class="container">
+    <div class="row">
+        {% for prop in properties %}
+        <div class="col-4">
+            <div class="card">
+                <div id="carouselExampleIndicators{{prop.id}}" class="carousel carousel-fade slide" data-bs-ride="carousel" data-bs-interval="false">
+                    <div class="carousel-indicators">
+                      <button type="button" data-bs-target="#carouselExampleIndicators{{prop.id}}" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+                      <button type="button" data-bs-target="#carouselExampleIndicators{{prop.id}}" data-bs-slide-to="1" aria-label="Slide 2"></button>
+                      <button type="button" data-bs-target="#carouselExampleIndicators{{prop.id}}" data-bs-slide-to="2" aria-label="Slide 3"></button>
+                    </div>
+                    <div class="carousel-inner" style="height: 200px">
+                      <div class="carousel-item h-100 active">
+                        <img src="https://picsum.photos/200/100" class="d-block w-100" alt="...">
+                      </div>
+                      <div class="carousel-item h-100">
+                        <img src="https://picsum.photos/200/200" class="d-block w-100" alt="...">
+                      </div>
+                      <div class="carousel-item h-100">
+                        <img src="https://picsum.photos/200/150" class="d-block w-100" alt="...">
+                      </div>
+                    </div>
+                    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators{{prop.id}}" data-bs-slide="prev">
+                      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                      <span class="visually-hidden">Previous</span>
+                    </button>
+                    <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators{{prop.id}}" data-bs-slide="next">
+                      <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                      <span class="visually-hidden">Next</span>
+                    </button>
+                </div>
+                <div class="card-body">
+                    <div class="card-header-custom">
+                        <h5 class="card-title">{{prop.price}}€</h5>
+                    </div>
+                    <div class="prop-info">
+                        <p>{{prop.property_type}}</p>
+                        <p>{{prop.pieces_number}} pièce(s) - {{prop.bedrooms}} chambre(s) - {{prop.surface}}m2</p>
+                        <p>{{prop.address_1}} à {{prop.city}} ({{prop.zip_code}})</p>
+                    </div>
+                    <a href="https://www.google.fr"></a>
+                    <button class="button-fav"><i class="fa-regular fa-heart"></i></button>
+                </div>
+            </div>
+        </div>
+        {%endfor%}
+    </div>
+</div>
