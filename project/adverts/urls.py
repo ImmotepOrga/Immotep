@@ -17,8 +17,9 @@ urlpatterns = [
     path('deconnexion', views.logout_request, name="logout"),
     path('compte', views.account, name="account"),
     path('compte/editer', views.update_account, name="update-account"),
-    path('compte/editer/mot-de-passe', auth_views.PasswordChangeView.as_view(
-            template_name='adverts/change-password.html',
-            success_url = '/'
-        ), name="update-password")
+    path('compte/editer/mot-de-passe', auth_views.PasswordChangeView.as_view(template_name='adverts/change-password.html', success_url = '/'), name="update-password"),
+    # # Url to take extern api datas
+    # path('api/datas', views.get_api_datas, name="api_datas"),
+    # # Delete all ApiAdvert
+    # path('api/delete', views.delete_all_props, name="delete_api_datas"),
 ]
