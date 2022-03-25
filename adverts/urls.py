@@ -12,6 +12,7 @@ urlpatterns = [
     path('annonce/<int:id>/supprimer', views.delete_advert, name="delete-advert"),
     path('annonce/favori/<int:advert_id>/ajouter', views.add_favorite, name="add-favorite"),
     path('annonce/favori/<int:advert_id>/supprimer', views.remove_favorite, name="remove-favorite"),
+    path('annonce', views.properties, name="properties-list"),
     path('inscription', views.register_request, name="register"),
     path('connexion', views.login_request, name="login"),
     path('deconnexion', views.logout_request, name="logout"),

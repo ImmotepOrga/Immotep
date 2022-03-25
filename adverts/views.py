@@ -243,3 +243,40 @@ def delete_all_props(request):
     props = ApiAdvert.objects.all()
     props.delete()
     return render(request, "home.html", {'properties': props})
+
+
+# PROPERTIES LIST
+def properties(request):
+    query_params = request.GET
+    _type_prop = query_params.get("type-prop")
+    _pieces = query_params.get("pieces")
+    _chambers = query_params.get("chambers")
+    _surface = query_params.get("surface")
+    _max_price = query_params.get("max-price")
+    _furniture = query_params.get("furniture")
+    _terrace = query_params.get("terrace")
+
+    adverts = Advert.objects.all()
+
+    if _type_prop:
+        adverts = adverts.filter(property_type=_type_prop)
+    if _pieces:
+        adverts = adverts.filter(room_count=_pieces)
+    if _chambers:
+        adverts = adverts.filter(bedroom_count=_chambers)
+    if _surface:
+        adverts = adverts.filter(surface__gte=_surface)
+    if _max_price:
+        adverts = adverts.filter(price__lte=_max_price)
+    if _furniture:
+        adverts = adverts.filter(is_furnished=True)
+    if _terrace:
+        adverts = adverts.filter(has_balcony=True, has_terrace=True)
+
+
+    user_favs = [None] * len(adverts)
+    if request.user.is_authenticated:
+        for i in range(len(adverts)):
+            if Account.favorites.through.objects.filter(advert_id = adverts[i].id, account_id = request.user.id):
+                user_favs[i] = adverts[i].id
+    return render(request, "properties_list.html", {'last_user_adverts': adverts, 'user_favs': user_favs})
