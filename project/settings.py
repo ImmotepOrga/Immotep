@@ -18,6 +18,11 @@ from django.contrib.messages import constants as messages
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
+# ENVIRONNEMENT
+env = environ.Env()
+
+environ.Env.read_env(os.path.join(BASE_DIR, '.env'))
+
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/4.0/howto/deployment/checklist/
@@ -26,12 +31,10 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-y!8w4-b$#v527&)gtx)qwl3bn+v(k%$w@b!g7x4krfysj^2=bz'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = os.environ.get('DEBUG')
 
 # A REMPLACER EN PROD
-ALLOWED_HOSTS = [
-    '*'
-]
+ALLOWED_HOSTS = env.list('ALLOWED_HOSTS')
 
 
 # Application definition
@@ -83,14 +86,14 @@ TEMPLATES = [
 WSGI_APPLICATION = 'project.wsgi.application'
 
 
-env = environ.Env()
-environ.Env.read_env()
+
 
 
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
         'NAME': os.environ.get('MYSQL_DATABASE'),
+        'USER': os.environ.get('MYSQL_USER'),
         'PASSWORD': os.environ.get('MYSQL_ROOT_PASSWORD'),
         'PORT': os.environ.get('MYSQL_PORT'),
         'HOST': os.environ.get('MYSQL_HOST')
