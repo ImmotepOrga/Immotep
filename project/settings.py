@@ -87,10 +87,11 @@ environ.Env.read_env()
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': os.environ.get('MYSQL_DATABASE'),
-        'PASSWORD': os.environ.get('MYSQL_ROOT_PASSWORD'),
-        'PORT': os.environ.get('MYSQL_PORT'),
-        'HOST': os.environ.get('MYSQL_HOST')
+        'NAME': 'epiz_31371797_immotep',
+        'USER': 'epiz_31371797',
+        'PASSWORD': 'ynovpass23',
+        'PORT': '3306',
+        'HOST': 'sql100.epizy.com'
     }
 }
 
