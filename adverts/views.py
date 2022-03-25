@@ -1,6 +1,5 @@
-from cgitb import reset
 from django.shortcuts import render, redirect
-from .forms import EditUserForm, NewUserForm, AccountForm
+from django.template.defaulttags import register
 from django.contrib.auth.models import User
 from django.contrib.auth import login, logout, authenticate
 from django.contrib.auth.decorators import login_required
@@ -8,10 +7,10 @@ from django.contrib import messages
 from django.urls import reverse
 from django.http import HttpResponse, HttpResponseRedirect
 from django.contrib.auth.forms import AuthenticationForm
-from .models import Account, Advert
-from .forms import CreateAdvertForm
-from django.template.defaulttags import register
-
+from .models import Account, Advert, ApiAdvert
+from .forms import EditUserForm, NewUserForm, AccountForm, CreateAdvertForm
+from datetime import date
+import requests
 
 
 # Access position in a loop
@@ -22,18 +21,25 @@ def index(sequence, position):
 
 # RENDER THE HOMEPAGE
 def home(request):
+    props = get_other_propertries().order_by('-id')[:3]
     last_added_adverts = Advert.objects.all().order_by('-id')[:3]
     user_favs = [None] * 3
     if request.user.is_authenticated:
         for i in range(len(last_added_adverts)):
             if Account.favorites.through.objects.filter(advert_id = last_added_adverts[i].id, account_id = request.user.id):
                 user_favs[i] = last_added_adverts[i].id
-    return render(request, "home.html", {'last_user_adverts': last_added_adverts, 'user_favs': user_favs})
+    return render(request, "home.html", {'last_user_adverts': last_added_adverts, 'user_favs': user_favs, 'properties': props})
+
 
 # FAVORIES LIST
 def favories(request):
     adverts = Account.objects.get(user=request.user.id).favorites.all()
     return render(request, "favories.html", {'user_favs': adverts})
+
+
+# USER ADVERTS DETAILS
+def details_advert(request, id):
+    return render(request, "login.html")
 
 
 # CREER ANNONCE
@@ -45,7 +51,10 @@ def create_advert(request):
         if request.method == 'POST':
             form = CreateAdvertForm(request.POST)
             if form.is_valid():
-                form.save()
+                logged_user = Account.objects.get(user = request.user.id)
+                partial_advert = form.save(commit=False)
+                partial_advert.creator = logged_user
+                partial_advert.save()
                 # return HttpResponseRedirect(reverse('detail-advert', advert.id))
                 messages.success(request, f"L'annonce à bien été créée")
                 return HttpResponseRedirect(reverse('adverts:home'))
@@ -171,7 +180,6 @@ def remove_favorite(request, advert_id):
         advert = Advert.objects.get(id=advert_id)
         Account.favorites.through.objects.filter(advert_id = advert.id, account_id = request.user.id).delete()
         messages.warning(request, f"Annonce supprimée des favoris")
-        # return redirect("adverts:home")
         return HttpResponseRedirect(request.META.get('HTTP_REFERER'))
 
 
@@ -203,3 +211,78 @@ def update_account(request):
         form = EditUserForm(instance=current_user)
         account_form = AccountForm(instance=current_account)
     return render(request, "update_account.html", {"register_form": form, "account_form": account_form})
+  
+  
+def get_other_propertries():
+  res = ApiAdvert.objects.all()
+  return res
+
+
+def get_api_datas(request):
+    url = "https://realty-mole-property-api.p.rapidapi.com/saleListings"
+    querystring = {"state":"TX"}
+    headers = {
+        "X-RapidAPI-Host": "realty-mole-property-api.p.rapidapi.com",
+        "X-RapidAPI-Key": "f0a7b7d00dmsh96a7932c1eb5c47p156174jsndeceb283db84"
+    }
+
+    api = requests.request("GET", url, headers=headers, params=querystring).json()
+    for prop in api:
+        property = ApiAdvert()
+        property.adress_1 = prop["addressLine1"]
+        property.bathrooms = round(prop.get("bathrooms", 0))
+        property.bedrooms = round(prop.get("bedrooms", 0))
+        property.city = prop["city"]
+        property.county = prop["county"]
+        property.price = prop["price"]
+        property.property_type = prop["propertyType"]
+        property.state = prop["state"]
+        property.zip_code = prop["zipCode"]
+        property.last_seen = prop["lastSeen"]
+        property.created_date = prop.get("createdDate", date.today())
+        property.save()
+    props = ApiAdvert.objects.all()
+    return render(request, "home.html", {'properties': props})
+
+  
+def delete_all_props(request):
+    props = ApiAdvert.objects.all()
+    props.delete()
+    return render(request, "home.html", {'properties': props})
+
+
+# PROPERTIES LIST
+def properties(request):
+    query_params = request.GET
+    _type_prop = query_params.get("type-prop")
+    _pieces = query_params.get("pieces")
+    _chambers = query_params.get("chambers")
+    _surface = query_params.get("surface")
+    _max_price = query_params.get("max-price")
+    _furniture = query_params.get("furniture")
+    _terrace = query_params.get("terrace")
+
+    adverts = Advert.objects.all()
+
+    if _type_prop:
+        adverts = adverts.filter(property_type=_type_prop)
+    if _pieces:
+        adverts = adverts.filter(room_count=_pieces)
+    if _chambers:
+        adverts = adverts.filter(bedroom_count=_chambers)
+    if _surface:
+        adverts = adverts.filter(surface__gte=_surface)
+    if _max_price:
+        adverts = adverts.filter(price__lte=_max_price)
+    if _furniture:
+        adverts = adverts.filter(is_furnished=True)
+    if _terrace:
+        adverts = adverts.filter(has_balcony=True, has_terrace=True)
+
+
+    user_favs = [None] * len(adverts)
+    if request.user.is_authenticated:
+        for i in range(len(adverts)):
+            if Account.favorites.through.objects.filter(advert_id = adverts[i].id, account_id = request.user.id):
+                user_favs[i] = adverts[i].id
+    return render(request, "properties_list.html", {'last_user_adverts': adverts, 'user_favs': user_favs})
