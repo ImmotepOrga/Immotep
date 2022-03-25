@@ -90,11 +90,11 @@ environ.Env.read_env()
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'heroku_79bb43ecb9b61c7',
-        'USER': 'b3d1e39a9ebc5a',
-        'PASSWORD': '3a427585',
+        'NAME': 'jc74fb8s0rcmxidp',
+        'USER': 'c0i7j0nfl8gkmaqb',
+        'PASSWORD': 'fe8652nk0b1jvr12 ',
         'PORT': '3306',
-        'HOST': 'eu-cdbr-west-02.cleardb.net'
+        'HOST': 'spryrr1myu6oalwl.chr7pe7iynqr.eu-west-1.rds.amazonaws.com'
     }
 }
 
