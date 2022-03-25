@@ -5,6 +5,7 @@ app_name = "adverts"
 
 urlpatterns = [
     path('', views.home, name="home"),
+    path('annonce', views.properties, name="properties-list"),
     path('annonce/ajouter', views.create_advert, name="create-advert"),
     path('annonce/<int:id>/editer', views.udpate_advert, name="update-advert"),
     path('annonce/<int:id>/supprimer', views.delete_advert, name="delete-advert"),
