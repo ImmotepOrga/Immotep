@@ -90,10 +90,11 @@ environ.Env.read_env()
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': os.environ.get('MYSQL_DATABASE'),
-        'PASSWORD': os.environ.get('MYSQL_ROOT_PASSWORD'),
-        'PORT': os.environ.get('MYSQL_PORT'),
-        'HOST': os.environ.get('MYSQL_HOST')
+        'NAME': 'heroku_79bb43ecb9b61c7',
+        'USER': 'b3d1e39a9ebc5a',
+        'PASSWORD': '3a427585',
+        'PORT': '3306',
+        'HOST': 'eu-cdbr-west-02.cleardb.net'
     }
 }
 
