@@ -13,10 +13,14 @@
 # Setup
 
 - Quelques commandes utiles pour installer correctement ce projet
-- A lancer depuis "/project"
+- A lancer à la racine
 
 
-
+## Sélectionner le bon environnement
+Développement
+> .env décommenter le bloc PRODUCTION
+Production
+> .env décommenter le bloc DEVELOPPEMENT
 
 ## Créer un environnement virtuel
 
