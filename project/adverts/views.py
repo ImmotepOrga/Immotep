@@ -1,3 +1,4 @@
+from cgitb import reset
 from django.shortcuts import render, redirect
 from .forms import EditUserForm, NewUserForm, AccountForm
 from django.contrib.auth.models import User
@@ -28,6 +29,11 @@ def home(request):
             if Account.favorites.through.objects.filter(advert_id = last_added_adverts[i].id, account_id = request.user.id):
                 user_favs[i] = last_added_adverts[i].id
     return render(request, "home.html", {'last_user_adverts': last_added_adverts, 'user_favs': user_favs})
+
+# FAVORIES LIST
+def favories(request):
+    adverts = Account.objects.get(user=request.user.id).favorites.all()
+    return render(request, "favories.html", {'user_favs': adverts})
 
 
 # CREER ANNONCE
@@ -165,7 +171,8 @@ def remove_favorite(request, advert_id):
         advert = Advert.objects.get(id=advert_id)
         Account.favorites.through.objects.filter(advert_id = advert.id, account_id = request.user.id).delete()
         messages.warning(request, f"Annonce supprimée des favoris")
-        return redirect("adverts:home")
+        # return redirect("adverts:home")
+        return HttpResponseRedirect(request.META.get('HTTP_REFERER'))
 
 
 # PROFIL

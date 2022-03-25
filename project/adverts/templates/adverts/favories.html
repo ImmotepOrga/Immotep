@@ -1,5 +1,5 @@
 {% extends 'base.html' %}
-{% block title %}Immotep{% endblock %}
+{% block title %}Favories{% endblock %}
 {% block content %}
 <style>
     .advertBlock {
@@ -27,10 +27,10 @@
     <div class="container py-5">
         <div class="jumbotron py-100">
             <div class="container px-0">
-                <h4>Aperçu des biens</h4>
+                <h4>Mes favoris</h4>
                 <div class="d-flex mt-2 mx-0">
                     <div class="col-9 px-0 me-5">
-                        {% for last_user_advert in last_user_adverts %}
+                        {% for user_fav in user_favs %}
                             <div class="w-100 d-flex my-3 advertBlock">
                                 <div id="userAdvertCarousel{{ forloop.counter }}" class="carousel carousel-fade slide" data-bs-ride="carousel" data-bs-interval="false">
                                     <div class="carousel-indicators">
@@ -61,30 +61,24 @@
                                 <div class="px-5 d-flex flex-column justify-content-center w-100">
                                     {% if request.user.is_authenticated %}   
                                         <div class="d-flex justify-content-between">
-                                            <div class="h3 my-auto">{{ last_user_advert.price }}€</div>
-                                            {% if user_favs|index:forloop.counter0 == last_user_advert.id %}
-                                                <a class="text-dark" href="{% url 'adverts:remove-favorite' last_user_advert.id %}" title="Supprimer des favoris">
-                                                    <i class="bi bi-heart-fill" style="font-size: 2rem"></i>
-                                                </a>
-                                            {% else %}
-                                                <a class="text-dark" href="{% url 'adverts:add-favorite' last_user_advert.id %}" title="Ajouter en favori">
-                                                    <i class="bi bi-heart" style="font-size: 2rem"></i>
-                                                </a>
-                                            {% endif %}
+                                            <div class="h3 my-auto">{{ user_fav.price }}€</div>
+                                            <a class="text-dark" href="{% url 'adverts:remove-favorite' user_fav.id %}" title="Supprimer des favoris">
+                                                <i class="bi bi-heart-fill" style="font-size: 2rem"></i>
+                                            </a>
                                         </div>
                                     {% else %}
-                                        <div class="h3">{{ last_user_advert.price }}€</div>
+                                        <div class="h3">{{ user_fav.price }}€</div>
                                     {% endif %}
-                                    <div class="fw-bold mb-2">{{ last_user_advert.service_type }} / {{ last_user_advert.property_type }}</div>
-                                    <div class="fw-bold">{{ last_user_advert.room_count }} pièce(s) - {{ last_user_advert.bedroom_count }} chambre(s) - {{ last_user_advert.surface }}m²</div>
+                                    <div class="fw-bold mb-2">{{ user_fav.service_type }} / {{ user_fav.property_type }}</div>
+                                    <div class="fw-bold">{{ user_fav.room_count }} pièce(s) - {{ user_fav.bedroom_count }} chambre(s) - {{ user_fav.surface }}m²</div>
                                     <div class="fw-bold">
-                                        {% if last_user_advert.is_furnished %}Meublé{% endif %}
-                                        {% if last_user_advert.has_balcony %}Balcon{% endif %}
-                                        {% if last_user_advert.has_terrace %}Terasse{% endif %}
-                                        {% if last_user_advert.has_elevator %}Ascenseur{% endif %}
-                                        {% if last_user_advert.has_parking %}Parking{% endif %}
+                                        {% if user_fav.is_furnished %}Meublé{% endif %}
+                                        {% if user_fav.has_balcony %}Balcon{% endif %}
+                                        {% if user_fav.has_terrace %}Terasse{% endif %}
+                                        {% if user_fav.has_elevator %}Ascenseur{% endif %}
+                                        {% if user_fav.has_parking %}Parking{% endif %}
                                     </div>   
-                                    <div class="mt-2">{{ last_user_advert.street_number }} {{ last_user_advert.street_name }} à {{ last_user_advert.city }} ({{ last_user_advert.postal_code }})</div>  
+                                    <div class="mt-2">{{ user_fav.street_number }} {{ user_fav.street_name }} à {{ user_fav.city }} ({{ user_fav.postal_code }})</div>  
                                 </div>
                             </div>
                         {% endfor %}
