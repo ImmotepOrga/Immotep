@@ -89,7 +89,7 @@ DATABASES = {
         'ENGINE': 'django.db.backends.mysql',
         'NAME': 'epiz_31371797_immotep',
         'USER': 'epiz_31371797',
-        'PASSWORD': 'ynovpass23',
+        'PASSWORD': 'iiUqS4lSFBzg',
         'PORT': '3306',
         'HOST': 'sql100.epizy.com'
     }
