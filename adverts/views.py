@@ -32,6 +32,12 @@ def home(request):
     return render(request, "home.html", {'last_user_adverts': last_added_adverts, 'user_favs': user_favs, 'properties': props})
 
 
+# FAVORIES LIST
+def favories(request):
+    adverts = Account.objects.get(user=request.user.id).favorites.all()
+    return render(request, "favories.html", {'user_favs': adverts})
+
+
 # USER ADVERTS DETAILS
 def details_advert(request, id):
     return render(request, "login.html")
@@ -190,10 +196,10 @@ def add_favorite(request, advert_id):
 # SUPPRIMER UNE ANNONCE DES FAVORIS
 @login_required(login_url="adverts:login")
 def remove_favorite(request, advert_id):
-    advert = Advert.objects.get(id=advert_id)
-    Account.favorites.through.objects.filter(advert_id=advert.id, account_id=request.user.id).delete()
+    advert = Advert.objects.get(id = advert_id)
+    Account.favorites.through.objects.filter(advert_id = advert.id, account_id = request.user.id).delete()
     messages.warning(request, f"Annonce supprimée des favoris")
-    return redirect("adverts:home")
+    return HttpResponseRedirect(request.META.get('HTTP_REFERER'))
 
 
 # PROFIL

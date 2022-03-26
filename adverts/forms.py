@@ -33,6 +33,7 @@ class CreateAdvertForm(ModelForm):
             "price": "Prix",
             "warranty_deposit": "Dépot de garantie",
             "energy_use": "Consommation énergétique",
+            "creator": "Auteur de l'annonce",
             "street_number": "Numéro de rue",
             "street_name": "Nom de rue",
             "postal_code": "Code postal",
