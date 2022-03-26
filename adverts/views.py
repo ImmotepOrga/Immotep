@@ -9,8 +9,9 @@ from django.http import HttpResponse, HttpResponseRedirect
 from django.contrib.auth.forms import AuthenticationForm
 from .models import Account, Advert, ApiAdvert
 from .forms import EditUserForm, NewUserForm, AccountForm, CreateAdvertForm
-from datetime import date
+from datetime import date, datetime
 import requests
+import os
 
 
 # Access position in a loop
@@ -36,6 +37,17 @@ def details_advert(request, id):
     return render(request, "login.html")
 
 
+def handle_uploaded_files(pictures_list, inserted_advert_id):
+    media_folder = 'media/images/'
+    if not os.path.exists(media_folder):
+        os.mkdir(media_folder)
+    os.mkdir(os.path.join(media_folder, inserted_advert_id))
+    advert_folder = os.path.join(media_folder, inserted_advert_id)
+    for i in range(len(pictures_list)):
+        file_path = os.path.join(advert_folder, pictures_list[i])
+        open(file_path, 'wb').write(pictures_list[i].encode())
+
+
 # CREER ANNONCE
 def create_advert(request):
     if not request.user.is_authenticated:
@@ -43,12 +55,26 @@ def create_advert(request):
         return HttpResponseRedirect(reverse('adverts:login'))
     else:
         if request.method == 'POST':
-            form = CreateAdvertForm(request.POST)
+            form = CreateAdvertForm(request.POST, request.FILES)
             if form.is_valid():
-                logged_user = Account.objects.get(user = request.user.id)
+                logged_user = Account.objects.get(user=request.user.id)
                 partial_advert = form.save(commit=False)
                 partial_advert.creator = logged_user
+
+                partial_advert.added_at = datetime.now()
+
+                pictures_list = []
+                for f in request.FILES.getlist('pictures'):
+                    filename = f.name
+                    pictures_list.append(filename)
+
+                partial_advert.pictures = ', '.join(pictures_list)
+
                 partial_advert.save()
+                inserted_advert = Advert.objects.latest('id')
+
+                handle_uploaded_files(pictures_list, str(inserted_advert.id))
+
                 # return HttpResponseRedirect(reverse('detail-advert', advert.id))
                 messages.success(request, f"L'annonce à bien été créée")
                 return HttpResponseRedirect(reverse('adverts:home'))
@@ -133,15 +159,12 @@ def login_request(request):
             user = authenticate(username=username, password=password)
             if user is not None:
                 login(request, user)
-                messages.info(
-                    request, f"Vous êtes connecté en tant que {username}.")
+                messages.info(request, f"Vous êtes connecté en tant que {username}.")
                 return redirect("adverts:home")
             else:
-                messages.error(
-                    request, "Nom d'utilisateur ou mot de passe invalide.")
+                messages.error(request, "Nom d'utilisateur ou mot de passe invalide.")
         else:
-            messages.error(
-                request, "Nom d'utilisateur ou mot de passe invalide.")
+            messages.error(request, "Nom d'utilisateur ou mot de passe invalide.")
     form = AuthenticationForm()
     return render(request, "login.html", {"login_form": form})
 
@@ -155,26 +178,22 @@ def logout_request(request):
 
 
 # AJOUTER UNE ANNONCE EN FAVORI
+@login_required(login_url="adverts:login")
 def add_favorite(request, advert_id):
-    if not request.user.is_authenticated:
-        return HttpResponseRedirect(reverse('adverts:login'))
-    else:
-        advert = Advert.objects.get(id=advert_id)
-        logged_user = Account.objects.get(user = request.user.id)
-        logged_user.favorites.add(advert)
-        messages.success(request, f"Annonce ajoutée en favori")
-        return redirect("adverts:home")
+    advert = Advert.objects.get(id=advert_id)
+    logged_user = Account.objects.get(user=request.user.id)
+    logged_user.favorites.add(advert)
+    messages.success(request, f"Annonce ajoutée en favori")
+    return redirect("adverts:home")
 
-      
+
 # SUPPRIMER UNE ANNONCE DES FAVORIS
+@login_required(login_url="adverts:login")
 def remove_favorite(request, advert_id):
-    if not request.user.is_authenticated:
-        return HttpResponseRedirect(reverse('adverts:login'))
-    else:
-        advert = Advert.objects.get(id=advert_id)
-        Account.favorites.through.objects.filter(advert_id = advert.id, account_id = request.user.id).delete()
-        messages.warning(request, f"Annonce supprimée des favoris")
-        return redirect("adverts:home")
+    advert = Advert.objects.get(id=advert_id)
+    Account.favorites.through.objects.filter(advert_id=advert.id, account_id=request.user.id).delete()
+    messages.warning(request, f"Annonce supprimée des favoris")
+    return redirect("adverts:home")
 
 
 # PROFIL
