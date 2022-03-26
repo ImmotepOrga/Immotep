@@ -18,9 +18,9 @@ class Advert(models.Model):
     added_at = models.DateTimeField('date published')
     service_type = models.CharField(max_length=45)
     property_type = models.CharField(max_length=45)
-    surface = models.IntegerField()
-    room_count = models.IntegerField()
-    bedroom_count = models.IntegerField()
+    surface = models.PositiveIntegerField()
+    room_count = models.PositiveIntegerField()
+    bedroom_count = models.PositiveIntegerField()
     is_furnished = models.BooleanField()
     has_balcony = models.BooleanField()
     has_terrace = models.BooleanField()
@@ -28,7 +28,7 @@ class Advert(models.Model):
     has_parking = models.BooleanField()
     description = models.CharField(max_length=100)
     price = models.PositiveIntegerField()
-    warranty_deposit = models.IntegerField()
+    warranty_deposit = models.PositiveIntegerField()
     energy_use = models.CharField(max_length=45)
     creator = models.ForeignKey(Account, on_delete=models.CASCADE)
     street_number = models.CharField(max_length=10)
@@ -36,7 +36,7 @@ class Advert(models.Model):
     postal_code = models.CharField(max_length=10)
     city = models.CharField(max_length=45)
     status = models.CharField(max_length=45)
-    pictures = models.JSONField(default=list)
+    pictures = models.FileField(upload_to='images/', blank = True, null=True)
 
     def __str__(self):
         return self.property_type
