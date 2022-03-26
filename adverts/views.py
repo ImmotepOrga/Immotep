@@ -50,8 +50,9 @@ def handle_uploaded_files(pictures_list, inserted_advert_id):
     os.mkdir(os.path.join(media_folder, inserted_advert_id))
     advert_folder = os.path.join(media_folder, inserted_advert_id)
     for i in range(len(pictures_list)):
-        file_path = os.path.join(advert_folder, pictures_list[i])
-        open(file_path, 'wb').write(pictures_list[i].encode())
+        if (i <= 2):
+            file_path = os.path.join(advert_folder, pictures_list[i].name)
+            open(file_path, 'wb').write(pictures_list[i].read())
 
 
 # CREER ANNONCE
@@ -70,11 +71,13 @@ def create_advert(request):
                 partial_advert.added_at = datetime.now()
 
                 pictures_list = []
-                for f in request.FILES.getlist('pictures'):
-                    filename = f.name
-                    pictures_list.append(filename)
+                filenames = []
+                for i, file in enumerate(request.FILES.getlist('pictures')):
+                    if (i <= 2):
+                        pictures_list.append(file)
+                        filenames.append(file.name)
 
-                partial_advert.pictures = ', '.join(pictures_list)
+                partial_advert.pictures = ', '.join(filenames)
 
                 partial_advert.save()
                 inserted_advert = Advert.objects.latest('id')
