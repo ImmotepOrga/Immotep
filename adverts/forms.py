@@ -14,12 +14,11 @@ class CreateAdvertForm(ModelForm):
     class Meta:
         model = Advert
         fields = (
-            'added_at', 'service_type', 'property_type', 'surface', 'room_count', 'bedroom_count', 'is_furnished', 'has_balcony',
+            'service_type', 'property_type', 'surface', 'room_count', 'bedroom_count', 'is_furnished', 'has_balcony',
             'has_terrace', 'has_elevator', 'has_parking', 'description', 'price', 'warranty_deposit', 'energy_use', 'street_number',
             'street_name', 'postal_code', 'city', 'status', 'pictures'
         )
         labels = {
-            "added_at": "Ajouté le",
             "service_type": "Type de service",
             "property_type": "Type de bien",
             "surface": "Surface",
@@ -43,15 +42,14 @@ class CreateAdvertForm(ModelForm):
         }
         energy_categories = (('A', 'A'),('B', 'B'),('C', 'C'),('D', 'D'),('E', 'E'),('F', 'F'),('G', 'G'))
         service_types = (('Location', 'Location'),('Achat', 'Achat'))
-        property_types = (('Appartemment', 'Appartemment'),('Maison', 'Maison'))
+        property_types = (('Appartement', 'Appartement'),('Maison', 'Maison'))
         statuses = (('Active', 'Active'),('Inactive', 'Inactive'))
         widgets = {
-            'added_at': forms.DateInput(attrs={'type':'date'}),
             'energy_use': forms.Select(choices=energy_categories),
             'service_type': forms.Select(choices=service_types),
             'property_type': forms.Select(choices=property_types),
             'status': forms.Select(choices=statuses),
-            'pictures': forms.ClearableFileInput(),
+            'pictures': forms.ClearableFileInput(attrs={'class': 'form-control', 'multiple': 'true', 'accept':'image/gif, image/jpeg, image/png'}),
         }
         
     
