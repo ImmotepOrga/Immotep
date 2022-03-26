@@ -22,9 +22,9 @@ def index(sequence, position):
 
 # RENDER THE HOMEPAGE
 def home(request):
-    props = get_other_propertries().order_by('-id')[:3]
-    last_added_adverts = Advert.objects.all().order_by('-id')[:3]
-    user_favs = [None] * 3
+    props = get_other_propertries().order_by('-id')[:4]
+    last_added_adverts = Advert.objects.all().order_by('-id')[:4]
+    user_favs = [None] * 4
     if request.user.is_authenticated:
         for i in range(len(last_added_adverts)):
             if Account.favorites.through.objects.filter(advert_id = last_added_adverts[i].id, account_id = request.user.id):
@@ -40,7 +40,8 @@ def favories(request):
 
 # USER ADVERTS DETAILS
 def details_advert(request, id):
-    return render(request, "login.html")
+    advert = Advert.objects.get(id=id)
+    return render(request, "details-advert.html", {'advert_infos': advert})
 
 
 def handle_uploaded_files(pictures_list, inserted_advert_id):

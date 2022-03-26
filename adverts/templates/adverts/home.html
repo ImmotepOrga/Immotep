@@ -24,14 +24,14 @@
         background-size: 100% 100%;
     }
 </style>
-    <div class="container py-5">
+    <div class="py-5">
         <div class="jumbotron py-100">
-            <div class="container px-0">
-                <h4>Aperçu des biens</h4>
-                <div class="d-flex mt-2 mx-0">
-                    <div class="col-9 px-0 me-5">
+            <div class="ms-5 px-0">
+                <h4 class="ms-5 mb-4 mt-2">Aperçu des biens</h4>
+                <div class="mt-2 mx-0">
+                    <div class="d-flex justify-content-around flex-wrap px-0">
                         {% for last_user_advert in last_user_adverts %}
-                            <div class="w-100 d-flex my-3 advertBlock">
+                            <div class="col-5 d-flex my-3 advertBlock">
                                 <div id="userAdvertCarousel{{ forloop.counter }}" class="carousel carousel-fade slide" data-bs-ride="carousel" data-bs-interval="false">
                                     <div class="carousel-indicators">
                                       <button type="button" data-bs-target="#userAdvertCarousel{{ forloop.counter }}" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
@@ -58,7 +58,7 @@
                                       <span class="visually-hidden">Suivant</span>
                                     </button>
                                 </div>
-                                <div class="px-5 d-flex flex-column justify-content-center w-100">
+                                <div class="px-3 d-flex flex-column justify-content-center w-100">
                                     {% if request.user.is_authenticated %}   
                                         <div class="d-flex justify-content-between">
                                             <div class="h3 my-auto">{{ last_user_advert.price }}€</div>
@@ -90,7 +90,6 @@
                             </div>
                         {% endfor %}
                     </div>
-                    <div class="w-100 px-0 my-3" id="adsSlider"></div>
                 </div>
             </div>
         </div>
