@@ -20,6 +20,16 @@
         background-position: center;
         background-repeat: no-repeat;
         background-size: cover;
+        background-color: white;
+    }
+
+    .advertBlock .carousel-indicators {
+        background-color: rgba(0, 0, 0, 0.10);
+        width: fit-content;
+    }
+
+    .advertBlock .carousel-indicators .active {
+        background-color: #ffa970;
     }
 </style>
     <div class="py-5">
@@ -31,7 +41,7 @@
                         {% for last_user_advert in last_user_adverts %}
                             <div class="col-5 d-flex my-3 advertBlock">
                                 <div id="userAdvertCarousel{{ forloop.counter }}" class="carousel carousel-fade slide" data-bs-ride="carousel" data-bs-interval="false">
-                                    <div class="carousel-indicators">
+                                    <div class="carousel-indicators mx-auto rounded">
                                       <button type="button" data-bs-target="#userAdvertCarousel{{ forloop.counter }}" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
                                       <button type="button" data-bs-target="#userAdvertCarousel{{ forloop.counter }}" data-bs-slide-to="1" aria-label="Slide 2"></button>
                                       <button type="button" data-bs-target="#userAdvertCarousel{{ forloop.counter }}" data-bs-slide-to="2" aria-label="Slide 3"></button>
