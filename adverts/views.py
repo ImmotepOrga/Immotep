@@ -41,7 +41,8 @@ def favories(request):
 # USER ADVERTS DETAILS
 def details_advert(request, id):
     advert = Advert.objects.get(id=id)
-    return render(request, "details-advert.html", {'advert_infos': advert})
+    pictures = [pic.strip() for pic in advert.pictures.name.split(',')]
+    return render(request, "details-advert.html", {'advert_infos': advert, 'pictures': pictures})
 
 
 def handle_uploaded_files(pictures_list, inserted_advert_id):
@@ -109,9 +110,8 @@ def udpate_advert(request, id):
                 form = CreateAdvertForm(request.POST, instance=advert)
                 if form.is_valid():
                     form.save()
-                    # return HttpResponseRedirect(reverse('detail-advert', advert.id))
                     messages.success(request, f"L'annonce à bien été mise à jour")
-                    return HttpResponseRedirect(reverse('adverts:home'))
+                    return HttpResponseRedirect(reverse('adverts:details-advert', kwargs={'id': advert.id} ))
             else:
                 form = CreateAdvertForm(instance=advert)
             return render(request, 'update_advert_form.html', {'update_advert_form': form})

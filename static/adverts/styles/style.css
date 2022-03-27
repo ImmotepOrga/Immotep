@@ -13,3 +13,13 @@ html{
     padding-left: 2.3px !important;
     padding-right: 2.3px !important;
 }
+
+body::-webkit-scrollbar-thumb {
+    background: #ba784c !important;
+    border-radius: 10px !important;
+}
+
+body::-webkit-scrollbar {
+    width: 8px !important;
+    background-color: #fff !important;
+}

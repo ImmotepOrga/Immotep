@@ -1,6 +1,8 @@
 from django.urls import path, include
 from . import views
 from django.contrib.auth import views as auth_views
+from django.conf import settings
+from django.conf.urls.static import static
 
 app_name = "adverts" 
 
@@ -25,3 +27,5 @@ urlpatterns = [
     # # Delete all ApiAdvert
     # path('api/delete', views.delete_all_props, name="delete_api_datas"),
 ]
+if settings.DEBUG :
+    urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

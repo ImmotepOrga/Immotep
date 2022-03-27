@@ -1,6 +1,21 @@
 {% load static %}
 
-<nav class="navbar navbar-expand-lg navbar-light bg-light">
+<style>
+  #mainMenu {
+    background-color: #D5BDAD !important; 
+  }
+
+  #mainMenu .navBtn {
+    background-color: #2A4252;
+  }
+
+  #mainMenu .nav-link {
+    color: #2A4252;
+    font-weight: 700;
+  }
+</style>
+
+<nav class="navbar navbar-expand-lg navbar-light" id="mainMenu">
   <div class="container">
     <a class="navbar-brand" href="{% url 'adverts:home' %}"><img src="{% static 'images/logo-immotep.svg' %}" alt="Logo Immotep"></a>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
@@ -9,7 +24,7 @@
     <div class="collapse navbar-collapse text-right" id="navbarText">
         <ul class="navbar-nav ms-5 mb-2 mb-lg-0">
           <li class="nav-item">
-            <a href="{% url 'adverts:create-advert' %}" class="nav-link btn btn-primary rounded-pill px-3 text-white"><span class="me-2 icon-add align-middle"></span>Déposer une annonce</a>
+            <a href="{% url 'adverts:create-advert' %}" class="nav-link btn rounded-pill px-3 text-white navBtn"><span class="me-2 icon-add align-middle"></span>Déposer une annonce</a>
           </li>
           <li class="nav-item ms-2">
             <a class="nav-link" href="{% url 'adverts:properties-list' %}">Voir les annonces</a>
@@ -18,14 +33,14 @@
         <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
           {% if request.user.is_authenticated %}
           <li class="nav-item">
-            <a class="nav-link" href="{% url 'adverts:favories' %}" title="Favoris"><span class="icon-heart bg-primary rounded-circle text-white p-2"></span></a>
+            <a class="nav-link" href="{% url 'adverts:favories' %}" title="Favoris"><span class="icon-heart rounded-circle text-white p-2 navBtn"></span></a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="{% url 'adverts:account' %}" title="Profil"><span class="icon-user bg-primary rounded-circle text-white p-2"></span></a>
+            <a class="nav-link" href="{% url 'adverts:account' %}" title="Profil"><span class="icon-user rounded-circle text-white p-2 navBtn"></span></a>
           </li>
           {% else %}
           <li class="nav-item">
-            <a href="{% url 'adverts:login' %}" class="nav-link btn btn-primary rounded-pill px-4 text-white d-none d-lg-inline-block"><span class="me-2 icon-lock_outline"></span>Connexion</a>
+            <a href="{% url 'adverts:login' %}" class="nav-link btn rounded-pill px-4 text-white d-none d-lg-inline-block navBtn"><span class="me-2 icon-lock_outline"></span>Connexion</a>
           </li>
           {% endif %}
         </ul>     

@@ -15,8 +15,8 @@ class CreateAdvertForm(ModelForm):
         model = Advert
         fields = (
             'service_type', 'property_type', 'surface', 'room_count', 'bedroom_count', 'is_furnished', 'has_balcony',
-            'has_terrace', 'has_elevator', 'has_parking', 'description', 'price', 'warranty_deposit', 'energy_use', 'street_number',
-            'street_name', 'postal_code', 'city', 'status', 'pictures'
+            'has_terrace', 'has_elevator', 'has_parking', 'description', 'price', 'warranty_deposit', 'energy_use', 'greenhouse_gas', 
+            'street_number', 'street_name', 'postal_code', 'city', 'status', 'pictures'
         )
         labels = {
             "service_type": "Type de service",
@@ -33,6 +33,7 @@ class CreateAdvertForm(ModelForm):
             "price": "Prix",
             "warranty_deposit": "Dépot de garantie",
             "energy_use": "Consommation énergétique",
+            "greenhouse_gas": "Émission de gaz à effet de serre",
             "creator": "Auteur de l'annonce",
             "street_number": "Numéro de rue",
             "street_name": "Nom de rue",
@@ -41,12 +42,13 @@ class CreateAdvertForm(ModelForm):
             "status": "Statut de l'annonce",
             "pictures": "Images",
         }
-        energy_categories = (('A', 'A'),('B', 'B'),('C', 'C'),('D', 'D'),('E', 'E'),('F', 'F'),('G', 'G'))
+        energy_gas_categories = (('A', 'A'),('B', 'B'),('C', 'C'),('D', 'D'),('E', 'E'),('F', 'F'),('G', 'G'))
         service_types = (('Location', 'Location'),('Achat', 'Achat'))
         property_types = (('Appartement', 'Appartement'),('Maison', 'Maison'))
         statuses = (('Active', 'Active'),('Inactive', 'Inactive'))
         widgets = {
-            'energy_use': forms.Select(choices=energy_categories),
+            'energy_use': forms.Select(choices=energy_gas_categories),
+            'greenhouse_gas': forms.Select(choices=energy_gas_categories),
             'service_type': forms.Select(choices=service_types),
             'property_type': forms.Select(choices=property_types),
             'status': forms.Select(choices=statuses),
