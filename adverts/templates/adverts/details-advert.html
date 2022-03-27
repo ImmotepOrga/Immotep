@@ -1,5 +1,7 @@
 {% extends 'base.html' %}
 
+{% load static %}
+
 {% block title %} Détail de l'annonce {% endblock %}
 
 {% block content %} 
@@ -34,7 +36,17 @@
     #userAdvertCarousel .carousel-item {
         background-position: center;
         background-repeat: no-repeat;
-        background-size: cover;
+        background-size: 100% 100%;
+        background-color: white;
+    }
+
+    #userAdvertCarousel .carousel-indicators {
+        background-color: rgba(0, 0, 0, 0.10);
+        width: fit-content;
+    }
+
+    #userAdvertCarousel .carousel-indicators .active {
+        background-color: #ffa970;
     }
 </style>
 
@@ -43,15 +55,15 @@
     <div class="row">
         <div class="col-7 px-0">
             <div id="userAdvertCarousel" class="carousel carousel-fade slide w-100 h-100" data-bs-ride="carousel" data-bs-interval="false">
-                <div class="carousel-indicators">
+                <div class="carousel-indicators mx-auto rounded">
                   <button type="button" data-bs-target="#userAdvertCarousel" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
                   <button type="button" data-bs-target="#userAdvertCarousel" data-bs-slide-to="1" aria-label="Slide 2"></button>
                   <button type="button" data-bs-target="#userAdvertCarousel" data-bs-slide-to="2" aria-label="Slide 3"></button>
                 </div>
                 <div class="carousel-inner" style="width: 100%; height: 100%">
-                  <div class="carousel-item active h-100" style="background-image: url('https://resize-elle.ladmedia.fr/rcrop/638,,forcex/img/var/plain_site/storage/images/deco/pieces/petits-espaces/10-idees-d-amenagements-d-appartements-de-30-m2/95773946-5-fre-FR/10-idees-d-amenagements-d-appartements-de-30-m2.jpg')"></div>
-                  <div class="carousel-item h-100" style="background-image: url('https://static.cotemaison.fr/medias_11962/w_640,c_fill,g_north/sejour-avec-cuisine-et-salon-chambre-separee-par-une-verriere-noire_6124688.jpg')"></div>
-                  <div class="carousel-item h-100" style="background-image: url('https://storage.gra.cloud.ovh.net/v1/AUTH_e0b83750570d4ff1986fe199b41300e4/kimono/b9cdfed4e6b0f532ec6dbf1998c915f64df40ffa/600x370-fit-cover-orientation-0deg?width=600&height=370&fit=cover')"></div>
+                    {% for picture in pictures %}
+                        <div class="carousel-item h-100 {% if forloop.first %}active{% endif %}" style="background-image: url('{% get_media_prefix %}images/{{ advert_infos.id }}/{{ picture }}')"></div>
+                    {% endfor %}
                 </div>
                 <button class="carousel-control-prev" type="button" data-bs-target="#userAdvertCarousel" data-bs-slide="prev">
                   <span class="carousel-control-prev-icon rounded-circle p-4 ms-3" aria-hidden="true"></span>

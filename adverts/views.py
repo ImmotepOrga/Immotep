@@ -41,7 +41,8 @@ def favories(request):
 # USER ADVERTS DETAILS
 def details_advert(request, id):
     advert = Advert.objects.get(id=id)
-    return render(request, "details-advert.html", {'advert_infos': advert})
+    pictures = [pic.strip() for pic in advert.pictures.name.split(',')]
+    return render(request, "details-advert.html", {'advert_infos': advert, 'pictures': pictures})
 
 
 def handle_uploaded_files(pictures_list, inserted_advert_id):
