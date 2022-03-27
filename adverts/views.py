@@ -109,9 +109,8 @@ def udpate_advert(request, id):
                 form = CreateAdvertForm(request.POST, instance=advert)
                 if form.is_valid():
                     form.save()
-                    # return HttpResponseRedirect(reverse('detail-advert', advert.id))
                     messages.success(request, f"L'annonce à bien été mise à jour")
-                    return HttpResponseRedirect(reverse('adverts:home'))
+                    return HttpResponseRedirect(reverse('adverts:details-advert', kwargs={'id': advert.id} ))
             else:
                 form = CreateAdvertForm(instance=advert)
             return render(request, 'update_advert_form.html', {'update_advert_form': form})
