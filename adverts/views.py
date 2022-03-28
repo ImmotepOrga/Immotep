@@ -186,13 +186,14 @@ def remove_favorite(request, advert_id):
 # PROFIL
 @login_required(login_url="adverts:login")
 def account(request):
-    user_account = Account.objects.get(id=request.user.id)
-    return render(request, "account.html", {"user_account":user_account})
+    user_account = request.user.account
+    user_adverts = Advert.objects.filter(creator=request.user.id)
+    return render(request, "account.html", {"user_account":user_account, "user_adverts":user_adverts})
 
 # MODIFIER PROFIL
 def update_account(request):
     current_user=request.user
-    current_account = Account.objects.get(user = request.user.id)
+    current_account = request.user.account
     if request.method == "POST":
         form = EditUserForm(request.POST, instance=current_user)
         account_form = AccountForm(request.POST, instance=current_account)
