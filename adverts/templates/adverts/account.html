@@ -64,9 +64,12 @@
 									<div class="d-flex justify-content-between">
 										<div class="h3 my-auto">{{ user_advert.price }}€</div>
 										{% if user_advert.creator.id == user.id %}
+										<div>
 											<a class="text-dark" href="{% url 'adverts:update-advert' user_advert.id %}" title="Modifier mon annonce">
-												<i class="bi bi-gear" style="font-size: 2rem"></i>
-											</a>
+												<i class="bi bi-gear" style="font-size: 2rem"></i></a>
+											<a class="text-dark" href="{% url 'adverts:delete-advert' user_advert.id %}" title="Supprimer mon annonce">
+												<i class="bi bi-trash" style="font-size: 2rem"></i></a>
+										</div>
 										{% else %}
 											{% if user_favs|index:forloop.counter0 == user_advert.id %}
 												<a class="text-dark" href="{% url 'adverts:remove-favorite' user_advert.id %}" title="Supprimer des favoris">
