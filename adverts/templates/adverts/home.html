@@ -1,5 +1,9 @@
 {% extends 'base.html' %}
+
+{% load static %}
+
 {% block title %}Immotep{% endblock %}
+
 {% block content %}
 <style>
     .advertBlock {
@@ -13,6 +17,10 @@
     .advertBlock .carousel-control-next-icon, .advertBlock .carousel-control-prev-icon {
         background-color: rgba(0, 0, 0, 0.25);
         background-size: 60%;
+    }
+
+    .advertBlock .carousel {
+        border-right: 2px solid #d5bdad;
     }
 
     .advertBlock .carousel-item {
@@ -42,14 +50,14 @@
                             <div class="col-5 d-flex my-3 advertBlock">
                                 <div id="userAdvertCarousel{{ forloop.counter }}" class="carousel carousel-fade slide" data-bs-ride="carousel" data-bs-interval="false">
                                     <div class="carousel-indicators mx-auto rounded">
-                                      <button type="button" data-bs-target="#userAdvertCarousel{{ forloop.counter }}" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
-                                      <button type="button" data-bs-target="#userAdvertCarousel{{ forloop.counter }}" data-bs-slide-to="1" aria-label="Slide 2"></button>
-                                      <button type="button" data-bs-target="#userAdvertCarousel{{ forloop.counter }}" data-bs-slide-to="2" aria-label="Slide 3"></button>
+                                        {% for i in last_user_advert.picture_count %}
+                                            <button type="button" data-bs-target="#userAdvertCarousel{{ forloop.parentloop.counter}}" data-bs-slide-to="{{ i }}" {% if forloop.first %}class="active" aria-current="true"{% endif %} aria-label="Slide {{ forloop.counter }}"></button>
+                                        {% endfor %}
                                     </div>
                                     <div class="carousel-inner" style="width: 280px; height: 250px">
-                                      <div class="carousel-item active h-100" style="background-image: url('https://resize-elle.ladmedia.fr/rcrop/638,,forcex/img/var/plain_site/storage/images/deco/pieces/petits-espaces/10-idees-d-amenagements-d-appartements-de-30-m2/95773946-5-fre-FR/10-idees-d-amenagements-d-appartements-de-30-m2.jpg')"></div>
-                                      <div class="carousel-item h-100" style="background-image: url('https://static.cotemaison.fr/medias_11962/w_640,c_fill,g_north/sejour-avec-cuisine-et-salon-chambre-separee-par-une-verriere-noire_6124688.jpg')"></div>
-                                      <div class="carousel-item h-100" style="background-image: url('https://storage.gra.cloud.ovh.net/v1/AUTH_e0b83750570d4ff1986fe199b41300e4/kimono/b9cdfed4e6b0f532ec6dbf1998c915f64df40ffa/600x370-fit-cover-orientation-0deg?width=600&height=370&fit=cover')"></div>
+                                        {% for picture in last_user_advert.pictures %}
+                                            <div class="carousel-item h-100 {% if forloop.first %}active{% endif %}" style="background-image: url('{% get_media_prefix %}images/{{ last_user_advert.id }}/{{ picture }}')"></div>
+                                        {% endfor %}
                                     </div>
                                     <button class="carousel-control-prev" type="button" data-bs-target="#userAdvertCarousel{{ forloop.counter }}" data-bs-slide="prev">
                                       <span class="carousel-control-prev-icon rounded-circle p-4 ms-3" aria-hidden="true"></span>

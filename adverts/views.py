@@ -27,6 +27,8 @@ def home(request):
     user_favs = [None] * 4
     if request.user.is_authenticated:
         for i in range(len(last_added_adverts)):
+            last_added_adverts[i].pictures = [pic.strip() for pic in last_added_adverts[i].pictures.name.split(',')]
+            last_added_adverts[i].picture_count = range(len(last_added_adverts[i].pictures))
             if Account.favorites.through.objects.filter(advert_id = last_added_adverts[i].id, account_id = request.user.id):
                 user_favs[i] = last_added_adverts[i].id
     return render(request, "home.html", {'last_user_adverts': last_added_adverts, 'user_favs': user_favs, 'properties': props})
@@ -41,8 +43,9 @@ def favories(request):
 # USER ADVERTS DETAILS
 def details_advert(request, id):
     advert = Advert.objects.get(id=id)
-    pictures = [pic.strip() for pic in advert.pictures.name.split(',')]
-    return render(request, "details-advert.html", {'advert_infos': advert, 'pictures': pictures})
+    advert.pictures = [pic.strip() for pic in advert.pictures.name.split(',')]
+    advert.picture_count = range(len(advert.pictures))
+    return render(request, "details-advert.html", {'advert_infos': advert})
 
 
 def handle_uploaded_files(pictures_list, inserted_advert_id):
