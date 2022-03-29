@@ -40,7 +40,7 @@ class Advert(models.Model):
     pictures = models.FileField(upload_to='images/', blank = True, null=True)
 
     def __str__(self):
-        return self.property_type
+        return u'{0}'.format(str(self.id) + "-" + self.service_type + "-" + self.property_type)
 
 
 class ApiAdvert(models.Model):
@@ -65,7 +65,7 @@ class ApiAdvert(models.Model):
     zip_code = models.IntegerField()
 
     def __str__(self):
-        return self.identifier
+        return u'{0}'.format(str(self.id) + "-" + self.property_type + "-" + self.state)
 
     @property
     def surface(self):
