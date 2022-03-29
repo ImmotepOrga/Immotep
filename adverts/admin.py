@@ -17,6 +17,7 @@ class AdvertAdmin(admin.ModelAdmin):
         ("Paramêtres de l'annonce", {'fields': ['creator', 'added_at', 'status']}),
     ]
     list_display = ('id', 'service_type', 'property_type', 'status')
+    list_filter = ['service_type', 'property_type', 'status']
 
 
 class ApiAdvertAdmin(admin.ModelAdmin):
