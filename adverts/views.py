@@ -310,6 +310,8 @@ def properties(request):
     user_favs = [None] * len(adverts)
     if request.user.is_authenticated:
         for i in range(len(adverts)):
+            adverts[i].pictures = [pic.strip() for pic in adverts[i].pictures.name.split(',')]
+            adverts[i].picture_count = range(len(adverts[i].pictures))
             if Account.favorites.through.objects.filter(advert_id = adverts[i].id, account_id = request.user.id):
                 user_favs[i] = adverts[i].id
-    return render(request, "properties_list.html", {'last_user_adverts': adverts, 'user_favs': user_favs})
+    return render(request, "properties_list.html", {'adverts': adverts, 'user_favs': user_favs})
