@@ -22,6 +22,7 @@ urlpatterns = [
     path('compte', views.account, name="account"),
     path('compte/editer', views.update_account, name="update-account"),
     path('compte/editer/mot-de-passe', auth_views.PasswordChangeView.as_view(template_name='adverts/change-password.html', success_url = '/'), name="update-password"),
+    path('i18n/', include('django.conf.urls.i18n')),
     # # Url to take extern api datas
     # path('api/datas', views.get_api_datas, name="api_datas"),
     # # Delete all ApiAdvert
