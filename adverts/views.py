@@ -7,6 +7,7 @@ from django.contrib import messages
 from django.urls import reverse
 from django.http import HttpResponse, HttpResponseRedirect
 from django.contrib.auth.forms import AuthenticationForm
+from django.utils.translation import gettext_lazy as _
 from .models import Account, Advert, ApiAdvert
 from .forms import EditUserForm, NewUserForm, AccountForm, CreateAdvertForm
 from datetime import date, datetime
@@ -37,6 +38,9 @@ def home(request):
 # FAVORIES LIST
 def favories(request):
     adverts = Account.objects.get(user=request.user.id).favorites.all()
+    for i in range(len(adverts)):
+        adverts[i].pictures = [pic.strip() for pic in adverts[i].pictures.name.split(',')]
+        adverts[i].picture_count = range(len(adverts[i].pictures))
     return render(request, "favories.html", {'user_favs': adverts})
 
 
@@ -214,6 +218,9 @@ def remove_favorite(request, advert_id):
 def account(request):
     user_account = request.user.account
     user_adverts = Advert.objects.filter(creator=request.user.id)
+    for i in range(len(user_adverts)):
+        user_adverts[i].pictures = [pic.strip() for pic in user_adverts[i].pictures.name.split(',')]
+        user_adverts[i].picture_count = range(len(user_adverts[i].pictures))
     return render(request, "account.html", {"user_account":user_account, "user_adverts":user_adverts})
 
 # MODIFIER PROFIL
