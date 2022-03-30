@@ -1,8 +1,12 @@
 {% extends 'base.html' %}
-{% block title %}Créer une annonce{% endblock %}
-{% load crispy_forms_tags %}
-{% block content %}
 
+{% load i18n %}
+
+{% block title %}{% translate "Create an advert" %}{% endblock %}
+
+{% load crispy_forms_tags %}
+
+{% block content %}
 <style>
 .borderCustom {
     border: 2px solid #D5BDAD;
@@ -24,7 +28,7 @@
         <form method="POST" enctype="multipart/form-data">
             <div class="row justify-content-center" >            
                 <div class="col-8 borderCustom mt-5 pt-5 pb-5">
-                    <h2 class="mt-2 mb-5 text-center">Vous êtes à un formulaire de poster votre bien...</h3>
+                    <h2 class="mt-2 mb-5 text-center">{% translate "You are one form away from advertising your property..." %}</h3>
                         <div class="row justify-content-center">
                             <div class="col-8 ">  
                                 {% csrf_token %}
@@ -95,7 +99,7 @@
                         </div>
                     <div class="row justify-content-center">
                         <div class="col-4 text-center">
-                            <button type="submit" class="btn buttonCustom mt-5">Créer l'annonce</button>
+                            <button type="submit" class="btn buttonCustom mt-5">{% translate "Create the advert" %}</button>
                         </div>  
                     </div>
                 </div>

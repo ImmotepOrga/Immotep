@@ -1,5 +1,7 @@
 {% extends 'base.html' %}
 
+{% load i18n %}
+
 {% load static %}
 
 {% block title %}Immotep{% endblock %}
@@ -43,7 +45,7 @@
     <div class="py-5">
         <div class="jumbotron py-100">
             <div class="ms-5 px-0">
-                <h4 class="ms-5 mb-4 mt-2">Aperçu des biens</h4>
+                <h4 class="ms-5 mb-4 mt-2">{% translate "Property Overview" %}</h4>
                 <div class="mt-2 mx-0">
                     <div class="d-flex justify-content-around flex-wrap px-0">
                         {% for last_user_advert in last_user_adverts %}
@@ -61,11 +63,11 @@
                                     </div>
                                     <button class="carousel-control-prev" type="button" data-bs-target="#userAdvertCarousel{{ forloop.counter }}" data-bs-slide="prev">
                                       <span class="carousel-control-prev-icon rounded-circle p-4 ms-3" aria-hidden="true"></span>
-                                      <span class="visually-hidden">Précédent</span>
+                                      <span class="visually-hidden">{% translate "Previous" %}</span>
                                     </button>
                                     <button class="carousel-control-next" type="button" data-bs-target="#userAdvertCarousel{{ forloop.counter }}" data-bs-slide="next">
                                       <span class="carousel-control-next-icon rounded-circle p-4 me-3" aria-hidden="true"></span>
-                                      <span class="visually-hidden">Suivant</span>
+                                      <span class="visually-hidden">{% translate "Next" %}</span>
                                     </button>
                                 </div>
                                 <div class="px-3 d-flex flex-column justify-content-center w-100">
@@ -73,16 +75,16 @@
                                         <div class="d-flex justify-content-between">
                                             <div class="h4 my-auto">{{ last_user_advert.price }}€</div>
                                             {% if last_user_advert.creator.id == user.id %}
-                                                <a class="text-dark" href="{% url 'adverts:update-advert' last_user_advert.id %}" title="Modifier mon annonce">
+                                                <a class="text-dark" href="{% url 'adverts:update-advert' last_user_advert.id %}" title="{% translate "Modify my advert" %}">
                                                     <i class="bi bi-gear" style="font-size: 2rem"></i>
                                                 </a>
                                             {% else %}
                                                 {% if user_favs|index:forloop.counter0 == last_user_advert.id %}
-                                                    <a class="text-dark" href="{% url 'adverts:remove-favorite' last_user_advert.id %}" title="Supprimer des favoris">
+                                                    <a class="text-dark" href="{% url 'adverts:remove-favorite' last_user_advert.id %}" title="{% translate "Delete from favorites" %}">
                                                         <i class="bi bi-heart-fill" style="font-size: 2rem"></i>
                                                     </a>
                                                 {% else %}
-                                                    <a class="text-dark" href="{% url 'adverts:add-favorite' last_user_advert.id %}" title="Ajouter en favori">
+                                                    <a class="text-dark" href="{% url 'adverts:add-favorite' last_user_advert.id %}" title="{% translate "Add to favorites" %}">
                                                         <i class="bi bi-heart" style="font-size: 2rem"></i>
                                                     </a>
                                                 {% endif %}
@@ -92,16 +94,16 @@
                                         <div class="h3">{{ last_user_advert.price }}€</div>
                                     {% endif %}
                                     <div class="fw-bold mb-2 small">{{ last_user_advert.service_type }} / {{ last_user_advert.property_type }}</div>
-                                    <div class="fw-bold small">{{ last_user_advert.room_count }} pièce(s) - {{ last_user_advert.bedroom_count }} chambre(s) - {{ last_user_advert.surface }}m²</div>
+                                    <div class="fw-bold small">{% blocktranslate with room_c=last_user_advert.room_count bedroom_c=last_user_advert.bedroom_count surface=last_user_advert.surface %}{{ room_c }} room(s) - {{ bedroom_c }} bedroom(s) - {{ surface }}m²{% endblocktranslate %}</div>
                                     <div class="fw-bold small">
-                                        {% if last_user_advert.is_furnished %}Meublé{% endif %}
-                                        {% if last_user_advert.has_balcony %}Balcon{% endif %}
-                                        {% if last_user_advert.has_terrace %}Terasse{% endif %}
-                                        {% if last_user_advert.has_elevator %}Ascenseur{% endif %}
-                                        {% if last_user_advert.has_parking %}Parking{% endif %}
+                                        {% if last_user_advert.is_furnished %}{% translate "Furnished" %}{% endif %}
+                                        {% if last_user_advert.has_balcony %}{% translate "Balcony" %}{% endif %}
+                                        {% if last_user_advert.has_terrace %}{% translate "Terrace" %}{% endif %}
+                                        {% if last_user_advert.has_elevator %}{% translate "Elevator" %}{% endif %}
+                                        {% if last_user_advert.has_parking %}{% translate "Parking" %}{% endif %}
                                     </div>   
-                                    <div class="mt-2 small">{{ last_user_advert.street_number }} {{ last_user_advert.street_name }} à {{ last_user_advert.city }} ({{ last_user_advert.postal_code }})</div>
-                                    <a class="link-info text-decoration-none mt-4" href="{% url 'adverts:details-advert' last_user_advert.id %}">Voir l'annonce</a>  
+                                    <div class="mt-2 small">{{ last_user_advert.street_number }} {{ last_user_advert.street_name }}, {{ last_user_advert.city }} ({{ last_user_advert.postal_code }})</div>
+                                    <a class="link-info text-decoration-none mt-4" href="{% url 'adverts:details-advert' last_user_advert.id %}">{% translate "View the advert" %}</a>  
                                 </div>
                             </div>
                         {% endfor %}

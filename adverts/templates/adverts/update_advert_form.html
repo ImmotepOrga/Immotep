@@ -1,12 +1,17 @@
 {% extends 'base.html' %}
-{% block title %}Éditer une annonce{% endblock %}
+
+{% load i18n %}
+
+{% block title %}{% translate "Edit an advert" %}{% endblock %}
+
 {% load crispy_forms_tags %}
+
 {% block content %}
     <div class="container">
         <form method="POST">
             {% csrf_token %}
             {{ update_advert_form|crispy }}
-            <button type="submit" class="btn btn-success mt-3">Mettre à jour</button>
+            <button type="submit" class="btn btn-success mt-3">{% translate "Update" %}</button>
         </form>
     </div>
 {% endblock %}

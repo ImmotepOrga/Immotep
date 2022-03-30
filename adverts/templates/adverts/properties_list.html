@@ -1,8 +1,10 @@
 {% extends 'base.html' %}
 
+{% load i18n %}
+
 {% load static %}
 
-{% block title %}Liste des annonces{% endblock %}
+{% block title %}{% translate "Adverts list" %}{% endblock %}
 
 {% block content %}
 <style>
@@ -46,38 +48,38 @@
         <div class="container px-0">
             <form method="GET" class="filters">
                 <div class="filter">
-                    <label for="type-prop">Type</label>
+                    <label for="type-prop">{% translate "Type" %}</label>
                     <select class="large" name="type-prop" id="type-prop">
-                        <option value="">Tout</option>
-                        <option value="maison">Maison</option>
-                        <option value="appartemment">Appartement</option>
+                        <option value="">{% translate "All" %}</option>
+                        <option value="maison">{% translate "House" %}</option>
+                        <option value="appartemment">{% translate "Apartment" %}</option>
                     </select>
                 </div>
                 <div class="filter">
-                    <label for="pieces">Pièce(s)</label>
+                    <label for="pieces">{% translate "Room(s)" %}</label>
                     <input type="number" min="0" name="pieces" id="pieces">
                 </div>
                 <div class="filter">
-                    <label for="chambers">Chambre(s)</label>
+                    <label for="chambers">{% translate "Bedroom(s)" %}</label>
                     <input type="number" min="0" name="chambers" id="chambers">
                 </div>
                 <div class="filter">
-                    <label for="surface">Surperficie min.</label>
+                    <label for="surface">{% translate "Min surface." %}</label>
                     <input type="number" min="0" name="surface" id="surface">
                 </div>
                 <div class="filter">
-                    <label for="max-price">Prix max.</label>
+                    <label for="max-price">{% translate "Max price." %}</label>
                     <input class="large" type="number" min="0" name="max-price" id="max-price">
                 </div>
                 <div class="filter f-checkbox">
                     <input type="checkbox" name="furniture" id="furniture"> 
-                    <label for="furniture">Meublé</label>     
+                    <label for="furniture">{% translate "Furnished" %}</label>     
                 </div>
                 <div class="filter f-checkbox">
                     <input type="checkbox" name="terrace" id="terrace"> 
-                    <label for="terrace">Blacon/Ter.</label>   
+                    <label for="terrace">{% translate "Balcony/Ter." %}</label>   
                 </div>   
-                <button type="submit">Valider</button>
+                <button type="submit">{% translate "Confirm" %}</button>
             </div>
             <div class="mt-5 mx-0">
                 <div class="px-0 me-5">
@@ -96,11 +98,11 @@
                                 </div>
                                 <button class="carousel-control-prev" type="button" data-bs-target="#userAdvertCarousel{{ forloop.counter }}" data-bs-slide="prev">
                                   <span class="carousel-control-prev-icon rounded-circle p-4 ms-3" aria-hidden="true"></span>
-                                  <span class="visually-hidden">Précédent</span>
+                                  <span class="visually-hidden">{% translate "Previous" %}</span>
                                 </button>
                                 <button class="carousel-control-next" type="button" data-bs-target="#userAdvertCarousel{{ forloop.counter }}" data-bs-slide="next">
                                   <span class="carousel-control-next-icon rounded-circle p-4 me-3" aria-hidden="true"></span>
-                                  <span class="visually-hidden">Suivant</span>
+                                  <span class="visually-hidden">{% translate "Next" %}</span>
                                 </button>
                             </div>
                             <div class="px-5 d-flex flex-column justify-content-center w-100">
@@ -108,16 +110,16 @@
                                     <div class="d-flex justify-content-between">
                                         <div class="h3 my-auto">{{ advert.price }}€</div>
                                         {% if advert.creator.id == user.id %}
-                                            <a class="text-dark" href="{% url 'adverts:update-advert' advert.id %}" title="Modifier mon annonce">
+                                            <a class="text-dark" href="{% url 'adverts:update-advert' advert.id %}" title="{% translate "Modify my advert" %}">
                                                 <i class="bi bi-gear" style="font-size: 2rem"></i>
                                             </a>
                                         {% else %}
                                             {% if user_favs|index:forloop.counter0 == advert.id %}
-                                                <a class="text-dark" href="{% url 'adverts:remove-favorite' advert.id %}" title="Supprimer des favoris">
+                                                <a class="text-dark" href="{% url 'adverts:remove-favorite' advert.id %}" title="{% translate "Delete from favorites" %}">
                                                     <i class="bi bi-heart-fill" style="font-size: 2rem"></i>
                                                 </a>
                                             {% else %}
-                                                <a class="text-dark" href="{% url 'adverts:add-favorite' advert.id %}" title="Ajouter en favori">
+                                                <a class="text-dark" href="{% url 'adverts:add-favorite' advert.id %}" title="{% translate "Add to favorites" %}">
                                                     <i class="bi bi-heart" style="font-size: 2rem"></i>
                                                 </a>
                                             {% endif %}
@@ -127,16 +129,16 @@
                                     <div class="h3">{{ advert.price }}€</div>
                                 {% endif %}
                                 <div class="fw-bold mb-2">{{ advert.service_type }} / {{ advert.property_type }}</div>
-                                <div class="fw-bold">{{ advert.room_count }} pièce(s) - {{ advert.bedroom_count }} chambre(s) - {{ advert.surface }}m²</div>
+                                <div class="fw-bold">{% blocktranslate with room_c=advert.room_count bedroom_c=advert.bedroom_count surface=advert.surface %}{{ room_c }} room(s) - {{ bedroom_c }} bedroom(s) - {{ surface }}m²{% endblocktranslate %}</div>
                                 <div class="fw-bold">
-                                    {% if advert.is_furnished %}Meublé{% endif %}
-                                    {% if advert.has_balcony %}Balcon{% endif %}
-                                    {% if advert.has_terrace %}Terasse{% endif %}
-                                    {% if advert.has_elevator %}Ascenseur{% endif %}
-                                    {% if advert.has_parking %}Parking{% endif %}
+                                    {% if advert.is_furnished %}{% translate "Furnished" %}{% endif %}
+                                    {% if advert.has_balcony %}{% translate "Balcony" %}{% endif %}
+                                    {% if advert.has_terrace %}{% translate "Terrace" %}{% endif %}
+                                    {% if advert.has_elevator %}{% translate "Elevator" %}{% endif %}
+                                    {% if advert.has_parking %}{% translate "Parking" %}{% endif %}
                                 </div>   
-                                <div class="mt-2">{{ advert.street_number }} {{ advert.street_name }} à {{ advert.city }} ({{ advert.postal_code }})</div>
-                                <a class="link-info text-decoration-none mt-4" href="{% url 'adverts:details-advert' advert.id %}">Voir l'annonce</a> 
+                                <div class="mt-2">{{ advert.street_number }} {{ advert.street_name }}, {{ advert.city }} ({{ advert.postal_code }})</div>
+                                <a class="link-info text-decoration-none mt-4" href="{% url 'adverts:details-advert' advert.id %}">{% translate "View the advert" %}</a> 
                             </div>
                         </div>
                     {% endfor %}

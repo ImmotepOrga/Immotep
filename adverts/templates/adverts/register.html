@@ -1,8 +1,12 @@
 {% extends 'base.html' %}
-{% block title %} Register {% endblock %}
-{% load crispy_forms_tags %}
-{% block content %}       
 
+{% load i18n %}
+
+{% block title %}{% translate "Register" %}{% endblock %}
+
+{% load crispy_forms_tags %}
+
+{% block content %}       
 <style>
   .borderCustom {
       border: 2px solid #D5BDAD;
@@ -23,7 +27,7 @@
     <div class="container">
         <form method="POST">
             <div class="row justify-content-center" >    
-              <h1 class="mt-2 mt-5 text-center">Inscription</h1>        
+              <h1 class="mt-2 mt-5 text-center">{% translate "Registration" %}</h1>        
                 <div class="col-8 borderCustom mt-5 pt-5 pb-3"> 
                         <div class="row justify-content-center">
                             <div class="col-8 ">  
@@ -50,8 +54,8 @@
                         </div>
                     <div class="row justify-content-center">
                         <div class="col-8 text-center">
-                            <button type="submit" class="btn buttonCustom mt-5">S'inscrire</button>
-                            <p class="text-center mt-3">Si vous possédez déjà un compte, <a href="{% url 'adverts:login' %}">connectez-vous</a>.</p>
+                            <button type="submit" class="btn buttonCustom mt-5">{% translate "Sign up" %}</button>
+                            <p class="text-center mt-3">{% translate "If you already have an account, " %}<a href="{% url 'adverts:login' %}">{% translate "log on" %}</a>.</p>
                         </div>     
                     </div>
                 </div>
