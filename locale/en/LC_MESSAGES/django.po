@@ -1,0 +1,390 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2022-03-30 13:12+0200\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: .\adverts\templates\adverts\account.html:7
+#: .\adverts\templates\adverts\account.html:48
+#: .\adverts\templates\adverts\update_account.html:5
+#: .\adverts\templates\includes\navigation.html:41
+msgid "Profile"
+msgstr "Profile"
+
+#: .\adverts\templates\adverts\account.html:52
+msgid "My details"
+msgstr "My details"
+
+#: .\adverts\templates\adverts\account.html:53
+#, python-format
+msgid "Name : %(username)s"
+msgstr "Name : %(username)s"
+
+#: .\adverts\templates\adverts\account.html:54
+#, python-format
+msgid "E-mail address : %(email)s"
+msgstr "E-mail address : %(email)s"
+
+#: .\adverts\templates\adverts\account.html:56
+#, python-format
+msgid "Phone number : %(phone_number)s"
+msgstr "Phone number : %(phone_number)s"
+
+#: .\adverts\templates\adverts\account.html:57
+#, python-format
+msgid "Zip code : %(postal_code)s"
+msgstr "Zip code : %(postal_code)s"
+
+#: .\adverts\templates\adverts\account.html:61
+msgid "Edit"
+msgstr "Edit"
+
+#: .\adverts\templates\adverts\account.html:64
+msgid "Log out"
+msgstr "Log out"
+
+#: .\adverts\templates\adverts\account.html:69
+msgid "My adverts"
+msgstr "My adverts"
+
+#: .\adverts\templates\adverts\account.html:87
+#: .\adverts\templates\adverts\details-advert.html:72
+#: .\adverts\templates\adverts\favories.html:66
+#: .\adverts\templates\adverts\home.html:66
+#: .\adverts\templates\adverts\properties_list.html:101
+#: .\adverts\templates\includes\other-properties.html:28
+msgid "Previous"
+msgstr "Previous"
+
+#: .\adverts\templates\adverts\account.html:91
+#: .\adverts\templates\adverts\details-advert.html:76
+#: .\adverts\templates\adverts\favories.html:70
+#: .\adverts\templates\adverts\home.html:70
+#: .\adverts\templates\adverts\properties_list.html:105
+#: .\adverts\templates\includes\other-properties.html:32
+msgid "Next"
+msgstr "Next"
+
+#: .\adverts\templates\adverts\account.html:100
+#: .\adverts\templates\adverts\home.html:78
+#: .\adverts\templates\adverts\properties_list.html:113
+msgid "Modify my advert"
+msgstr "Modify my advert"
+
+#: .\adverts\templates\adverts\account.html:102
+msgid "Delete my advert"
+msgstr "Delete my advert"
+
+#: .\adverts\templates\adverts\account.html:108
+#: .\adverts\templates\adverts\favories.html:77
+#: .\adverts\templates\adverts\home.html:83
+#: .\adverts\templates\adverts\properties_list.html:118
+msgid "Delete from favorites"
+msgstr "Delete from favorites"
+
+#: .\adverts\templates\adverts\account.html:112
+#: .\adverts\templates\adverts\home.html:87
+#: .\adverts\templates\adverts\properties_list.html:122
+msgid "Add to favorites"
+msgstr "Add to favorites"
+
+#: .\adverts\templates\adverts\account.html:122
+#: .\adverts\templates\adverts\details-advert.html:100
+#: .\adverts\templates\adverts\favories.html:85
+#: .\adverts\templates\adverts\home.html:97
+#: .\adverts\templates\adverts\properties_list.html:132
+#: .\adverts\templates\includes\other-properties.html:41
+#, python-format
+msgid "%(room_c)s room(s) - %(bedroom_c)s bedroom(s) - %(surface)sm²"
+msgstr "%(room_c)s room(s) - %(bedroom_c)s bedroom(s) - %(surface)sm²"
+
+#: .\adverts\templates\adverts\account.html:124
+#: .\adverts\templates\adverts\details-advert.html:102
+#: .\adverts\templates\adverts\favories.html:87
+#: .\adverts\templates\adverts\home.html:99
+#: .\adverts\templates\adverts\properties_list.html:76
+#: .\adverts\templates\adverts\properties_list.html:134
+msgid "Furnished"
+msgstr "Furnished"
+
+#: .\adverts\templates\adverts\account.html:125
+#: .\adverts\templates\adverts\details-advert.html:103
+#: .\adverts\templates\adverts\favories.html:88
+#: .\adverts\templates\adverts\home.html:100
+#: .\adverts\templates\adverts\properties_list.html:135
+msgid "Balcony"
+msgstr "Balcony"
+
+#: .\adverts\templates\adverts\account.html:126
+#: .\adverts\templates\adverts\details-advert.html:104
+#: .\adverts\templates\adverts\favories.html:89
+#: .\adverts\templates\adverts\home.html:101
+#: .\adverts\templates\adverts\properties_list.html:136
+msgid "Terrace"
+msgstr "Terrace"
+
+#: .\adverts\templates\adverts\account.html:127
+#: .\adverts\templates\adverts\details-advert.html:105
+#: .\adverts\templates\adverts\favories.html:90
+#: .\adverts\templates\adverts\home.html:102
+#: .\adverts\templates\adverts\properties_list.html:137
+msgid "Elevator"
+msgstr "Elevator"
+
+#: .\adverts\templates\adverts\account.html:128
+#: .\adverts\templates\adverts\details-advert.html:106
+#: .\adverts\templates\adverts\favories.html:91
+#: .\adverts\templates\adverts\home.html:103
+#: .\adverts\templates\adverts\properties_list.html:138
+msgid "Parking"
+msgstr "Parking"
+
+#: .\adverts\templates\adverts\account.html:131
+#: .\adverts\templates\adverts\home.html:106
+#: .\adverts\templates\adverts\properties_list.html:141
+msgid "View the advert"
+msgstr "View the advert"
+
+#: .\adverts\templates\adverts\change-password.html:5
+#: .\adverts\templates\adverts\change-password.html:13
+msgid "Change my password"
+msgstr "Change my password"
+
+#: .\adverts\templates\adverts\change-password.html:17
+#: .\adverts\templates\adverts\update_account.html:20
+#: .\adverts\templates\adverts\update_advert_form.html:14
+msgid "Update"
+msgstr "Update"
+
+#: .\adverts\templates\adverts\change-password.html:19
+#: .\adverts\templates\adverts\update_account.html:22
+#: .\adverts\templates\includes\confirm_modal.html:15
+msgid "Cancel"
+msgstr "Cancel"
+
+#: .\adverts\templates\adverts\create_advert_form.html:5
+msgid "Create an advert"
+msgstr "Create an advert"
+
+#: .\adverts\templates\adverts\create_advert_form.html:31
+msgid "You are one form away from advertising your property..."
+msgstr "You are one form away from advertising your property..."
+
+#: .\adverts\templates\adverts\create_advert_form.html:102
+msgid "Create the advert"
+msgstr "Create the advert"
+
+#: .\adverts\templates\adverts\delete_advert.html:5
+#: .\adverts\templates\adverts\delete_advert.html:9
+msgid "Delete an advert"
+msgstr "Delete an advert"
+
+#: .\adverts\templates\adverts\delete_advert.html:10
+msgid "Are you certain that you wish to delete this advert? :"
+msgstr "Are you certain that you wish to delete this advert? :"
+
+#: .\adverts\templates\adverts\delete_advert.html:11
+#, python-format
+msgid "%(service_t)s - %(property_t)s in %(city)s for %(price)s €"
+msgstr "%(service_t)s - %(property_t)s in %(city)s for %(price)s €"
+
+#: .\adverts\templates\adverts\delete_advert.html:15
+#: .\adverts\templates\includes\confirm_modal.html:17
+msgid "Delete"
+msgstr "Delete"
+
+#: .\adverts\templates\adverts\details-advert.html:7
+msgid "Details of the advert"
+msgstr "Details of the advert"
+
+#: .\adverts\templates\adverts\details-advert.html:82
+msgid "Address"
+msgstr "Address"
+
+#: .\adverts\templates\adverts\details-advert.html:86
+msgid "Owner"
+msgstr "Owner"
+
+#: .\adverts\templates\adverts\details-advert.html:88
+msgid "Mail"
+msgstr "Mail"
+
+#: .\adverts\templates\adverts\details-advert.html:90
+msgid "Phone number"
+msgstr "Phone number"
+
+#: .\adverts\templates\adverts\details-advert.html:109
+msgid "Description"
+msgstr "Description"
+
+#: .\adverts\templates\adverts\details-advert.html:113
+msgid "Energy use"
+msgstr "Energy use"
+
+#: .\adverts\templates\adverts\details-advert.html:116
+msgid "Energy performance diagnosis (DPE)"
+msgstr "Energy performance diagnosis (DPE)"
+
+#: .\adverts\templates\adverts\details-advert.html:124
+msgid "Greenhouse gas emission index (GHG)"
+msgstr "Greenhouse gas emission index (GHG)"
+
+#: .\adverts\templates\adverts\details-advert.html:134
+msgid "Warranty"
+msgstr "Warranty"
+
+#: .\adverts\templates\adverts\favories.html:7
+msgid "Favourites"
+msgstr "Favourites"
+
+#: .\adverts\templates\adverts\favories.html:48
+msgid "My favorites"
+msgstr "My favorites"
+
+#: .\adverts\templates\adverts\home.html:48
+msgid "Property Overview"
+msgstr "Properties Overview"
+
+#: .\adverts\templates\adverts\login.html:5
+#: .\adverts\templates\adverts\login.html:30
+msgid "Login"
+msgstr "Login"
+
+#: .\adverts\templates\adverts\login.html:45
+msgid "Log in"
+msgstr "Log in"
+
+#: .\adverts\templates\adverts\login.html:46
+msgid "Don't have an account? "
+msgstr "Don't have an account? "
+
+#: .\adverts\templates\adverts\login.html:46
+#: .\adverts\templates\adverts\register.html:57
+msgid "Sign up"
+msgstr "Sign up"
+
+#: .\adverts\templates\adverts\properties_list.html:7
+msgid "Adverts list"
+msgstr "Adverts list"
+
+#: .\adverts\templates\adverts\properties_list.html:51
+msgid "Type"
+msgstr "Type"
+
+#: .\adverts\templates\adverts\properties_list.html:53
+msgid "All"
+msgstr "All"
+
+#: .\adverts\templates\adverts\properties_list.html:54
+msgid "House"
+msgstr "House"
+
+#: .\adverts\templates\adverts\properties_list.html:55
+msgid "Apartment"
+msgstr "Apartment"
+
+#: .\adverts\templates\adverts\properties_list.html:59
+msgid "Room(s)"
+msgstr "Room(s)"
+
+#: .\adverts\templates\adverts\properties_list.html:63
+msgid "Bedroom(s)"
+msgstr "Bedroom(s)"
+
+#: .\adverts\templates\adverts\properties_list.html:67
+msgid "Min surface."
+msgstr "Min surface."
+
+#: .\adverts\templates\adverts\properties_list.html:71
+msgid "Max price."
+msgstr "Max price."
+
+#: .\adverts\templates\adverts\properties_list.html:80
+msgid "Balcony/Ter."
+msgstr "Balcony/Ter."
+
+#: .\adverts\templates\adverts\properties_list.html:82
+msgid "Confirm"
+msgstr "Confirm"
+
+#: .\adverts\templates\adverts\register.html:5
+msgid "Register"
+msgstr "Register"
+
+#: .\adverts\templates\adverts\register.html:30
+msgid "Registration"
+msgstr "Registration"
+
+#: .\adverts\templates\adverts\register.html:58
+msgid "If you already have an account, "
+msgstr "If you already have an account, "
+
+#: .\adverts\templates\adverts\register.html:58
+msgid "log on"
+msgstr "log on"
+
+#: .\adverts\templates\adverts\update_account.html:13
+msgid "Editing of the profile"
+msgstr "Editing of the profile"
+
+#: .\adverts\templates\adverts\update_account.html:17
+msgid "Change your password"
+msgstr "Change your password"
+
+#: .\adverts\templates\adverts\update_advert_form.html:5
+msgid "Edit an advert"
+msgstr "Edit an advert"
+
+#: .\adverts\templates\includes\confirm_modal.html:7
+msgid "Delete the advert"
+msgstr "Delete the advert"
+
+#: .\adverts\templates\includes\confirm_modal.html:11
+msgid "Are you certain that you wish to delete this advert?"
+msgstr "Are you certain that you wish to delete this advert?"
+
+#: .\adverts\templates\includes\footer.html:10
+msgid "All rights reserved"
+msgstr "All rights reserved"
+
+#: .\adverts\templates\includes\navigation.html:29
+msgid "Post an advert"
+msgstr "Post an advert"
+
+#: .\adverts\templates\includes\navigation.html:32
+msgid "Browse the adverts"
+msgstr "Browse the adverts"
+
+#: .\adverts\templates\includes\navigation.html:38
+msgid "Favorites"
+msgstr "Favorites"
+
+#: .\adverts\templates\includes\other-properties.html:4
+msgid "Affiliate adverts"
+msgstr "Affiliate adverts"
+
+#: .\project\settings.py:135
+msgid "English"
+msgstr "English"
+
+#: .\project\settings.py:136
+msgid "French"
+msgstr "French"
+
+#: .\project\settings.py:137
+msgid "Spanish"
+msgstr "Spanish"

@@ -1,6 +1,8 @@
 {% extends 'base.html' %}
 
-{% block title %} Profil {% endblock %}
+{% load i18n %}
+
+{% block title %}{% translate "Profile" %}{% endblock %}
 
 {% block content %} 
 
@@ -8,16 +10,16 @@
 
 <!--Edit profile--> 
 <div class="container py-5">
-	<h1>Modification du profil</h1>
+	<h1>{% translate "Editing of the profile" %}</h1>
 	<form method="POST">
 		{% csrf_token %}
 		{{ register_form|crispy }}
-		<a href="{% url 'adverts:update-password' %}">Modifier mot de passe</a>
+		<a href="{% url 'adverts:update-password' %}">{% translate "Change your password" %}</a>
 		<hr />
         {{ account_form|crispy }}
-		<button class="btn btn-primary" type="submit">Mettre à jour</button>
+		<button class="btn btn-primary" type="submit">{% translate "Update" %}</button>
 	</form>
-	<a href="{% url 'adverts:account' %}">Annuler</a>
+	<a href="{% url 'adverts:account' %}">{% translate "Cancel" %}</a>
 </div>
 
 {% endblock %}

@@ -1,20 +1,20 @@
+{% load i18n %}
+
 <div class="modal fade" id="delete-item-modal">
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">Supprimer l'annonce</h5>
+                <h5 class="modal-title" id="exampleModalLabel">{% translate "Delete the advert" %}</h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
-                <p>Êtes-vous sûr de vouloir supprimer cette annonce ?</p>
+                <p>{% translate "Are you certain that you wish to delete this advert?" %}</p>
             </div>
             <div class="modal-footer">
-                <form method="post"
-                      id="item-delete-form"
-                >
-                    <button type="button" class="btn btn-secondary me-1" data-bs-dismiss="modal">Annuler</button>
+                <form method="post"id="item-delete-form">
+                    <button type="button" class="btn btn-secondary me-1" data-bs-dismiss="modal">{% translate "Cancel" %}</button>
                     {% csrf_token %}
-                    <button type="submit" class="btn btn-danger" id="confirm-delete-item-button">Supprimer</button>
+                    <button type="submit" class="btn btn-danger" id="confirm-delete-item-button">{% translate "Delete" %}</button>
                 </form>
             </div>
         </div>
