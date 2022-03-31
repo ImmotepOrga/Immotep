@@ -7,7 +7,7 @@
     <div class="d-flex justify-content-between flex-wrap px-0">
         {% for last_user_advert in last_user_adverts %}
             <div class="col-12 col-md-5 d-flex flex-wrap my-3 advertBlock">
-                <div id="userAdvertCarousel{{ forloop.counter }}" class="carousel carousel-fade slide col-12 col-lg-6 " data-bs-ride="carousel" data-bs-interval="false">
+                <div id="userAdvertCarousel{{ forloop.counter }}" class="carousel carousel-fade slide col-12 col-lg-6" data-bs-ride="carousel" data-bs-interval="false">
                     <div class="carousel-indicators mx-auto rounded">
                         {% for i in last_user_advert.picture_count %}
                             <button type="button" data-bs-target="#userAdvertCarousel{{ forloop.parentloop.counter}}" data-bs-slide-to="{{ i }}" {% if forloop.first %}class="active" aria-current="true"{% endif %} aria-label="Slide {{ forloop.counter }}"></button>
