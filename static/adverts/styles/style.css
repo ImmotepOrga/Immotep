@@ -24,6 +24,24 @@ body::-webkit-scrollbar {
     background-color: #fff !important;
 }
 
+/* STYLES GENERAUX */
+.borderCustom {
+    border: 2px solid #D5BDAD;
+    box-sizing: border-box;
+    box-shadow: 3px 5px 5px rgba(0, 0, 0, 0.25);
+    border-radius: 15px;
+    color: #2A4252;
+}
+
+.buttonCustom {
+    background-color:#2A4252; 
+    border-radius: 30px;
+    box-shadow: 3px 5px 5px rgba(0, 0, 0, 0.25);
+    color:white;
+    border:0;
+    padding:10px 20px;
+}
+
 /* ADVERTS STYLE */
 .advertBlock {
     border: 2px solid #D5BDAD;

@@ -8,30 +8,15 @@
 {% load crispy_forms_tags %}
 
 {% block content %}       
-<style>
-  .borderCustom {
-      border: 2px solid #D5BDAD;
-      box-sizing: border-box;
-      box-shadow: 3px 5px 5px rgba(0, 0, 0, 0.25);
-      border-radius: 15px;
-      color: #2A4252;
-  }
-  
-  .buttonCustom {
-      background-color:#2A4252; 
-      border-radius: 30px;
-      box-shadow: 3px 5px 5px rgba(0, 0, 0, 0.25);
-      color:white;
-  }
-</style>
+
 
     <div class="container py-5">
         <form method="POST">
             <div class="row justify-content-center" >    
               <h1 class="text-center">{% translate "Editing of the profile" %}</h1>        
-                <div class="col-8 borderCustom mt-5 pt-5 pb-3"> 
+                <div class="col-12 col-md-8 borderCustom mt-5 pt-5 pb-3"> 
                         <div class="row justify-content-center">
-                            <div class="col-8 ">  
+                            <div class="col-8">  
 								{% csrf_token %}
 								<div class="row">
 									{{ register_form.username|as_crispy_field }}
@@ -50,9 +35,9 @@
                             </div>
                         </div>
                     <div class="row justify-content-center">
-                        <div class="col-8 text-center">
-							<a class="btn buttonCustom mt-5 mb-3 text-decoration-none" href="{% url 'adverts:account' %}">{% translate "Cancel" %}</a>
-                            <button type="submit" class="btn buttonCustom mt-5 mb-3">{% translate "Update my profile" %}</button>
+                        <div class="col-12 text-center">
+							<button class="buttonCustom mt-5 mb-3"><a class="text-decoration-none text-light" href="{% url 'adverts:account' %}">{% translate "Cancel" %}</a></button>
+                            <button type="submit" class="buttonCustom mt-5 mb-3">{% translate "Update my profile" %}</button>
 						</br>
 							<a href="{% url 'adverts:update-password' %}">{% translate "Change your password" %}</a>
                         </div>     

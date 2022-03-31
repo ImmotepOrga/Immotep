@@ -13,7 +13,7 @@
     <div class="container">
         <form method="GET">
             <div class="filters">
-                <div class="filter">
+                <div class="filter mobile-m">
                     <label for="type-prop">{% translate "Property type" %}</label>
                     <select class="large" name="type-prop" id="type-prop">
                         <option value="">{% translate "All" %}</option>
@@ -29,7 +29,7 @@
                         <option value="achat">{% translate "For Sale" %}</option>
                     </select>
                 </div>
-                <div class="filter">
+                <div class="filter mobile-m">
                     <label for="pieces">{% translate "Room(s)" %}</label>
                     <input type="number" min="0" name="pieces" id="pieces">
                 </div>
@@ -57,14 +57,14 @@
                         <input type="number" min="0" name="max-price" id="max-price">
                     </div>
                 </div>
-                <div class="filter">
+                <div class="filter mobile-full">
                     <label for="city">{% translate "City" %}</label>
                     <div class="f-city">
                         <input class="large" type="text" name="city" id="city">
-                        <i class="fa-solid fa-magnifying-glass"></i>
+                        <i class="fa-solid fa-magnifying-glass text-dark"></i>
                     </div>
                 </div>
-                <button type="submit">{% translate "Confirm" %}</button> 
+                <button type="submit" class="buttonCustom">{% translate "Confirm" %}</button> 
             </div>
             <div class="secondary-filters accordion" id="accordionExample">
                 <div class="accordion-item">
@@ -75,7 +75,7 @@
                     </h2>
                     <div id="collapseOne" class="accordion-collapse collapse" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
                     <div class="accordion-body">
-                        <div class="filter f-checkbox">
+                        <div class="filter f-checkbox mobile-m">
                             <input type="checkbox" name="furniture" id="furniture"> 
                             <label for="furniture">{% translate "Furnished" %}</label>     
                         </div>
@@ -83,7 +83,7 @@
                             <input type="checkbox" name="balcony" id="balcony"> 
                             <label for="balcony">{% translate "Balcony" %}</label>   
                         </div>  
-                        <div class="filter f-checkbox">
+                        <div class="filter f-checkbox mobile-m">
                             <input type="checkbox" name="terrace" id="terrace"> 
                             <label for="terrace">{% translate "Terrace" %}</label>   
                         </div> 
