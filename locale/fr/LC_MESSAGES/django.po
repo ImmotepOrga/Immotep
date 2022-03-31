@@ -48,7 +48,7 @@ msgstr "Possède un balcon"
 
 #: .\adverts\forms.py:30
 msgid "Has a terrace"
-msgstr "Possède une terasse"
+msgstr "Possède une terrasse"
 
 #: .\adverts\forms.py:31
 msgid "Has an elevator"
@@ -248,7 +248,7 @@ msgstr "Balcon"
 #: .\adverts\templates\includes\last_adverts.html:55
 #: .\adverts\templates\includes\user_adverts.html:59
 msgid "Terrace"
-msgstr "Terasse"
+msgstr "Terrasse"
 
 #: .\adverts\templates\adverts\details-advert.html:118
 #: .\adverts\templates\adverts\properties_list.html:92
