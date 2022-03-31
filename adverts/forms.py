@@ -8,6 +8,7 @@ from crispy_forms.layout import Layout, Field
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.models import User
 from adverts.models import Account
+from django.utils.translation import gettext_lazy as _
 
 
 class CreateAdvertForm(ModelForm):
@@ -19,28 +20,28 @@ class CreateAdvertForm(ModelForm):
             'street_number', 'street_name', 'postal_code', 'city', 'status', 'pictures'
         )
         labels = {
-            "service_type": "Type de service",
-            "property_type": "Type de bien",
-            "surface": "Surface",
-            "room_count": "Nombre de pièces",
-            "bedroom_count": "Nombre de chambres",
-            "is_furnished": "Est meublé",
-            "has_balcony": "Possède un balcon",
-            "has_terrace": "Possède une terasse",
-            "has_elevator": "Possède un ascenseur",
-            "has_parking": "Possède un parking",
-            "description": "Description",
-            "price": "Prix",
-            "warranty_deposit": "Dépot de garantie",
-            "energy_use": "Consommation énergétique",
-            "greenhouse_gas": "Émission de gaz à effet de serre",
-            "creator": "Auteur de l'annonce",
-            "street_number": "Numéro de rue",
-            "street_name": "Nom de rue",
-            "postal_code": "Code postal",
-            "city": "Ville",
-            "status": "Statut de l'annonce",
-            "pictures": "Images",
+            "service_type": lambda: _("Service type"),
+            "property_type": lambda: _("Property type"),
+            "surface": lambda: _("Surface"),
+            "room_count": lambda: _("Number of rooms"),
+            "bedroom_count": lambda: _("Number of bedrooms"),
+            "is_furnished": lambda: _("Is furnished"),
+            "has_balcony": lambda: _("Has a balcony"),
+            "has_terrace": lambda: _("Has a terrace"),
+            "has_elevator": lambda: _("Has an elevator"),
+            "has_parking": lambda: _("Has a parking lot"),
+            "description": lambda: _("Description"),
+            "price": lambda: _("Price"),
+            "warranty_deposit": lambda: _("Deposit of guarantee"),
+            "energy_use": lambda: _("Energy consumption"),
+            "greenhouse_gas": lambda: _("Greenhouse gas emissions"),
+            "creator": lambda: _("Author of the advert"),
+            "street_number": lambda: _("Street number"),
+            "street_name": lambda: _("Street name"),
+            "postal_code": lambda: _("Zip code"),
+            "city": lambda: _("City"),
+            "status": lambda: _("Status of the advert"),
+            "pictures": lambda: _("Pictures"),
         }
         energy_gas_categories = (('A', 'A'),('B', 'B'),('C', 'C'),('D', 'D'),('E', 'E'),('F', 'F'),('G', 'G'))
         service_types = (('Location', 'Location'),('Achat', 'Achat'))
@@ -64,10 +65,10 @@ class NewUserForm(UserCreationForm):
         model = User
         fields = ( "username", "email", "password1", "password2" )
         labels = {
-            "username":"Nom d'utilisateur",
-            "email":"Adresse e-mail",
-            "password1":"Mot de passe",
-            "password2":"Confirmer le mot de passe"
+            "username": lambda: _("Username"),
+            "email": lambda: _("E-mail address"),
+            "password1": lambda: _("Password"),
+            "password2": lambda: _("Confirm password")
         }
 
     def save(self, commit=True):
@@ -84,8 +85,8 @@ class AccountForm(forms.ModelForm):
         model = Account
         fields = ( "phone_number", "postal_code" )
         labels = {
-            "phone_number":"Numéro de téléphone",
-            "postal_code":"Code postal"
+            "phone_number": lambda: _("Phone number"),
+            "postal_code": lambda: _("Zip code")
         }
     
     def save(self, commit=True):
@@ -103,8 +104,8 @@ class EditUserForm(forms.ModelForm):
         model = User
         fields = ( "username", "email")
         labels = {
-            "username":"Nom d'utilisateur",
-            "email":"Adresse e-mail"
+            "username": lambda: _("Username"),
+            "email": lambda: _("E-mail address")
         }
 
     def save(self, commit=True):

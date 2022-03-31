@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-03-30 13:12+0200\n"
+"POT-Creation-Date: 2022-03-31 09:55+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -18,10 +18,113 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
+#: .\adverts\forms.py:23
+msgid "Service type"
+msgstr "Service type"
+
+#: .\adverts\forms.py:24
+msgid "Property type"
+msgstr "Property type"
+
+#: .\adverts\forms.py:25
+msgid "Surface"
+msgstr "Surface"
+
+#: .\adverts\forms.py:26
+msgid "Number of rooms"
+msgstr "Number of rooms"
+
+#: .\adverts\forms.py:27
+msgid "Number of bedrooms"
+msgstr "Number of bedrooms"
+
+#: .\adverts\forms.py:28
+msgid "Is furnished"
+msgstr "Is furnished"
+
+#: .\adverts\forms.py:29
+msgid "Has a balcony"
+msgstr "Has a balcony"
+
+#: .\adverts\forms.py:30
+msgid "Has a terrace"
+msgstr "Has a terrace"
+
+#: .\adverts\forms.py:31
+msgid "Has an elevator"
+msgstr "Has an elevator"
+
+#: .\adverts\forms.py:32
+msgid "Has a parking lot"
+msgstr "Has a parking lot"
+
+#: .\adverts\forms.py:33 .\adverts\templates\adverts\details-advert.html:109
+msgid "Description"
+msgstr "Description"
+
+#: .\adverts\forms.py:34
+msgid "Price"
+msgstr "Price"
+
+#: .\adverts\forms.py:35
+msgid "Deposit of guarantee"
+msgstr "Deposit of guarantee"
+
+#: .\adverts\forms.py:36
+msgid "Energy consumption"
+msgstr "Energy consumption"
+
+#: .\adverts\forms.py:37
+msgid "Greenhouse gas emissions"
+msgstr "Greenhouse gas emissions"
+
+#: .\adverts\forms.py:39
+msgid "Phone number"
+msgstr "Phone number"
+
+msgid "Street number"
+msgstr "Street number"
+
+#: .\adverts\forms.py:40
+msgid "Street name"
+msgstr "Street name"
+
+#: .\adverts\forms.py:41 .\adverts\forms.py:89
+msgid "Zip code"
+msgstr "Zip code"
+
+#: .\adverts\forms.py:42
+msgid "City"
+msgstr "City"
+
+#: .\adverts\forms.py:43
+msgid "Status of the advert"
+msgstr "Status of the advert"
+
+#: .\adverts\forms.py:44
+msgid "Pictures"
+msgstr "Pictures"
+
+#: .\adverts\forms.py:68 .\adverts\forms.py:107
+msgid "Username"
+msgstr "Username"
+
+#: .\adverts\forms.py:69 .\adverts\forms.py:108
+msgid "E-mail address"
+msgstr "E-mail address"
+
+#: .\adverts\forms.py:70
+msgid "Password"
+msgstr "Password"
+
+#: .\adverts\forms.py:71
+msgid "Confirm password"
+msgstr "Confirm password"
+
 #: .\adverts\templates\adverts\account.html:7
 #: .\adverts\templates\adverts\account.html:48
 #: .\adverts\templates\adverts\update_account.html:5
-#: .\adverts\templates\includes\navigation.html:41
+#: .\adverts\templates\includes\navigation.html:62
 msgid "Profile"
 msgstr "Profile"
 
@@ -223,14 +326,6 @@ msgstr "Owner"
 msgid "Mail"
 msgstr "Mail"
 
-#: .\adverts\templates\adverts\details-advert.html:90
-msgid "Phone number"
-msgstr "Phone number"
-
-#: .\adverts\templates\adverts\details-advert.html:109
-msgid "Description"
-msgstr "Description"
-
 #: .\adverts\templates\adverts\details-advert.html:113
 msgid "Energy use"
 msgstr "Energy use"
@@ -361,15 +456,15 @@ msgstr "Are you certain that you wish to delete this advert?"
 msgid "All rights reserved"
 msgstr "All rights reserved"
 
-#: .\adverts\templates\includes\navigation.html:29
+#: .\adverts\templates\includes\navigation.html:50
 msgid "Post an advert"
 msgstr "Post an advert"
 
-#: .\adverts\templates\includes\navigation.html:32
+#: .\adverts\templates\includes\navigation.html:53
 msgid "Browse the adverts"
 msgstr "Browse the adverts"
 
-#: .\adverts\templates\includes\navigation.html:38
+#: .\adverts\templates\includes\navigation.html:59
 msgid "Favorites"
 msgstr "Favorites"
 
@@ -377,14 +472,14 @@ msgstr "Favorites"
 msgid "Affiliate adverts"
 msgstr "Affiliate adverts"
 
-#: .\project\settings.py:135
+#: .\project\settings.py:164
 msgid "English"
 msgstr "English"
 
-#: .\project\settings.py:136
+#: .\project\settings.py:165
 msgid "French"
 msgstr "French"
 
-#: .\project\settings.py:137
+#: .\project\settings.py:166
 msgid "Spanish"
 msgstr "Spanish"
