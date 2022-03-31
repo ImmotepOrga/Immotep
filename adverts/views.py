@@ -295,7 +295,7 @@ def properties(request):
     _type_prop = query_params.get("type-prop")
     _pieces = query_params.get("pieces")
     _chambers = query_params.get("chambers")
-    _min_surface = query_params.get("min-urface")
+    _min_surface = query_params.get("min-surface")
     _max_surface = query_params.get("max-surface")
     _min_price = query_params.get("min-price")
     _max_price = query_params.get("max-price")
