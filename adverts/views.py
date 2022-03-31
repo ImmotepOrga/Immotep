@@ -95,8 +95,7 @@ def create_advert(request):
                 handle_uploaded_files(pictures_list, str(inserted_advert.id))
 
                 messages.success(request, _("The advert has been created successfully"))
-                return HttpResponseRedirect(reverse('detail-advert', inserted_advert.id))
-                # return HttpResponseRedirect(reverse('adverts:home'))
+                return HttpResponseRedirect(reverse('adverts:details-advert', kwargs={'id': inserted_advert.id} ))
         else:
             form = CreateAdvertForm()
         return render(request, 'create_advert_form.html', {'create_advert_form': form})
