@@ -1,11 +1,10 @@
-from django.shortcuts import render, redirect
-from django.template.defaulttags import register
-from django.contrib.auth.models import User
+from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib.auth import login, logout, authenticate
 from django.contrib.auth.decorators import login_required
-from django.contrib import messages
 from django.urls import reverse
-from django.http import HttpResponse, HttpResponseRedirect
+from django.template.defaulttags import register
+from django.contrib import messages
+from django.http import HttpResponseRedirect
 from django.contrib.auth.forms import AuthenticationForm
 from django.utils.translation import gettext_lazy as _
 from .models import Account, Advert, ApiAdvert
@@ -69,7 +68,7 @@ def handle_uploaded_files(pictures_list, inserted_advert_id):
 # CREER ANNONCE
 def create_advert(request):
     if not request.user.is_authenticated:
-        messages.warning(request, f"Vous devez être connecté pour poster une annonce")
+        messages.warning(request, _("You must be logged in to post an advert"))
         return HttpResponseRedirect(reverse('adverts:login'))
     else:
         if request.method == 'POST':
@@ -95,9 +94,9 @@ def create_advert(request):
 
                 handle_uploaded_files(pictures_list, str(inserted_advert.id))
 
-                # return HttpResponseRedirect(reverse('detail-advert', advert.id))
-                messages.success(request, f"L'annonce à bien été créée")
-                return HttpResponseRedirect(reverse('adverts:home'))
+                messages.success(request, _("The advert has been created successfully"))
+                return HttpResponseRedirect(reverse('detail-advert', inserted_advert.id))
+                # return HttpResponseRedirect(reverse('adverts:home'))
         else:
             form = CreateAdvertForm()
         return render(request, 'create_advert_form.html', {'create_advert_form': form})
@@ -105,21 +104,21 @@ def create_advert(request):
 
 # MODIFIER ANNONCE
 def udpate_advert(request, id):
-    advert = Advert.objects.get(id=id)
+    advert = get_object_or_404(Advert, id=id)
 
     if not request.user.is_authenticated:
-        messages.warning(request, f"Vous devez être connecté pour modifier une annonce")
+        messages.warning(request, _("You must be logged in to edit an advert"))
         return HttpResponseRedirect(reverse('adverts:login'))
     else:
         if request.user.id != advert.creator_id:
-            messages.warning(request, f"Vous ne pouvez pas éditer une annonce ne vous appartenant pas")
+            messages.warning(request, _("You cannot edit an advert that does not belong to you"))
             return HttpResponseRedirect(reverse('adverts:home'))
         else:
             if request.method == 'POST':
                 form = CreateAdvertForm(request.POST, instance=advert)
                 if form.is_valid():
                     form.save()
-                    messages.success(request, f"L'annonce à bien été mise à jour")
+                    messages.success(request, _("The advert has been updated"))
                     return HttpResponseRedirect(reverse('adverts:details-advert', kwargs={'id': advert.id} ))
             else:
                 form = CreateAdvertForm(instance=advert)
@@ -128,19 +127,19 @@ def udpate_advert(request, id):
 
 # SUPPRIMER ANNONCE
 def delete_advert(request, id):
-    advert = Advert.objects.get(id=id)
+    advert = get_object_or_404(Advert, id=id)
 
     if not request.user.is_authenticated:
-        messages.warning(request, f"Vous devez être connecté pour supprimer une annonce")
+        messages.warning(request, _("You must be logged in to delete an advert"))
         return HttpResponseRedirect(reverse('adverts:login'))
     else:
         if request.user.id != advert.creator_id:
-            messages.warning(request, f"Vous ne pouvez pas supprimer une annonce ne vous appartenant pas")
+            messages.warning(request, _("You cannot delete an advert that does not belong to you"))
             return HttpResponseRedirect(reverse('adverts:home'))
         else:
             if request.method == 'POST':
                 advert.delete()
-                messages.success(request, f"L'annonce à bien été supprimée")
+                messages.success(request, _("The advert has been deleted"))
                 return HttpResponseRedirect(reverse('adverts:home'))
             return render(request, 'delete_advert.html', {'advert': advert})
 
@@ -178,12 +177,13 @@ def login_request(request):
             user = authenticate(username=username, password=password)
             if user is not None:
                 login(request, user)
-                messages.info(request, f"Vous êtes connecté en tant que {username}.")
+                messageText = _("You are logged in as")
+                messages.info(request, f"{messageText} {username}.")
                 return redirect("adverts:home")
             else:
-                messages.error(request, "Nom d'utilisateur ou mot de passe invalide.")
+                messages.error(request, _("Invalid username or password."))
         else:
-            messages.error(request, "Nom d'utilisateur ou mot de passe invalide.")
+            messages.error(request, _("Invalid username or password."))
     form = AuthenticationForm()
     return render(request, "login.html", {"login_form": form})
 
@@ -192,26 +192,26 @@ def login_request(request):
 @login_required(login_url="adverts:login")
 def logout_request(request):
     logout(request)
-    messages.info(request, f"Vous êtes déconnecté.")
+    messages.info(request, _("You are disconnected."))
     return redirect("adverts:home")
 
 
 # AJOUTER UNE ANNONCE EN FAVORI
 @login_required(login_url="adverts:login")
 def add_favorite(request, advert_id):
-    advert = Advert.objects.get(id=advert_id)
+    advert = get_object_or_404(Advert, id=advert_id)
     logged_user = Account.objects.get(user=request.user.id)
     logged_user.favorites.add(advert)
-    messages.success(request, f"Annonce ajoutée en favori")
+    messages.success(request, _("Advert added in favorite"))
     return redirect("adverts:home")
 
 
 # SUPPRIMER UNE ANNONCE DES FAVORIS
 @login_required(login_url="adverts:login")
 def remove_favorite(request, advert_id):
-    advert = Advert.objects.get(id = advert_id)
+    advert = get_object_or_404(Advert, id=advert_id)
     Account.favorites.through.objects.filter(advert_id = advert.id, account_id = request.user.id).delete()
-    messages.warning(request, f"Annonce supprimée des favoris")
+    messages.warning(request, _("Advert removed from favourites"))
     return HttpResponseRedirect(request.META.get('HTTP_REFERER'))
 
 
@@ -238,7 +238,7 @@ def update_account(request):
             account.user = user
             account.save()
             account_form.save_m2m()
-            messages.success(request, f"Profil modifié avec succès")
+            messages.success(request, _("Profile successfully modified"))
             return redirect("adverts:account")
         else:
             args = {'register_form': form, 'account_form': account_form}
@@ -345,3 +345,7 @@ def properties(request):
             if Account.favorites.through.objects.filter(advert_id = adverts[i].id, account_id = request.user.id):
                 user_favs[i] = adverts[i].id
     return render(request, "properties_list.html", {'adverts': adverts, 'user_favs': user_favs})
+
+# ERROR 404
+def page_not_found_view(request, exception):
+    return render(request, '404.html', status=404)

@@ -8,6 +8,7 @@
 
   #mainMenu .navBtn {
     background-color: #2A4252;
+    margin-right: 1em;
   }
 
   #mainMenu .nav-link {
@@ -63,13 +64,13 @@
           </li>
           {% else %}
           <li class="nav-item">
-            <a href="{% url 'adverts:login' %}" class="nav-link btn rounded-pill px-4 text-white d-none d-lg-inline-block navBtn"><span class="me-2 icon-lock_outline"></span>Connexion</a>
+            <a href="{% url 'adverts:login' %}" class="nav-link btn rounded-pill px-4 text-white d-none d-lg-inline-block navBtn"><span class="me-2 icon-lock_outline"></span>{% translate "Login" %}</a>
           </li>
           {% endif %}
-          <li class="dropdown" id="language-switcher">
+          <li class="dropdown " id="language-switcher">
             <form action="{% url 'adverts:set_language' %}" method="post">
                 {% csrf_token %}
-                <input name="next" type="hidden" value="/" />
+                <input name="next" type="hidden" value="{{ redirect_to }}" />
                 <select class="selectpicker" name="language" style="width: auto;" onchange="this.form.submit()">
                   {% get_current_language as LANGUAGE_CODE %}
                   {% get_available_languages as LANGUAGES %}

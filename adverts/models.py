@@ -37,7 +37,7 @@ class Advert(models.Model):
     postal_code = models.CharField(max_length=10)
     city = models.CharField(max_length=45)
     status = models.CharField(max_length=45)
-    pictures = models.FileField(upload_to='images/', blank = True, null=True)
+    pictures = models.FileField(upload_to='images/')
 
     def __str__(self):
         return u'{0}'.format(str(self.id) + "-" + self.service_type + "-" + self.property_type)
