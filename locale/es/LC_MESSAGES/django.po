@@ -269,6 +269,10 @@ msgstr "Ver el anuncio"
 msgid "Change my password"
 msgstr "Cambiar mi contraseña"
 
+#: .\adverts\templates\adverts\change-password.html:40
+msgid "Update my password"
+msgstr "Actualizar mi contraseña"
+
 #: .\adverts\templates\adverts\change-password.html:17
 #: .\adverts\templates\adverts\update_account.html:20
 #: .\adverts\templates\adverts\update_advert_form.html:14
@@ -438,6 +442,14 @@ msgstr "iniciar sesión"
 msgid "Editing of the profile"
 msgstr "Edición del perfil"
 
+#: .\adverts\templates\adverts\update_account.html:6
+msgid "Edit profile"
+msgstr "Cambiar el perfil"
+
+#: .\adverts\templates\adverts\update_account.html:55
+msgid "Update my profile"
+msgstr "Actualizar mi perfil"
+
 #: .\adverts\templates\adverts\update_account.html:17
 msgid "Change your password"
 msgstr "Cambiar la contraseña"
@@ -445,6 +457,10 @@ msgstr "Cambiar la contraseña"
 #: .\adverts\templates\adverts\update_advert_form.html:5
 msgid "Edit an advert"
 msgstr "Editar un anuncio"
+
+#: .\adverts\templates\adverts\update_advert_form.html:98
+msgid "Update the advert"
+msgstr "Actualizar el anuncio"
 
 #: .\adverts\templates\includes\confirm_modal.html:7
 msgid "Delete the advert"

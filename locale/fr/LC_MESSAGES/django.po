@@ -44,15 +44,15 @@ msgstr "Est meublé"
 
 #: .\adverts\forms.py:29
 msgid "Has a balcony"
-msgstr "Possèdes un balcon"
+msgstr "Possède un balcon"
 
 #: .\adverts\forms.py:30
 msgid "Has a terrace"
-msgstr "Possèdes une terasse"
+msgstr "Possède une terasse"
 
 #: .\adverts\forms.py:31
 msgid "Has an elevator"
-msgstr "Possèdes un ascenseur"
+msgstr "Possède un ascenseur"
 
 #: .\adverts\forms.py:32
 msgid "Has a parking lot"
@@ -267,6 +267,10 @@ msgstr "Voir l'annonce"
 msgid "Change my password"
 msgstr "Changer mon mot de passe"
 
+#: .\adverts\templates\adverts\change-password.html:40
+msgid "Update my password"
+msgstr "Actualiser mon mot de passe"
+
 #: .\adverts\templates\adverts\change-password.html:17
 #: .\adverts\templates\adverts\update_account.html:20
 #: .\adverts\templates\adverts\update_advert_form.html:14
@@ -436,6 +440,14 @@ msgstr "connectez-vous"
 msgid "Editing of the profile"
 msgstr "Modification du profil"
 
+#: .\adverts\templates\adverts\update_account.html:6
+msgid "Edit profile"
+msgstr "Modifier le profil"
+
+#: .\adverts\templates\adverts\update_account.html:55
+msgid "Update my profile"
+msgstr "Mettre à jour mon profil"
+
 #: .\adverts\templates\adverts\update_account.html:17
 msgid "Change your password"
 msgstr "Modifier mon mot de passe"
@@ -443,6 +455,10 @@ msgstr "Modifier mon mot de passe"
 #: .\adverts\templates\adverts\update_advert_form.html:5
 msgid "Edit an advert"
 msgstr "Éditer une annonce"
+
+#: .\adverts\templates\adverts\update_advert_form.html:98
+msgid "Update the advert"
+msgstr "Actualiser l'annonce"
 
 #: .\adverts\templates\includes\confirm_modal.html:7
 msgid "Delete the advert"
