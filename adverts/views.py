@@ -11,6 +11,7 @@ from django.utils.translation import gettext_lazy as _
 from .models import Account, Advert, ApiAdvert
 from .forms import EditUserForm, NewUserForm, AccountForm, CreateAdvertForm
 from datetime import date, datetime
+from django.db.models import Q
 import requests
 import os
 
@@ -312,7 +313,7 @@ def properties(request):
     if _furniture:
         adverts = adverts.filter(is_furnished=True)
     if _terrace:
-        adverts = adverts.filter(has_balcony=True, has_terrace=True)
+        adverts = adverts.filter(Q(has_balcony=True)|Q(has_terrace=True))
 
 
     user_favs = [None] * len(adverts)
