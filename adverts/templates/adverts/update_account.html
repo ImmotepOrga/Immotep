@@ -25,10 +25,10 @@
   }
 </style>
 
-    <div class="container">
+    <div class="container py-5">
         <form method="POST">
             <div class="row justify-content-center" >    
-              <h1 class="mt-2 mt-5 text-center">{% translate "Editing of the profile" %}</h1>        
+              <h1 class="text-center">{% translate "Editing of the profile" %}</h1>        
                 <div class="col-8 borderCustom mt-5 pt-5 pb-3"> 
                         <div class="row justify-content-center">
                             <div class="col-8 ">  
@@ -51,7 +51,7 @@
                         </div>
                     <div class="row justify-content-center">
                         <div class="col-8 text-center">
-							<button onClick="{% url 'adverts:account' %}" class="btn buttonCustom mt-5 mb-3"></a>{% translate "Cancel" %}</button>
+							<a class="btn buttonCustom mt-5 mb-3 text-decoration-none" href="{% url 'adverts:account' %}">{% translate "Cancel" %}</a>
                             <button type="submit" class="btn buttonCustom mt-5 mb-3">{% translate "Update my profile" %}</button>
 						</br>
 							<a href="{% url 'adverts:update-password' %}">{% translate "Change your password" %}</a>
