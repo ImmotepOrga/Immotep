@@ -24,6 +24,24 @@ body::-webkit-scrollbar {
     background-color: #fff !important;
 }
 
+/* STYLES GENERAUX */
+.borderCustom {
+    border: 2px solid #D5BDAD;
+    box-sizing: border-box;
+    box-shadow: 3px 5px 5px rgba(0, 0, 0, 0.25);
+    border-radius: 15px;
+    color: #2A4252;
+}
+
+.buttonCustom {
+    background-color:#2A4252; 
+    border-radius: 30px;
+    box-shadow: 3px 5px 5px rgba(0, 0, 0, 0.25);
+    color:white;
+    border:0;
+    padding:10px 20px;
+}
+
 /* ADVERTS STYLE */
 .advertBlock {
     border: 2px solid #D5BDAD;
@@ -59,12 +77,41 @@ body::-webkit-scrollbar {
     background-color: #ffa970;
 }
 
+
+
 /* RESPONSIVE */
+@media screen and (min-width:990px){
+    .advertBlock .carousel {
+        flex: 0 0 380px;
+    }
+    .advertBlock.advert-cards .carousel{
+        flex: 0 0 100%;
+        border-right: 0;
+    }
+    .advertBlock.advert-cards .carousel-item {
+        border-radius: 15px 15px 0 0;
+    }
+    .advertBlock .advert-info {
+        flex:1;
+    }
+    .advertBlock .carousel-inner{
+        height:250px;
+    }
+}
 @media screen and (max-width:989px){
     .advertBlock .carousel {
         border-right: 0 !important;
     }
     .advertBlock .carousel-item {
-    border-radius: 15px 15px 0 0;
-}
+        border-radius: 15px 15px 0 0;
+    }
+    .advertBlock{
+        flex-wrap: wrap;
+    }
+    .advertBlock .carousel {
+        width:100% !important;
+    }
+    .advertBlock .carousel-inner{
+        height:300px;
+    }
 }
