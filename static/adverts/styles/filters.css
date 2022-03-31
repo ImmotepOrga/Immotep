@@ -10,6 +10,12 @@
     font-size: 16px;
     margin-right: 10px;
 }
+.double-filter {
+    display: flex;
+}
+.double-filter .filter.f-left {
+    margin-right: 0;
+}
 .f-checkbox {
     flex-direction: row;
     align-items: center;
@@ -52,10 +58,40 @@
 .filter:not(.f-checkbox) label {
     font-size: 12px;
 }
+.double-filter .f-left input {
+    border-radius: 20px 0 0 20px;
+}
+.double-filter .f-right input {
+    border-radius: 0 20px 20px 0;
+}
 .f-checkbox input {
     width: 15px;
     height: 15px;
     box-shadow: none;
     background: none;
     margin-right: 10px;
+}
+
+
+.accordion * {
+    border: none;
+}
+.accordion-header button, .accordion-header button:focus{
+    padding: 0;
+    margin: 1rem 1.25rem;
+    font-size: 12px;
+    border: none;
+    width: auto;
+    box-shadow: none;
+    background-color: transparent !important;
+}
+.accordion-header button::after{
+    margin-left: 5px;
+    width: 0.75rem;
+    height: 0.75rem;
+    background-size: 0.75rem;
+}
+.accordion-body {
+    display: flex;
+    padding: 0;
 }

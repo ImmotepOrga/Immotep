@@ -46,41 +46,92 @@
 <div class="container py-5">
     <div class="jumbotron py-100">
         <div class="container px-0">
-            <form method="GET" class="filters">
-                <div class="filter">
-                    <label for="type-prop">{% translate "Type" %}</label>
-                    <select class="large" name="type-prop" id="type-prop">
-                        <option value="">{% translate "All" %}</option>
-                        <option value="maison">{% translate "House" %}</option>
-                        <option value="appartemment">{% translate "Apartment" %}</option>
-                    </select>
+            <form method="GET">
+                <div class="filters">
+                    <div class="filter">
+                        <label for="city">{% translate "City" %}</label>
+                        <input class="large" type="text" name="city" id="city">
+                    </div>
+                    <div class="filter">
+                        <label for="type-prop">{% translate "Property type" %}</label>
+                        <select class="large" name="type-prop" id="type-prop">
+                            <option value="">{% translate "All" %}</option>
+                            <option value="maison">{% translate "House" %}</option>
+                            <option value="appartemment">{% translate "Apartment" %}</option>
+                        </select>
+                    </div>
+                    <div class="filter">
+                        <label for="type-purs">{% translate "Purchase type" %}</label>
+                        <select class="large" name="type-prop" id="type-prop">
+                            <option value="">{% translate "All" %}</option>
+                            <option value="location">{% translate "For rent" %}</option>
+                            <option value="achat">{% translate "For Sale" %}</option>
+                        </select>
+                    </div>
+                    <div class="filter">
+                        <label for="pieces">{% translate "Room(s)" %}</label>
+                        <input type="number" min="0" name="pieces" id="pieces">
+                    </div>
+                    <div class="filter">
+                        <label for="chambers">{% translate "Bedroom(s)" %}</label>
+                        <input type="number" min="0" name="chambers" id="chambers">
+                    </div>
+                    <div class="double-filter">
+                        <div class="filter f-left">
+                            <label for="min-surface">{% translate "Min surface." %}</label>
+                            <input type="number" min="0" name="min-surface" id="min-surface">
+                        </div>
+                        <div class="filter f-right">
+                            <label for="max-surface">{% translate "Min surface." %}</label>
+                            <input type="number" min="0" name="max-surface" id="max-surface">
+                        </div>
+                    </div>
+                    <div class="double-filter">
+                        <div class="filter f-left">
+                            <label for="min-price">{% translate "Min price." %}</label>
+                            <input type="number" min="0" name="min-price" id="min-price">
+                        </div>
+                        <div class="filter f-right">
+                            <label for="max-price">{% translate "Max price." %}</label>
+                            <input type="number" min="0" name="max-price" id="max-price">
+                        </div>
+                    </div>
+                    <button type="submit">{% translate "Confirm" %}</button> 
                 </div>
-                <div class="filter">
-                    <label for="pieces">{% translate "Room(s)" %}</label>
-                    <input type="number" min="0" name="pieces" id="pieces">
+                <div class="secondary-filters accordion" id="accordionExample">
+                    <div class="accordion-item">
+                      <h2 class="accordion-header" id="headingOne">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
+                          Plus de filtres
+                        </button>
+                      </h2>
+                      <div id="collapseOne" class="accordion-collapse collapse" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
+                        <div class="accordion-body">
+                            <div class="filter f-checkbox">
+                                <input type="checkbox" name="furniture" id="furniture"> 
+                                <label for="furniture">{% translate "Furnished" %}</label>     
+                            </div>
+                            <div class="filter f-checkbox">
+                                <input type="checkbox" name="balcony" id="balcony"> 
+                                <label for="balcony">{% translate "Balcony" %}</label>   
+                            </div>  
+                            <div class="filter f-checkbox">
+                                <input type="checkbox" name="terrace" id="terrace"> 
+                                <label for="terrace">{% translate "Terrace" %}</label>   
+                            </div> 
+                            <div class="filter f-checkbox">
+                                <input type="checkbox" name="elevator" id="elevator"> 
+                                <label for="elevator">{% translate "Elevator" %}</label>   
+                            </div>  
+                            <div class="filter f-checkbox">
+                                <input type="checkbox" name="parking" id="parking"> 
+                                <label for="parking">{% translate "Parking" %}</label>   
+                            </div> 
+                        </div>
+                      </div>
+                    </div>
                 </div>
-                <div class="filter">
-                    <label for="chambers">{% translate "Bedroom(s)" %}</label>
-                    <input type="number" min="0" name="chambers" id="chambers">
-                </div>
-                <div class="filter">
-                    <label for="surface">{% translate "Min surface." %}</label>
-                    <input type="number" min="0" name="surface" id="surface">
-                </div>
-                <div class="filter">
-                    <label for="max-price">{% translate "Max price." %}</label>
-                    <input class="large" type="number" min="0" name="max-price" id="max-price">
-                </div>
-                <div class="filter f-checkbox">
-                    <input type="checkbox" name="furniture" id="furniture"> 
-                    <label for="furniture">{% translate "Furnished" %}</label>     
-                </div>
-                <div class="filter f-checkbox">
-                    <input type="checkbox" name="terrace" id="terrace"> 
-                    <label for="terrace">{% translate "Balcony/Ter." %}</label>   
-                </div>   
-                <button type="submit">{% translate "Confirm" %}</button>
-            </div>
+            </form>
             <div class="mt-5 mx-0">
                 <div class="px-0 me-5">
                     {% for advert in adverts %}
