@@ -7,201 +7,106 @@
 {% block title %}{% translate "Adverts list" %}{% endblock %}
 
 {% block content %}
-<style>
-    .advertBlock {
-        border: 2px solid #D5BDAD;
-        box-sizing: border-box;
-        box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-        border-radius: 15px;
-        color: #2A4252;
-    }
 
-    .advertBlock .carousel-control-next-icon, .advertBlock .carousel-control-prev-icon {
-        background-color: rgba(0, 0, 0, 0.25);
-        background-size: 60%;
-    }
-
-    .advertBlock .carousel {
-        border-right: 2px solid #d5bdad;
-    }
-
-    .advertBlock .carousel-item {
-        border-radius: 15px 0 0 15px;
-        background-position: center;
-        background-repeat: no-repeat;
-        background-size: cover;
-        background-color: white;
-    }
-
-    .advertBlock .carousel-indicators {
-        background-color: rgba(0, 0, 0, 0.10);
-        width: fit-content;
-    }
-
-    .advertBlock .carousel-indicators .active {
-        background-color: #ffa970;
-    }
-</style>
 
 <div class="container py-5">
-    <div class="jumbotron py-100">
-        <div class="container px-0">
-            <form method="GET">
-                <div class="filters">
-                    <div class="filter">
-                        <label for="type-prop">{% translate "Property type" %}</label>
-                        <select class="large" name="type-prop" id="type-prop">
-                            <option value="">{% translate "All" %}</option>
-                            <option value="maison">{% translate "House" %}</option>
-                            <option value="appartement">{% translate "Apartment" %}</option>
-                        </select>
-                    </div>
-                    <div class="filter">
-                        <label for="type-purs">{% translate "Purchase type" %}</label>
-                        <select class="large" name="type-purs" id="type-purs">
-                            <option value="">{% translate "All" %}</option>
-                            <option value="location">{% translate "For rent" %}</option>
-                            <option value="achat">{% translate "For Sale" %}</option>
-                        </select>
-                    </div>
-                    <div class="filter">
-                        <label for="pieces">{% translate "Room(s)" %}</label>
-                        <input type="number" min="0" name="pieces" id="pieces">
-                    </div>
-                    <div class="filter">
-                        <label for="chambers">{% translate "Bedroom(s)" %}</label>
-                        <input type="number" min="0" name="chambers" id="chambers">
-                    </div>
-                    <div class="double-filter">
-                        <div class="filter f-left">
-                            <label for="min-surface">{% translate "Min surface." %}</label>
-                            <input type="number" min="0" name="min-surface" id="min-surface">
-                        </div>
-                        <div class="filter f-right">
-                            <label for="max-surface">{% translate "Max surface." %}</label>
-                            <input type="number" min="0" name="max-surface" id="max-surface">
-                        </div>
-                    </div>
-                    <div class="double-filter">
-                        <div class="filter f-left">
-                            <label for="min-price">{% translate "Min price." %}</label>
-                            <input type="number" min="0" name="min-price" id="min-price">
-                        </div>
-                        <div class="filter f-right">
-                            <label for="max-price">{% translate "Max price." %}</label>
-                            <input type="number" min="0" name="max-price" id="max-price">
-                        </div>
-                    </div>
-                    <div class="filter">
-                        <label for="city">{% translate "City" %}</label>
-                        <div class="f-city">
-                            <input class="large" type="text" name="city" id="city">
-                            <i class="fa-solid fa-magnifying-glass"></i>
-                        </div>
-                    </div>
-                    <button type="submit">{% translate "Confirm" %}</button> 
+    <div class="container">
+        <form method="GET">
+            <div class="filters">
+                <div class="filter">
+                    <label for="type-prop">{% translate "Property type" %}</label>
+                    <select class="large" name="type-prop" id="type-prop">
+                        <option value="">{% translate "All" %}</option>
+                        <option value="maison">{% translate "House" %}</option>
+                        <option value="appartement">{% translate "Apartment" %}</option>
+                    </select>
                 </div>
-                <div class="secondary-filters accordion" id="accordionExample">
-                    <div class="accordion-item">
-                      <h2 class="accordion-header" id="headingOne">
-                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
-                          Plus de filtres
-                        </button>
-                      </h2>
-                      <div id="collapseOne" class="accordion-collapse collapse" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
-                        <div class="accordion-body">
-                            <div class="filter f-checkbox">
-                                <input type="checkbox" name="furniture" id="furniture"> 
-                                <label for="furniture">{% translate "Furnished" %}</label>     
-                            </div>
-                            <div class="filter f-checkbox">
-                                <input type="checkbox" name="balcony" id="balcony"> 
-                                <label for="balcony">{% translate "Balcony" %}</label>   
-                            </div>  
-                            <div class="filter f-checkbox">
-                                <input type="checkbox" name="terrace" id="terrace"> 
-                                <label for="terrace">{% translate "Terrace" %}</label>   
-                            </div> 
-                            <div class="filter f-checkbox">
-                                <input type="checkbox" name="elevator" id="elevator"> 
-                                <label for="elevator">{% translate "Elevator" %}</label>   
-                            </div>  
-                            <div class="filter f-checkbox">
-                                <input type="checkbox" name="parking" id="parking"> 
-                                <label for="parking">{% translate "Parking" %}</label>   
-                            </div> 
-                        </div>
-                      </div>
+                <div class="filter">
+                    <label for="type-purs">{% translate "Purchase type" %}</label>
+                    <select class="large" name="type-purs" id="type-purs">
+                        <option value="">{% translate "All" %}</option>
+                        <option value="location">{% translate "For rent" %}</option>
+                        <option value="achat">{% translate "For Sale" %}</option>
+                    </select>
+                </div>
+                <div class="filter">
+                    <label for="pieces">{% translate "Room(s)" %}</label>
+                    <input type="number" min="0" name="pieces" id="pieces">
+                </div>
+                <div class="filter">
+                    <label for="chambers">{% translate "Bedroom(s)" %}</label>
+                    <input type="number" min="0" name="chambers" id="chambers">
+                </div>
+                <div class="double-filter">
+                    <div class="filter f-left">
+                        <label for="min-surface">{% translate "Min surface." %}</label>
+                        <input type="number" min="0" name="min-surface" id="min-surface">
+                    </div>
+                    <div class="filter f-right">
+                        <label for="max-surface">{% translate "Max surface." %}</label>
+                        <input type="number" min="0" name="max-surface" id="max-surface">
                     </div>
                 </div>
-            </form>
-            <div class="mt-5 mx-0">
-                <div class="px-0 me-5">
-                    {% if not adverts %}
-                        <div class="empty-message text-center fw-bold" style="font-size: 24px">Aucun bien correspond à vos critères 😢</div>
-                    {% endif %}
-                    {% for advert in adverts %}
-                        <div class="w-100 d-flex my-4 advertBlock">
-                            <div id="userAdvertCarousel{{ forloop.counter }}" class="carousel carousel-fade slide" data-bs-ride="carousel" data-bs-interval="false">
-                                <div class="carousel-indicators mx-auto rounded">
-                                    {% for i in advert.picture_count %}
-                                        <button type="button" data-bs-target="#userAdvertCarousel{{ forloop.parentloop.counter}}" data-bs-slide-to="{{ i }}" {% if forloop.first %}class="active" aria-current="true"{% endif %} aria-label="Slide {{ forloop.counter }}"></button>
-                                    {% endfor %}
-                                </div>
-                                <div class="carousel-inner" style="width: 350px; height: 250px">
-                                    {% for picture in advert.pictures %}
-                                        <div class="carousel-item h-100 {% if forloop.first %}active{% endif %}" style="background-image: url('{% get_media_prefix %}images/{{ advert.id }}/{{ picture }}')"></div>
-                                    {% endfor %}
-                                </div>
-                                <button class="carousel-control-prev" type="button" data-bs-target="#userAdvertCarousel{{ forloop.counter }}" data-bs-slide="prev">
-                                  <span class="carousel-control-prev-icon rounded-circle p-4 ms-3" aria-hidden="true"></span>
-                                  <span class="visually-hidden">{% translate "Previous" %}</span>
-                                </button>
-                                <button class="carousel-control-next" type="button" data-bs-target="#userAdvertCarousel{{ forloop.counter }}" data-bs-slide="next">
-                                  <span class="carousel-control-next-icon rounded-circle p-4 me-3" aria-hidden="true"></span>
-                                  <span class="visually-hidden">{% translate "Next" %}</span>
-                                </button>
-                            </div>
-                            <div class="px-5 d-flex flex-column justify-content-center w-100">
-                                {% if request.user.is_authenticated %}   
-                                    <div class="d-flex justify-content-between">
-                                        <div class="h3 my-auto">{{ advert.price }}€</div>
-                                        {% if advert.creator.id == user.id %}
-                                            <a class="text-dark" href="{% url 'adverts:update-advert' advert.id %}" title="{% translate "Modify my advert" %}">
-                                                <i class="bi bi-gear" style="font-size: 2rem"></i>
-                                            </a>
-                                        {% else %}
-                                            {% if user_favs|index:forloop.counter0 == advert.id %}
-                                                <a class="text-dark" href="{% url 'adverts:remove-favorite' advert.id %}" title="{% translate "Delete from favorites" %}">
-                                                    <i class="bi bi-heart-fill" style="font-size: 2rem"></i>
-                                                </a>
-                                            {% else %}
-                                                <a class="text-dark" href="{% url 'adverts:add-favorite' advert.id %}" title="{% translate "Add to favorites" %}">
-                                                    <i class="bi bi-heart" style="font-size: 2rem"></i>
-                                                </a>
-                                            {% endif %}
-                                        {% endif %}
-                                    </div>
-                                {% else %}
-                                    <div class="h3">{{ advert.price }}€</div>
-                                {% endif %}
-                                <div class="fw-bold mb-2">{{ advert.service_type }} / {{ advert.property_type }}</div>
-                                <div class="fw-bold">{% blocktranslate with room_c=advert.room_count bedroom_c=advert.bedroom_count surface=advert.surface %}{{ room_c }} room(s) - {{ bedroom_c }} bedroom(s) - {{ surface }}m²{% endblocktranslate %}</div>
-                                <div class="fw-bold">
-                                    {% if advert.is_furnished %}{% translate "Furnished" %}{% endif %}
-                                    {% if advert.has_balcony %}{% translate "Balcony" %}{% endif %}
-                                    {% if advert.has_terrace %}{% translate "Terrace" %}{% endif %}
-                                    {% if advert.has_elevator %}{% translate "Elevator" %}{% endif %}
-                                    {% if advert.has_parking %}{% translate "Parking" %}{% endif %}
-                                </div>   
-                                <div class="mt-2">{{ advert.street_number }} {{ advert.street_name }}, {{ advert.city }} ({{ advert.postal_code }})</div>
-                                <a class="link-info text-decoration-none mt-4" href="{% url 'adverts:details-advert' advert.id %}">{% translate "View the advert" %}</a> 
-                            </div>
+                <div class="double-filter">
+                    <div class="filter f-left">
+                        <label for="min-price">{% translate "Min price." %}</label>
+                        <input type="number" min="0" name="min-price" id="min-price">
+                    </div>
+                    <div class="filter f-right">
+                        <label for="max-price">{% translate "Max price." %}</label>
+                        <input type="number" min="0" name="max-price" id="max-price">
+                    </div>
+                </div>
+                <div class="filter">
+                    <label for="city">{% translate "City" %}</label>
+                    <div class="f-city">
+                        <input class="large" type="text" name="city" id="city">
+                        <i class="fa-solid fa-magnifying-glass"></i>
+                    </div>
+                </div>
+                <button type="submit">{% translate "Confirm" %}</button> 
+            </div>
+            <div class="secondary-filters accordion" id="accordionExample">
+                <div class="accordion-item">
+                    <h2 class="accordion-header" id="headingOne">
+                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
+                        Plus de filtres
+                    </button>
+                    </h2>
+                    <div id="collapseOne" class="accordion-collapse collapse" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
+                    <div class="accordion-body">
+                        <div class="filter f-checkbox">
+                            <input type="checkbox" name="furniture" id="furniture"> 
+                            <label for="furniture">{% translate "Furnished" %}</label>     
                         </div>
-                    {% endfor %}
+                        <div class="filter f-checkbox">
+                            <input type="checkbox" name="balcony" id="balcony"> 
+                            <label for="balcony">{% translate "Balcony" %}</label>   
+                        </div>  
+                        <div class="filter f-checkbox">
+                            <input type="checkbox" name="terrace" id="terrace"> 
+                            <label for="terrace">{% translate "Terrace" %}</label>   
+                        </div> 
+                        <div class="filter f-checkbox">
+                            <input type="checkbox" name="elevator" id="elevator"> 
+                            <label for="elevator">{% translate "Elevator" %}</label>   
+                        </div>  
+                        <div class="filter f-checkbox">
+                            <input type="checkbox" name="parking" id="parking"> 
+                            <label for="parking">{% translate "Parking" %}</label>   
+                        </div> 
+                    </div>
+                    </div>
                 </div>
             </div>
-        </div>
+        </form>
+    </div>
+    <div class="container py-5">
+        {% if not adverts %}
+            <div class="empty-message text-center fw-bold" style="font-size: 24px">Aucun bien correspond à vos critères 😢</div>
+        {% endif %}
+        
+        {% include 'includes/all_adverts.html' %}
     </div>
 </div>
 {% endblock %}

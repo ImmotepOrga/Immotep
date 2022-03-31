@@ -59,12 +59,41 @@ body::-webkit-scrollbar {
     background-color: #ffa970;
 }
 
+
+
 /* RESPONSIVE */
+@media screen and (min-width:990px){
+    .advertBlock .carousel {
+        flex: 0 0 380px;
+    }
+    .advertBlock.advert-cards .carousel{
+        flex: 0 0 100%;
+        border-right: 0;
+    }
+    .advertBlock.advert-cards .carousel-item {
+        border-radius: 15px 15px 0 0;
+    }
+    .advertBlock .advert-info {
+        flex:1;
+    }
+    .advertBlock .carousel-inner{
+        height:250px;
+    }
+}
 @media screen and (max-width:989px){
     .advertBlock .carousel {
         border-right: 0 !important;
     }
     .advertBlock .carousel-item {
-    border-radius: 15px 15px 0 0;
-}
+        border-radius: 15px 15px 0 0;
+    }
+    .advertBlock{
+        flex-wrap: wrap;
+    }
+    .advertBlock .carousel {
+        width:100% !important;
+    }
+    .advertBlock .carousel-inner{
+        height:300px;
+    }
 }
