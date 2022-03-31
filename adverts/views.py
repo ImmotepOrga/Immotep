@@ -290,30 +290,51 @@ def delete_all_props(request):
 # PROPERTIES LIST
 def properties(request):
     query_params = request.GET
+    _city = query_params.get('city')
+    _type_purs = query_params.get('type-purs')
     _type_prop = query_params.get("type-prop")
     _pieces = query_params.get("pieces")
     _chambers = query_params.get("chambers")
-    _surface = query_params.get("surface")
+    _min_surface = query_params.get("min-surface")
+    _max_surface = query_params.get("max-surface")
+    _min_price = query_params.get("min-price")
     _max_price = query_params.get("max-price")
     _furniture = query_params.get("furniture")
     _terrace = query_params.get("terrace")
+    _balcony = query_params.get("balcony")
+    _elevator = query_params.get("elevator")
+    _parking = query_params.get("parking")
 
     adverts = Advert.objects.all()
 
+    if _city:
+        adverts = adverts.filter(city=_city)
     if _type_prop:
         adverts = adverts.filter(property_type=_type_prop)
+    if _type_purs:
+        adverts = adverts.filter(service_type=_type_purs)
     if _pieces:
         adverts = adverts.filter(room_count=_pieces)
     if _chambers:
         adverts = adverts.filter(bedroom_count=_chambers)
-    if _surface:
-        adverts = adverts.filter(surface__gte=_surface)
+    if _min_surface:
+        adverts = adverts.filter(surface__gte=_min_surface)
+    if _max_surface:
+        adverts = adverts.filter(surface__lte=_max_surface)
+    if _min_price:
+        adverts = adverts.filter(price__gte=_min_price)
     if _max_price:
         adverts = adverts.filter(price__lte=_max_price)
     if _furniture:
         adverts = adverts.filter(is_furnished=True)
     if _terrace:
-        adverts = adverts.filter(Q(has_balcony=True)|Q(has_terrace=True))
+        adverts = adverts.filter(has_terrace=True)
+    if _balcony:
+        adverts = adverts.filter(has_balcony=True)
+    if _elevator:
+        adverts = adverts.filter(has_elevator=True)
+    if _parking:
+        adverts = adverts.filter(has_parking=True)
 
 
     user_favs = [None] * len(adverts)
