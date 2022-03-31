@@ -510,7 +510,7 @@ msgstr "Vous devez être connecté pour supprimer une annonce"
 
 #: .\adverts\views.py:137
 msgid "You cannot delete an advert that does not belong to you"
-msgstr "Vous devez être connecté pour supprimer une annonce"
+msgstr "Vous ne pouvez pas supprimer une annonce qui ne vous appartient pas."
 
 #: .\adverts\views.py:142
 msgid "The advert has been deleted"
@@ -530,7 +530,7 @@ msgstr "Vous êtes déconnecté."
 
 #: .\adverts\views.py:205
 msgid "Advert added in favorite"
-msgstr "Vous êtes déconnecté."
+msgstr "Annonce ajoutée aux favoris"
 
 #: .\adverts\views.py:214
 msgid "Advert removed from favourites"
