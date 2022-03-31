@@ -1,11 +1,15 @@
 {% load static %}
 
+{% load i18n %}
+
 <!DOCTYPE html>
 <html lang="en" itemscope>
 
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+  <link rel="shortcut icon" href="{%  static 'images/favicon.svg' %}">
 
   <title>
     {% block title %}{% endblock %}
@@ -19,6 +23,7 @@
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
 
   <link rel="stylesheet" href="{% static 'adverts/styles/style.css' %}" type="text/css"/>
+
   <link rel="stylesheet" href="{% static 'adverts/styles/other-properties.css' %}" type="text/css"/>
 
   <link rel="stylesheet" href="{% static 'adverts/styles/filters.css' %}" type="text/css"/>
@@ -29,11 +34,15 @@
   
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.0/css/all.min.css">
 
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-select@1.14.0-beta2/dist/css/bootstrap-select.min.css">
+  
 </head>
 
-<body class="{% block body_class %}{% endblock %} bg-gray-200">
+<body class="{% block body_class %}{% endblock %} bg-gray-200 d-flex flex-column min-vh-100">
   
   {% include 'includes/messages.html' %}
+  
+  {% include 'includes/navigation.html' %}
 
   {% block content %}{% endblock content %}  
 
@@ -42,6 +51,6 @@
   <!-- Scripts -->
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
-
+<script src="https://cdn.jsdelivr.net/npm/bootstrap-select@1.14.0-beta2/dist/js/bootstrap-select.min.js"></script>
 </body>
 </html>

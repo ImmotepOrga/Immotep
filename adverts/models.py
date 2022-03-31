@@ -18,28 +18,29 @@ class Advert(models.Model):
     added_at = models.DateTimeField('date published')
     service_type = models.CharField(max_length=45)
     property_type = models.CharField(max_length=45)
-    surface = models.IntegerField()
-    room_count = models.IntegerField()
-    bedroom_count = models.IntegerField()
+    surface = models.PositiveIntegerField()
+    room_count = models.PositiveIntegerField()
+    bedroom_count = models.PositiveIntegerField()
     is_furnished = models.BooleanField()
     has_balcony = models.BooleanField()
     has_terrace = models.BooleanField()
     has_elevator = models.BooleanField()
     has_parking = models.BooleanField()
-    description = models.CharField(max_length=100)
+    description = models.CharField(max_length=255)
     price = models.PositiveIntegerField()
-    warranty_deposit = models.IntegerField()
+    warranty_deposit = models.PositiveIntegerField()
     energy_use = models.CharField(max_length=45)
+    greenhouse_gas = models.CharField(max_length=45)
     creator = models.ForeignKey(Account, on_delete=models.CASCADE)
     street_number = models.CharField(max_length=10)
     street_name = models.CharField(max_length=45)
     postal_code = models.CharField(max_length=10)
     city = models.CharField(max_length=45)
     status = models.CharField(max_length=45)
-    pictures = models.JSONField(default=list)
+    pictures = models.FileField(upload_to='images/')
 
     def __str__(self):
-        return self.property_type
+        return u'{0}'.format(str(self.id) + "-" + self.service_type + "-" + self.property_type)
 
 
 class ApiAdvert(models.Model):
@@ -64,7 +65,7 @@ class ApiAdvert(models.Model):
     zip_code = models.IntegerField()
 
     def __str__(self):
-        return self.identifier
+        return u'{0}'.format(str(self.id) + "-" + self.property_type + "-" + self.state)
 
     @property
     def surface(self):

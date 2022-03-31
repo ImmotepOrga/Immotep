@@ -1,100 +1,143 @@
 {% extends 'base.html' %}
 
-{% block title %} Profil {% endblock %}
+{% load i18n %}
+
+{% load static %}
+
+{% block title %}{% translate "Profile" %}{% endblock %}
 
 {% block content %} 
 
-{% include 'includes/navigation.html' %}   
-
 <!--Profile--> 
+<style>
+    .advertBlock {
+        border: 2px solid #D5BDAD;
+        box-sizing: border-box;
+        box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+        border-radius: 15px;
+        color: #2A4252;
+    }
+
+    .advertBlock .carousel-control-next-icon, .advertBlock .carousel-control-prev-icon {
+        background-color: rgba(0, 0, 0, 0.25);
+        background-size: 60%;
+    }
+
+    .advertBlock .carousel {
+        border-right: 2px solid #d5bdad;
+    }
+
+    .advertBlock .carousel-item {
+        border-radius: 15px 0 0 15px;
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: cover;
+        background-color: white;
+    }
+
+    .advertBlock .carousel-indicators {
+        background-color: rgba(0, 0, 0, 0.10);
+        width: fit-content;
+    }
+
+    .advertBlock .carousel-indicators .active {
+        background-color: #ffa970;
+    }
+</style>
 <div class="container py-5">
-	<h1>Profil</h1>
+	<h1>{% translate "Profile" %}</h1>
 	<div class="container">
-		<div class="row bg-light p-5 mb-5 rounded shadow-sm">
+		<div class="row p-5 mb-5 advertBlock">
 			<div class="col-9">
-				<h2>Mes coordonnées</h2>
-				<div>Nom : {{ user.username }}</div>
-				<div>Adresse e-mail : {{ user.email }}</div>
-				<div>Mot de passe : ***************</div>
-				<div>Numéro de téléphone : {{ user_account.phone_number }}</div>
-				<div>Code postal : {{ user_account.postal_code }}</div>
+				<h2 class="mb-3">{% translate "My details" %}</h2>
+				<div class="mb-2">{% blocktranslate with username=user.username %}Name : {{ username }}{% endblocktranslate %}</div>
+				<div class="mb-2">{% blocktranslate with email=user.email %}E-mail address : {{ email }}{% endblocktranslate %}</div>
+				<div class="mb-2">{% translate "Password" %} : ***************</div>
+				<div class="mb-2">{% blocktranslate with phone_number=user_account.phone_number %}Phone number : {{ phone_number }}{% endblocktranslate %}</div>
+				<div class="mb-2">{% blocktranslate with postal_code=user_account.postal_code %}Zip code : {{ postal_code }}{% endblocktranslate %}</div>
 			</div>
 			<div class="col-3 text-end d-flex flex-column justify-content-between">
 				<div class="edit">
-					<a href="{% url 'adverts:update-account' %}" title="Modifier"><span class="icon-pencil"></span></a>
+					<a href="{% url 'adverts:update-account' %}" title="{% translate "Edit" %}" class="text-dark"><i class="bi bi-pencil-square" style="font-size: 2rem"></i></a>
 				</div>
 				<div class="logout">
-					<a href="{% url 'adverts:logout' %}"><span class="small">Se déconnecter</span></a>
+					<a href="{% url 'adverts:logout' %}"><span class="small">{% translate "Log out" %}</span></a>
 				</div>
 			</div>
 		</div>
 		<div class="container px-0">
-			<h2>Mes annonces</h4>
-			<div class="d-flex mt-2 mx-0">
-				<div class="col-9 px-0 me-5">
-					{% for last_user_advert in last_user_adverts %}
+			<h2>{% translate "My adverts" %}</h4>
+			<div class="mt-2 mx-0">
+				<div class="px-0">
+					{% for user_advert in user_adverts %}
 						<div class="w-100 d-flex my-3 advertBlock">
 							<div id="userAdvertCarousel{{ forloop.counter }}" class="carousel carousel-fade slide" data-bs-ride="carousel" data-bs-interval="false">
-								<div class="carousel-indicators">
-								  <button type="button" data-bs-target="#userAdvertCarousel{{ forloop.counter }}" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
-								  <button type="button" data-bs-target="#userAdvertCarousel{{ forloop.counter }}" data-bs-slide-to="1" aria-label="Slide 2"></button>
-								  <button type="button" data-bs-target="#userAdvertCarousel{{ forloop.counter }}" data-bs-slide-to="2" aria-label="Slide 3"></button>
+								<div class="carousel-indicators mx-auto rounded">
+									{% for i in user_advert.picture_count %}
+										<button type="button" data-bs-target="#userAdvertCarousel{{ forloop.parentloop.counter}}" data-bs-slide-to="{{ i }}" {% if forloop.first %}class="active" aria-current="true"{% endif %} aria-label="Slide {{ forloop.counter }}"></button>
+									{% endfor %}
 								</div>
 								<div class="carousel-inner" style="width: 350px; height: 250px">
-								  <div class="carousel-item active h-100">
-									<img src="https://resize-elle.ladmedia.fr/rcrop/638,,forcex/img/var/plain_site/storage/images/deco/pieces/petits-espaces/10-idees-d-amenagements-d-appartements-de-30-m2/95773946-5-fre-FR/10-idees-d-amenagements-d-appartements-de-30-m2.jpg" class="d-block w-100 h-100" alt="Image annonce 1">
-								  </div>
-								  <div class="carousel-item h-100">
-									<img src="https://static.cotemaison.fr/medias_11962/w_640,c_fill,g_north/sejour-avec-cuisine-et-salon-chambre-separee-par-une-verriere-noire_6124688.jpg" class="d-block w-100 h-100" alt="Image annonce 2">
-								  </div>
-								  <div class="carousel-item h-100">
-									<img src="https://storage.gra.cloud.ovh.net/v1/AUTH_e0b83750570d4ff1986fe199b41300e4/kimono/b9cdfed4e6b0f532ec6dbf1998c915f64df40ffa/600x370-fit-cover-orientation-0deg?width=600&height=370&fit=cover" class="d-block w-100 h-100" alt="Image annonce 3">
-								  </div>
+									{% for picture in user_advert.pictures %}
+										<div class="carousel-item h-100 {% if forloop.first %}active{% endif %}" style="background-image: url('{% get_media_prefix %}images/{{ user_advert.id }}/{{ picture }}')"></div>
+									{% endfor %}
 								</div>
 								<button class="carousel-control-prev" type="button" data-bs-target="#userAdvertCarousel{{ forloop.counter }}" data-bs-slide="prev">
 								  <span class="carousel-control-prev-icon rounded-circle p-4 ms-3" aria-hidden="true"></span>
-								  <span class="visually-hidden">Précédent</span>
+								  <span class="visually-hidden">{% translate "Previous" %}</span>
 								</button>
 								<button class="carousel-control-next" type="button" data-bs-target="#userAdvertCarousel{{ forloop.counter }}" data-bs-slide="next">
 								  <span class="carousel-control-next-icon rounded-circle p-4 me-3" aria-hidden="true"></span>
-								  <span class="visually-hidden">Suivant</span>
+								  <span class="visually-hidden">{% translate "Next" %}</span>
 								</button>
 							</div>
 							<div class="px-5 d-flex flex-column justify-content-center w-100">
 								{% if request.user.is_authenticated %}   
 									<div class="d-flex justify-content-between">
-										<div class="h3 my-auto">{{ last_user_advert.price }}€</div>
-										{% if user_favs|index:forloop.counter0 == last_user_advert.id %}
-											<a class="text-dark" href="{% url 'adverts:remove-favorite' last_user_advert.id %}" title="Supprimer des favoris">
-												<i class="bi bi-heart-fill" style="font-size: 2rem"></i>
+										<div class="h3 my-auto">{{ user_advert.price }}€</div>
+										{% if user_advert.creator.id == user.id %}
+										<div>
+											<a class="text-dark" href="{% url 'adverts:update-advert' user_advert.id %}" title="{% translate "Modify my advert" %}">
+												<i class="bi bi-gear" style="font-size: 2rem"></i></a>
+											<a href="{% url 'adverts:delete-advert' user_advert.id %}" class="text-dark" data-bs-toggle="modal" data-bs-target="#delete-item-modal" id="delete-item" title="{% translate "Delete my advert" %}">
+												<i class="bi bi-trash" style="font-size: 2rem"></i>
 											</a>
+										</div>
 										{% else %}
-											<a class="text-dark" href="{% url 'adverts:add-favorite' last_user_advert.id %}" title="Ajouter en favori">
-												<i class="bi bi-heart" style="font-size: 2rem"></i>
-											</a>
+											{% if user_favs|index:forloop.counter0 == user_advert.id %}
+												<a class="text-dark" href="{% url 'adverts:remove-favorite' user_advert.id %}" title="{% translate "Delete from favorites" %}">
+													<i class="bi bi-heart-fill" style="font-size: 2rem"></i>
+												</a>
+											{% else %}
+												<a class="text-dark" href="{% url 'adverts:add-favorite' user_advert.id %}" title="{% translate "Add to favorites" %}">
+													<i class="bi bi-heart" style="font-size: 2rem"></i>
+												</a>
+											{% endif %}
 										{% endif %}
 									</div>
 								{% else %}
-									<div class="h3">{{ last_user_advert.price }}€</div>
+									<div class="h3">{{ user_advert.price }}€</div>
 								{% endif %}
-								<div class="fw-bold mb-2">{{ last_user_advert.service_type }} / {{ last_user_advert.property_type }}</div>
-								<div class="fw-bold">{{ last_user_advert.room_count }} pièce(s) - {{ last_user_advert.bedroom_count }} chambre(s) - {{ last_user_advert.surface }}m²</div>
+								<div class="fw-bold mb-2">{{ user_advert.service_type }} / {{ user_advert.property_type }}</div>
+								<div class="fw-bold">{% blocktranslate with room_c=user_advert.room_count bedroom_c=user_advert.bedroom_count surface=user_advert.surface %}{{ room_c }} room(s) - {{ bedroom_c }} bedroom(s) - {{ surface }}m²{% endblocktranslate %}</div>
 								<div class="fw-bold">
-									{% if last_user_advert.is_furnished %}Meublé{% endif %}
-									{% if last_user_advert.has_balcony %}Balcon{% endif %}
-									{% if last_user_advert.has_terrace %}Terasse{% endif %}
-									{% if last_user_advert.has_elevator %}Ascenseur{% endif %}
-									{% if last_user_advert.has_parking %}Parking{% endif %}
+									{% if user_advert.is_furnished %}{% translate "Furnished" %}{% endif %}
+									{% if user_advert.has_balcony %}{% translate "Balcony" %}{% endif %}
+									{% if user_advert.has_terrace %}{% translate "Terrace" %}{% endif %}
+									{% if user_advert.has_elevator %}{% translate "Elevator" %}{% endif %}
+									{% if user_advert.has_parking %}{% translate "Parking" %}{% endif %}
 								</div>   
-								<div class="mt-2">{{ last_user_advert.street_number }} {{ last_user_advert.street_name }} à {{ last_user_advert.city }} ({{ last_user_advert.postal_code }})</div>  
+								<div class="mt-2">{{ user_advert.street_number }} {{ user_advert.street_name }}, {{ user_advert.city }} ({{ user_advert.postal_code }})</div>
+								<a class="link-info text-decoration-none mt-4" href="{% url 'adverts:details-advert' user_advert.id %}">{% translate "View the advert" %}</a>    
 							</div>
 						</div>
 					{% endfor %}
 				</div>
-				<div class="w-100 px-0 my-3" id="adsSlider"></div>
 			</div>
 		</div>
 	</div>
 </div>
+
+{% include "includes/confirm_modal.html" %}
 
 {% endblock %}

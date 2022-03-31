@@ -1,8 +1,12 @@
 {% extends 'base.html' %}
-{% block title %}Créer une annonce{% endblock %}
-{% load crispy_forms_tags %}
-{% block content %}
 
+{% load i18n %}
+
+{% block title %}{% translate "Create an advert" %}{% endblock %}
+
+{% load crispy_forms_tags %}
+
+{% block content %}
 <style>
 .borderCustom {
     border: 2px solid #D5BDAD;
@@ -20,21 +24,82 @@
 }
 </style>
 
-{% include 'includes/navigation.html' %}
-    <div class="container">
-        <form method="POST">
+    <div class="container py-5">
+        <form method="POST" enctype="multipart/form-data">
             <div class="row justify-content-center" >            
-                <div class="col-8 borderCustom mt-5 pt-5 pb-5">
-                    <h2 class="mt-2 mb-5 text-center">Vous êtes à un formulaire de poster votre bien...</h3>
+                <div class="col-8 borderCustom py-5">
+                    <h2 class="mt-2 mb-5 text-center">{% translate "You are one form away from advertising your property..." %}</h3>
                         <div class="row justify-content-center">
                             <div class="col-8 ">  
                                 {% csrf_token %}
-                                {{ create_advert_form|crispy }}
+                                <div class="row">
+                                    {{ create_advert_form.service_type|as_crispy_field }}
+                                </div>
+                                <div class="row mt-2">
+                                    {{ create_advert_form.property_type|as_crispy_field }}
+                                </div>
+                                <div class="row mt-2">
+                                    {{ create_advert_form.surface|as_crispy_field }}
+                                </div>
+                                <div class="row mt-2">
+                                    {{ create_advert_form.room_count|as_crispy_field }}
+                                </div>
+                                <div class="row mt-2">
+                                    {{ create_advert_form.bedroom_count|as_crispy_field }}
+                                </div>
+                                <div class="row mt-2">
+                                    {{ create_advert_form.is_furnished|as_crispy_field }}
+                                </div>
+                                <div class="row mt-2">
+                                    {{ create_advert_form.has_balcony|as_crispy_field }}
+                                </div>
+                                <div class="row mt-2">
+                                    {{ create_advert_form.has_terrace|as_crispy_field }}
+                                </div>
+                                <div class="row mt-2">
+                                    {{ create_advert_form.has_elevator|as_crispy_field }}
+                                </div>
+                                <div class="row mt-2">
+                                    {{ create_advert_form.has_parking|as_crispy_field }}
+                                </div>
+                                <div class="row mt-2">
+                                    {{ create_advert_form.description|as_crispy_field }}
+                                </div>
+                                <div class="row mt-2">
+                                    {{ create_advert_form.price|as_crispy_field }}
+                                </div>
+                                <div class="row mt-2">
+                                    {{ create_advert_form.warranty_deposit|as_crispy_field }}
+                                </div>
+                                <div class="row mt-2">
+                                    {{ create_advert_form.energy_use|as_crispy_field }}
+                                </div>
+                                <div class="row mt-2">
+                                    {{ create_advert_form.greenhouse_gas|as_crispy_field }}
+                                </div>
+                                <div class="row mt-2">
+                                    {{ create_advert_form.street_number|as_crispy_field }}
+                                </div>
+                                <div class="row mt-2">
+                                    {{ create_advert_form.street_name|as_crispy_field }}
+                                </div>
+                                <div class="row mt-2">
+                                    {{ create_advert_form.postal_code|as_crispy_field }}
+                                </div>
+                                <div class="row mt-2">
+                                    {{ create_advert_form.city|as_crispy_field }}
+                                </div>
+                                <div class="row mt-2">
+                                    {{ create_advert_form.status|as_crispy_field }}
+                                </div>
+                                <div class="row mt-2">
+                                    {{ create_advert_form.pictures|as_crispy_field }}
+                                </div>
                             </div>
                         </div>
                     <div class="row justify-content-center">
                         <div class="col-4 text-center">
-                            <button type="submit" class="btn buttonCustom mt-5">Créer l'annonce</button>
+                            <button type="submit" class="btn buttonCustom mt-5">{% translate "Create the advert" %}</button>
                         </div>  
                     </div>
                 </div>

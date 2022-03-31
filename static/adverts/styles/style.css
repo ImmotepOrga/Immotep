@@ -1,5 +1,4 @@
 /* STYLE */
-
 @import url('https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,400;0,700;1,400;1,700&display=swap');
 :root{
     --bs-primary: #2a4252;
@@ -13,4 +12,14 @@ html{
 .icon-user::before {
     padding-left: 2.3px !important;
     padding-right: 2.3px !important;
+}
+
+body::-webkit-scrollbar-thumb {
+    background: #ba784c !important;
+    border-radius: 10px !important;
+}
+
+body::-webkit-scrollbar {
+    width: 8px !important;
+    background-color: #fff !important;
 }

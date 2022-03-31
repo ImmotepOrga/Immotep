@@ -8,50 +8,52 @@ from crispy_forms.layout import Layout, Field
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.models import User
 from adverts.models import Account
+from django.utils.translation import gettext_lazy as _
 
 
 class CreateAdvertForm(ModelForm):
     class Meta:
         model = Advert
         fields = (
-            'added_at', 'service_type', 'property_type', 'surface', 'room_count', 'bedroom_count', 'is_furnished', 'has_balcony',
-            'has_terrace', 'has_elevator', 'has_parking', 'description', 'price', 'warranty_deposit', 'energy_use', 'street_number',
-            'street_name', 'postal_code', 'city', 'status', 'pictures'
+            'service_type', 'property_type', 'surface', 'room_count', 'bedroom_count', 'is_furnished', 'has_balcony',
+            'has_terrace', 'has_elevator', 'has_parking', 'description', 'price', 'warranty_deposit', 'energy_use', 'greenhouse_gas', 
+            'street_number', 'street_name', 'postal_code', 'city', 'status', 'pictures'
         )
         labels = {
-            "added_at": "Ajouté le",
-            "service_type": "Type de service",
-            "property_type": "Type de bien",
-            "surface": "Surface",
-            "room_count": "Nombre de pièces",
-            "bedroom_count": "Nombre de chambres",
-            "is_furnished": "Est meublé",
-            "has_balcony": "Possède un balcon",
-            "has_terrace": "Possède une terasse",
-            "has_elevator": "Possède un ascenseur",
-            "has_parking": "Possède un parking",
-            "description": "Description",
-            "price": "Prix",
-            "warranty_deposit": "Dépot de garantie",
-            "energy_use": "Consommation énergétique",
-            "street_number": "Numéro de rue",
-            "street_name": "Nom de rue",
-            "postal_code": "Code postal",
-            "city": "Ville",
-            "status": "Statut de l'annonce",
-            "pictures": "Images",
+            "service_type": lambda: _("Service type"),
+            "property_type": lambda: _("Property type"),
+            "surface": lambda: _("Surface"),
+            "room_count": lambda: _("Number of rooms"),
+            "bedroom_count": lambda: _("Number of bedrooms"),
+            "is_furnished": lambda: _("Is furnished"),
+            "has_balcony": lambda: _("Has a balcony"),
+            "has_terrace": lambda: _("Has a terrace"),
+            "has_elevator": lambda: _("Has an elevator"),
+            "has_parking": lambda: _("Has a parking lot"),
+            "description": lambda: _("Description"),
+            "price": lambda: _("Price"),
+            "warranty_deposit": lambda: _("Deposit of guarantee"),
+            "energy_use": lambda: _("Energy consumption"),
+            "greenhouse_gas": lambda: _("Greenhouse gas emissions"),
+            "creator": lambda: _("Author of the advert"),
+            "street_number": lambda: _("Street number"),
+            "street_name": lambda: _("Street name"),
+            "postal_code": lambda: _("Zip code"),
+            "city": lambda: _("City"),
+            "status": lambda: _("Status of the advert"),
+            "pictures": lambda: _("Pictures"),
         }
-        energy_categories = (('A', 'A'),('B', 'B'),('C', 'C'),('D', 'D'),('E', 'E'),('F', 'F'),('G', 'G'))
+        energy_gas_categories = (('A', 'A'),('B', 'B'),('C', 'C'),('D', 'D'),('E', 'E'),('F', 'F'),('G', 'G'))
         service_types = (('Location', 'Location'),('Achat', 'Achat'))
-        property_types = (('Appartemment', 'Appartemment'),('Maison', 'Maison'))
+        property_types = (('Appartement', 'Appartement'),('Maison', 'Maison'))
         statuses = (('Active', 'Active'),('Inactive', 'Inactive'))
         widgets = {
-            'added_at': forms.DateInput(attrs={'type':'date'}),
-            'energy_use': forms.Select(choices=energy_categories),
+            'energy_use': forms.Select(choices=energy_gas_categories),
+            'greenhouse_gas': forms.Select(choices=energy_gas_categories),
             'service_type': forms.Select(choices=service_types),
             'property_type': forms.Select(choices=property_types),
             'status': forms.Select(choices=statuses),
-            'pictures': forms.ClearableFileInput(),
+            'pictures': forms.ClearableFileInput(attrs={'class': 'form-control', 'multiple': 'true', 'accept':'image/gif, image/jpeg, image/png'}),
         }
         
     
@@ -63,10 +65,10 @@ class NewUserForm(UserCreationForm):
         model = User
         fields = ( "username", "email", "password1", "password2" )
         labels = {
-            "username":"Nom d'utilisateur",
-            "email":"Adresse e-mail",
-            "password1":"Mot de passe",
-            "password2":"Confirmer le mot de passe"
+            "username": lambda: _("Username"),
+            "email": lambda: _("E-mail address"),
+            "password1": lambda: _("Password"),
+            "password2": lambda: _("Confirm password")
         }
 
     def save(self, commit=True):
@@ -83,8 +85,8 @@ class AccountForm(forms.ModelForm):
         model = Account
         fields = ( "phone_number", "postal_code" )
         labels = {
-            "phone_number":"Numéro de téléphone",
-            "postal_code":"Code postal"
+            "phone_number": lambda: _("Phone number"),
+            "postal_code": lambda: _("Zip code")
         }
     
     def save(self, commit=True):
@@ -102,8 +104,8 @@ class EditUserForm(forms.ModelForm):
         model = User
         fields = ( "username", "email")
         labels = {
-            "username":"Nom d'utilisateur",
-            "email":"Adresse e-mail"
+            "username": lambda: _("Username"),
+            "email": lambda: _("E-mail address")
         }
 
     def save(self, commit=True):
