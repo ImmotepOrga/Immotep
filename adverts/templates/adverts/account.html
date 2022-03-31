@@ -52,7 +52,7 @@
 				<h2>{% translate "My details" %}</h2>
 				<div>{% blocktranslate with username=user.username %}Name : {{ username }}{% endblocktranslate %}</div>
 				<div>{% blocktranslate with email=user.email %}E-mail address : {{ email }}{% endblocktranslate %}</div>
-				<div>Mot de passe : ***************</div>
+				<div>{% translate "Password" %} : ***************</div>
 				<div>{% blocktranslate with phone_number=user_account.phone_number %}Phone number : {{ phone_number }}{% endblocktranslate %}</div>
 				<div>{% blocktranslate with postal_code=user_account.postal_code %}Zip code : {{ postal_code }}{% endblocktranslate %}</div>
 			</div>
