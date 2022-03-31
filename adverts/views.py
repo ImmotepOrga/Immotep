@@ -1,11 +1,10 @@
 from django.shortcuts import render, redirect
-from django.template.defaulttags import register
-from django.contrib.auth.models import User
 from django.contrib.auth import login, logout, authenticate
 from django.contrib.auth.decorators import login_required
-from django.contrib import messages
 from django.urls import reverse
-from django.http import HttpResponse, HttpResponseRedirect
+from django.template.defaulttags import register
+from django.contrib import messages
+from django.http import HttpResponseRedirect
 from django.contrib.auth.forms import AuthenticationForm
 from django.utils.translation import gettext_lazy as _
 from .models import Account, Advert, ApiAdvert
@@ -324,3 +323,7 @@ def properties(request):
             if Account.favorites.through.objects.filter(advert_id = adverts[i].id, account_id = request.user.id):
                 user_favs[i] = adverts[i].id
     return render(request, "properties_list.html", {'adverts': adverts, 'user_favs': user_favs})
+
+# ERROR 404
+def page_not_found_view(request, exception):
+    return render(request, '404.html', status=404)

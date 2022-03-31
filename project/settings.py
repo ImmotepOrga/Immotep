@@ -22,17 +22,17 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # ENVIRONNEMENT
 env = environ.Env()
 
-environ.Env.read_env(os.path.join(BASE_DIR, '.env'))
+environ.Env.read_env()
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/4.0/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-y!8w4-b$#v527&)gtx)qwl3bn+v(k%$w@b!g7x4krfysj^2=bz'
+SECRET_KEY = os.environ.get('SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
 
-DEBUG = os.environ.get('DEBUG')
+DEBUG = True
 
 # A REMPLACER EN PROD
 ALLOWED_HOSTS = env.list('ALLOWED_HOSTS')
@@ -123,15 +123,13 @@ AUTH_PASSWORD_VALIDATORS = [
 
 PROJECT_ROOT = os.path.dirname(os.path.abspath(__file__))
 
-STATIC_ROOT = os.path.join(PROJECT_ROOT, 'staticfiles')
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 
 STATIC_URL = 'static/'
 
 STATICFILES_DIRS = (
     os.path.join(BASE_DIR, 'static/'),
 )
-
-STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 
 
 # Media files
