@@ -8,7 +8,14 @@
 
 {% block content %}
 
-{% include 'includes/last_adverts.html' %}
+<div class="container py-5">
+    <h2 class="my-3">{% translate "Property Overview" %}</h2>
+    <div class="d-flex justify-content-between flex-wrap px-0">
+
+    {% include 'includes/last_adverts.html' %}
+
+    </div>
+</div>
 
 {% include 'includes/other-properties.html' %}
 
