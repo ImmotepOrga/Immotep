@@ -1,0 +1,63 @@
+{% load i18n %}
+
+{% load static %}
+
+{% for last_user_advert in last_user_adverts %}
+    <div class="col-12 col-md-5 d-flex flex-wrap my-3 advertBlock">
+        <div id="userAdvertCarousel{{ forloop.counter }}" class="carousel carousel-fade slide col-12 col-lg-6" data-bs-ride="carousel" data-bs-interval="false">
+            <div class="carousel-indicators mx-auto rounded">
+                {% for i in last_user_advert.picture_count %}
+                    <button type="button" data-bs-target="#userAdvertCarousel{{ forloop.parentloop.counter}}" data-bs-slide-to="{{ i }}" {% if forloop.first %}class="active" aria-current="true"{% endif %} aria-label="Slide {{ forloop.counter }}"></button>
+                {% endfor %}
+            </div>
+            <div class="carousel-inner" style="height: 250px">
+                {% for picture in last_user_advert.pictures %}
+                    <div class="carousel-item h-100 {% if forloop.first %}active{% endif %}" style="background-image: url('{% get_media_prefix %}images/{{ last_user_advert.id }}/{{ picture }}')"></div>
+                {% endfor %}
+            </div>
+            <button class="carousel-control-prev" type="button" data-bs-target="#userAdvertCarousel{{ forloop.counter }}" data-bs-slide="prev">
+                <span class="carousel-control-prev-icon rounded-circle p-4 ms-3" aria-hidden="true"></span>
+                <span class="visually-hidden">{% translate "Previous" %}</span>
+            </button>
+            <button class="carousel-control-next" type="button" data-bs-target="#userAdvertCarousel{{ forloop.counter }}" data-bs-slide="next">
+                <span class="carousel-control-next-icon rounded-circle p-4 me-3" aria-hidden="true"></span>
+                <span class="visually-hidden">{% translate "Next" %}</span>
+            </button>
+        </div>
+        <div class="px-3 py-3 d-flex flex-column justify-content-center col-12 col-lg-6">
+            {% if request.user.is_authenticated %}   
+                <div class="d-flex justify-content-between">
+                    <div class="h4 my-auto">{{ last_user_advert.price }}€</div>
+                    {% if last_user_advert.creator.id == user.id %}
+                        <a class="text-dark" href="{% url 'adverts:update-advert' last_user_advert.id %}" title="{% translate "Modify my advert" %}">
+                            <i class="bi bi-gear" style="font-size: 2rem"></i>
+                        </a>
+                    {% else %}
+                        {% if user_favs|index:forloop.counter0 == last_user_advert.id %}
+                            <a class="text-dark" href="{% url 'adverts:remove-favorite' last_user_advert.id %}" title="{% translate "Delete from favorites" %}">
+                                <i class="bi bi-heart-fill" style="font-size: 2rem"></i>
+                            </a>
+                        {% else %}
+                            <a class="text-dark" href="{% url 'adverts:add-favorite' last_user_advert.id %}" title="{% translate "Add to favorites" %}">
+                                <i class="bi bi-heart" style="font-size: 2rem"></i>
+                            </a>
+                        {% endif %}
+                    {% endif %}
+                </div>
+            {% else %}
+                <div class="h3">{{ last_user_advert.price }}€</div>
+            {% endif %}
+            <div class="fw-bold mb-2 small">{{ last_user_advert.service_type }} / {{ last_user_advert.property_type }}</div>
+            <div class="fw-bold small">{% blocktranslate with room_c=last_user_advert.room_count bedroom_c=last_user_advert.bedroom_count surface=last_user_advert.surface %}{{ room_c }} room(s) - {{ bedroom_c }} bedroom(s) - {{ surface }}m²{% endblocktranslate %}</div>
+            <div class="fw-bold small">
+                {% if last_user_advert.is_furnished %}{% translate "Furnished" %}{% endif %}
+                {% if last_user_advert.has_balcony %}{% translate "Balcony" %}{% endif %}
+                {% if last_user_advert.has_terrace %}{% translate "Terrace" %}{% endif %}
+                {% if last_user_advert.has_elevator %}{% translate "Elevator" %}{% endif %}
+                {% if last_user_advert.has_parking %}{% translate "Parking" %}{% endif %}
+            </div>   
+            <div class="mt-2 small">{{ last_user_advert.street_number }} {{ last_user_advert.street_name }}, {{ last_user_advert.city }} ({{ last_user_advert.postal_code }})</div>
+            <a class="link-info text-decoration-none mt-4" href="{% url 'adverts:details-advert' last_user_advert.id %}">{% translate "View the advert" %}</a>  
+        </div>
+    </div>
+{% endfor %}

@@ -23,7 +23,7 @@ def index(sequence, position):
 
 # RENDER THE HOMEPAGE
 def home(request):
-    props = get_other_propertries().order_by('-id')[:4]
+    props = get_other_propertries()
     last_added_adverts = Advert.objects.all().order_by('-id')[:4]
     user_favs = [None] * 4
     for i in range(len(last_added_adverts)):
@@ -250,8 +250,8 @@ def update_account(request):
   
   
 def get_other_propertries():
-  res = ApiAdvert.objects.all()
-  return res
+    res = ApiAdvert.objects.all().order_by('-id')[:3]
+    return res
 
 
 def get_api_datas(request):

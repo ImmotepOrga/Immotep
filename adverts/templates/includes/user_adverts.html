@@ -1,0 +1,67 @@
+{% load i18n %}
+
+{% load static %}
+
+{% for user_advert in user_adverts %}
+    <div class="d-flex flex-wrap my-3 advertBlock">
+        <div id="userAdvertCarousel{{ forloop.counter }}" class="carousel carousel-fade slide col-12 col-lg-6" data-bs-ride="carousel" data-bs-interval="false">
+            <div class="carousel-indicators mx-auto rounded">
+                {% for i in user_advert.picture_count %}
+                    <button type="button" data-bs-target="#userAdvertCarousel{{ forloop.parentloop.counter}}" data-bs-slide-to="{{ i }}" {% if forloop.first %}class="active" aria-current="true"{% endif %} aria-label="Slide {{ forloop.counter }}"></button>
+                {% endfor %}
+            </div>
+            <div class="carousel-inner" style="height: 250px">
+                {% for picture in user_advert.pictures %}
+                    <div class="carousel-item h-100 {% if forloop.first %}active{% endif %}" style="background-image: url('{% get_media_prefix %}images/{{ user_advert.id }}/{{ picture }}')"></div>
+                {% endfor %}
+            </div>
+            <button class="carousel-control-prev" type="button" data-bs-target="#userAdvertCarousel{{ forloop.counter }}" data-bs-slide="prev">
+                <span class="carousel-control-prev-icon rounded-circle p-4 ms-3" aria-hidden="true"></span>
+                <span class="visually-hidden">{% translate "Previous" %}</span>
+            </button>
+            <button class="carousel-control-next" type="button" data-bs-target="#userAdvertCarousel{{ forloop.counter }}" data-bs-slide="next">
+                <span class="carousel-control-next-icon rounded-circle p-4 me-3" aria-hidden="true"></span>
+                <span class="visually-hidden">{% translate "Next" %}</span>
+            </button>
+        </div>
+        <div class="px-3 py-3 px-md-3 py-md-3 d-flex flex-column justify-content-center col-12 col-lg-6">
+            {% if request.user.is_authenticated %}   
+                <div class="d-flex justify-content-between">
+                    <div class="h3 my-auto">{{ user_advert.price }}€</div>
+                    {% if user_advert.creator.id == user.id %}
+                    <div>
+                        <a class="text-dark" href="{% url 'adverts:update-advert' user_advert.id %}" title="{% translate "Modify my advert" %}">
+                            <i class="bi bi-gear" style="font-size: 2rem"></i></a>
+                        <a href="{% url 'adverts:delete-advert' user_advert.id %}" class="text-dark" data-bs-toggle="modal" data-bs-target="#delete-item-modal" id="delete-item" title="{% translate "Delete my advert" %}">
+                            <i class="bi bi-trash" style="font-size: 2rem"></i>
+                        </a>
+                    </div>
+                    {% else %}
+                        {% if user_favs|index:forloop.counter0 == user_advert.id %}
+                            <a class="text-dark" href="{% url 'adverts:remove-favorite' user_advert.id %}" title="{% translate "Delete from favorites" %}">
+                                <i class="bi bi-heart-fill" style="font-size: 2rem"></i>
+                            </a>
+                        {% else %}
+                            <a class="text-dark" href="{% url 'adverts:add-favorite' user_advert.id %}" title="{% translate "Add to favorites" %}">
+                                <i class="bi bi-heart" style="font-size: 2rem"></i>
+                            </a>
+                        {% endif %}
+                    {% endif %}
+                </div>
+            {% else %}
+                <div class="h3">{{ user_advert.price }}€</div>
+            {% endif %}
+            <div class="fw-bold mb-2">{{ user_advert.service_type }} / {{ user_advert.property_type }}</div>
+            <div class="fw-bold">{% blocktranslate with room_c=user_advert.room_count bedroom_c=user_advert.bedroom_count surface=user_advert.surface %}{{ room_c }} room(s) - {{ bedroom_c }} bedroom(s) - {{ surface }}m²{% endblocktranslate %}</div>
+            <div class="fw-bold">
+                {% if user_advert.is_furnished %}{% translate "Furnished" %}{% endif %}
+                {% if user_advert.has_balcony %}{% translate "Balcony" %}{% endif %}
+                {% if user_advert.has_terrace %}{% translate "Terrace" %}{% endif %}
+                {% if user_advert.has_elevator %}{% translate "Elevator" %}{% endif %}
+                {% if user_advert.has_parking %}{% translate "Parking" %}{% endif %}
+            </div>   
+            <div class="mt-2">{{ user_advert.street_number }} {{ user_advert.street_name }}, {{ user_advert.city }} ({{ user_advert.postal_code }})</div>
+            <a class="link-info text-decoration-none mt-4" href="{% url 'adverts:details-advert' user_advert.id %}">{% translate "View the advert" %}</a>    
+        </div>
+    </div>
+{% endfor %}
