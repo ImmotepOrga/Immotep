@@ -49,10 +49,6 @@
             <form method="GET">
                 <div class="filters">
                     <div class="filter">
-                        <label for="city">{% translate "City" %}</label>
-                        <input class="large" type="text" name="city" id="city">
-                    </div>
-                    <div class="filter">
                         <label for="type-prop">{% translate "Property type" %}</label>
                         <select class="large" name="type-prop" id="type-prop">
                             <option value="">{% translate "All" %}</option>
@@ -94,6 +90,13 @@
                         <div class="filter f-right">
                             <label for="max-price">{% translate "Max price." %}</label>
                             <input type="number" min="0" name="max-price" id="max-price">
+                        </div>
+                    </div>
+                    <div class="filter">
+                        <label for="city">{% translate "City" %}</label>
+                        <div class="f-city">
+                            <input class="large" type="text" name="city" id="city">
+                            <i class="fa-solid fa-magnifying-glass"></i>
                         </div>
                     </div>
                     <button type="submit">{% translate "Confirm" %}</button> 
