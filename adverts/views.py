@@ -290,6 +290,7 @@ def delete_all_props(request):
 # PROPERTIES LIST
 def properties(request):
     query_params = request.GET
+    _city = query_params.get('city')
     _type_purs = query_params.get('type-purs')
     _type_prop = query_params.get("type-prop")
     _pieces = query_params.get("pieces")
@@ -306,20 +307,20 @@ def properties(request):
 
     adverts = Advert.objects.all()
 
+    if _city:
+        adverts = adverts.filter(city=_city)
     if _type_prop:
         adverts = adverts.filter(property_type=_type_prop)
     if _type_purs:
-        adverts = adverts.filter(property_type=_type_purs)
+        adverts = adverts.filter(service_type=_type_purs)
     if _pieces:
         adverts = adverts.filter(room_count=_pieces)
     if _chambers:
         adverts = adverts.filter(bedroom_count=_chambers)
     if _min_surface or _max_surface:
-        adverts = adverts.filter(surface__gte=_min_surface, surface__lte=_max_surface)
-    if _min_price:
-        adverts = adverts.filter(price__gte=_min_price)
-    if _max_price:
-        adverts = adverts.filter(price__lte=_max_price)
+        adverts = adverts.filter(surface__gte=_min_surface or 0, surface__lte=_max_surface or 0)
+    if _min_price or _max_price:
+        adverts = adverts.filter(price__gte=_min_price or 0, price__lte=_max_price or 0)
     if _furniture:
         adverts = adverts.filter(is_furnished=True)
     if _terrace:
