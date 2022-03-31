@@ -1,4 +1,4 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib.auth import login, logout, authenticate
 from django.contrib.auth.decorators import login_required
 from django.urls import reverse
@@ -104,7 +104,7 @@ def create_advert(request):
 
 # MODIFIER ANNONCE
 def udpate_advert(request, id):
-    advert = Advert.objects.get(id=id)
+    advert = get_object_or_404(Advert, id=id)
 
     if not request.user.is_authenticated:
         messages.warning(request, _("You must be logged in to edit an advert"))
@@ -127,7 +127,7 @@ def udpate_advert(request, id):
 
 # SUPPRIMER ANNONCE
 def delete_advert(request, id):
-    advert = Advert.objects.get(id=id)
+    advert = get_object_or_404(Advert, id=id)
 
     if not request.user.is_authenticated:
         messages.warning(request, _("You must be logged in to delete an advert"))
@@ -199,7 +199,7 @@ def logout_request(request):
 # AJOUTER UNE ANNONCE EN FAVORI
 @login_required(login_url="adverts:login")
 def add_favorite(request, advert_id):
-    advert = Advert.objects.get(id=advert_id)
+    advert = get_object_or_404(Advert, id=advert_id)
     logged_user = Account.objects.get(user=request.user.id)
     logged_user.favorites.add(advert)
     messages.success(request, _("Advert added in favorite"))
@@ -209,7 +209,7 @@ def add_favorite(request, advert_id):
 # SUPPRIMER UNE ANNONCE DES FAVORIS
 @login_required(login_url="adverts:login")
 def remove_favorite(request, advert_id):
-    advert = Advert.objects.get(id = advert_id)
+    advert = get_object_or_404(Advert, id=advert_id)
     Account.favorites.through.objects.filter(advert_id = advert.id, account_id = request.user.id).delete()
     messages.warning(request, _("Advert removed from favourites"))
     return HttpResponseRedirect(request.META.get('HTTP_REFERER'))
