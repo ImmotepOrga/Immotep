@@ -64,7 +64,7 @@
           </li>
           {% else %}
           <li class="nav-item">
-            <a href="{% url 'adverts:login' %}" class="nav-link btn rounded-pill px-4 text-white d-none d-lg-inline-block navBtn"><span class="me-2 icon-lock_outline"></span>Connexion</a>
+            <a href="{% url 'adverts:login' %}" class="nav-link btn rounded-pill px-4 text-white d-none d-lg-inline-block navBtn"><span class="me-2 icon-lock_outline"></span>{% translate "Login" %}</a>
           </li>
           {% endif %}
           <li class="dropdown " id="language-switcher">
