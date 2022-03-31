@@ -134,6 +134,9 @@
             </form>
             <div class="mt-5 mx-0">
                 <div class="px-0 me-5">
+                    {% if not adverts %}
+                        <div class="empty-message text-center fw-bold" style="font-size: 24px">Aucun bien correspond à vos critères 😢</div>
+                    {% endif %}
                     {% for advert in adverts %}
                         <div class="w-100 d-flex my-4 advertBlock">
                             <div id="userAdvertCarousel{{ forloop.counter }}" class="carousel carousel-fade slide" data-bs-ride="carousel" data-bs-interval="false">
