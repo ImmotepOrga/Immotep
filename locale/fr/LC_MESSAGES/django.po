@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-03-30 13:12+0200\n"
+"POT-Creation-Date: 2022-03-31 10:40+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -18,10 +18,113 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 
+#: .\adverts\forms.py:23
+msgid "Service type"
+msgstr "Type de service"
+
+#: .\adverts\forms.py:24
+msgid "Property type"
+msgstr "Type de bien"
+
+#: .\adverts\forms.py:25
+msgid "Surface"
+msgstr "Surface"
+
+#: .\adverts\forms.py:26
+msgid "Number of rooms"
+msgstr "Nombre de pièces"
+
+#: .\adverts\forms.py:27
+msgid "Number of bedrooms"
+msgstr "Nombre de chambres"
+
+#: .\adverts\forms.py:28
+msgid "Is furnished"
+msgstr "Est meublé"
+
+#: .\adverts\forms.py:29
+msgid "Has a balcony"
+msgstr "Possèdes un balcon"
+
+#: .\adverts\forms.py:30
+msgid "Has a terrace"
+msgstr "Possèdes une terasse"
+
+#: .\adverts\forms.py:31
+msgid "Has an elevator"
+msgstr "Possèdes un ascenseur"
+
+#: .\adverts\forms.py:32
+msgid "Has a parking lot"
+msgstr "Dispose d'un parking"
+
+#: .\adverts\forms.py:33 .\adverts\templates\adverts\details-advert.html:109
+msgid "Description"
+msgstr "Description"
+
+#: .\adverts\forms.py:34
+msgid "Price"
+msgstr "Prix"
+
+#: .\adverts\forms.py:35
+msgid "Deposit of guarantee"
+msgstr "Dépôt de garantie"
+
+#: .\adverts\forms.py:36
+msgid "Energy consumption"
+msgstr "Consommation d'énergie"
+
+#: .\adverts\forms.py:37
+msgid "Greenhouse gas emissions"
+msgstr "Émission de gaz à effet de serre"
+
+msgid "Street number"
+msgstr "Numéro de rue"
+
+#: .\adverts\forms.py:40
+msgid "Street name"
+msgstr "Nom de rue"
+
+#: .\adverts\forms.py:41 .\adverts\forms.py:89
+msgid "Zip code"
+msgstr "Code postal"
+
+#: .\adverts\forms.py:42
+msgid "City"
+msgstr "Ville"
+
+#: .\adverts\forms.py:43
+msgid "Status of the advert"
+msgstr "Statut de l'annonce"
+
+#: .\adverts\forms.py:44
+msgid "Pictures"
+msgstr "Images"
+
+#: .\adverts\forms.py:68 .\adverts\forms.py:107
+msgid "Username"
+msgstr "Nom d'utilisateur"
+
+#: .\adverts\forms.py:69 .\adverts\forms.py:108
+msgid "E-mail address"
+msgstr "Adresse e-mail"
+
+#: .\adverts\forms.py:70
+msgid "Password"
+msgstr "Mot de passe"
+
+#: .\adverts\forms.py:71
+msgid "Confirm password"
+msgstr "Confirmer le mot de passe"
+
+#: .\adverts\forms.py:88 .\adverts\templates\adverts\details-advert.html:90
+msgid "Phone number"
+msgstr "Numéro de téléphone"
+
 #: .\adverts\templates\adverts\account.html:7
 #: .\adverts\templates\adverts\account.html:48
 #: .\adverts\templates\adverts\update_account.html:5
-#: .\adverts\templates\includes\navigation.html:41
+#: .\adverts\templates\includes\navigation.html:62
 msgid "Profile"
 msgstr "Profil"
 
@@ -223,14 +326,6 @@ msgstr "Propriétaire"
 msgid "Mail"
 msgstr "Mail"
 
-#: .\adverts\templates\adverts\details-advert.html:90
-msgid "Phone number"
-msgstr "Téléphone"
-
-#: .\adverts\templates\adverts\details-advert.html:109
-msgid "Description"
-msgstr "Description"
-
 #: .\adverts\templates\adverts\details-advert.html:113
 msgid "Energy use"
 msgstr "Consommation"
@@ -361,15 +456,15 @@ msgstr "Êtes-vous sûr de vouloir supprimer cette annonce ?"
 msgid "All rights reserved"
 msgstr "Tous droits réservés"
 
-#: .\adverts\templates\includes\navigation.html:29
+#: .\adverts\templates\includes\navigation.html:50
 msgid "Post an advert"
 msgstr "Déposer une annonce"
 
-#: .\adverts\templates\includes\navigation.html:32
+#: .\adverts\templates\includes\navigation.html:53
 msgid "Browse the adverts"
 msgstr "Voir les annonces"
 
-#: .\adverts\templates\includes\navigation.html:38
+#: .\adverts\templates\includes\navigation.html:59
 msgid "Favorites"
 msgstr "Favoris"
 
@@ -377,14 +472,14 @@ msgstr "Favoris"
 msgid "Affiliate adverts"
 msgstr "Annonces partenaires"
 
-#: .\project\settings.py:135
+#: .\project\settings.py:164
 msgid "English"
 msgstr "Anglais"
 
-#: .\project\settings.py:136
+#: .\project\settings.py:165
 msgid "French"
 msgstr "Français"
 
-#: .\project\settings.py:137
+#: .\project\settings.py:166
 msgid "Spanish"
 msgstr "Espagnol"
