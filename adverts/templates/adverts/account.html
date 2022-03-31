@@ -47,18 +47,18 @@
 <div class="container py-5">
 	<h1>{% translate "Profile" %}</h1>
 	<div class="container">
-		<div class="row bg-light p-5 mb-5 rounded shadow-sm">
+		<div class="row p-5 mb-5 advertBlock">
 			<div class="col-9">
-				<h2>{% translate "My details" %}</h2>
-				<div>{% blocktranslate with username=user.username %}Name : {{ username }}{% endblocktranslate %}</div>
-				<div>{% blocktranslate with email=user.email %}E-mail address : {{ email }}{% endblocktranslate %}</div>
-				<div>Mot de passe : ***************</div>
-				<div>{% blocktranslate with phone_number=user_account.phone_number %}Phone number : {{ phone_number }}{% endblocktranslate %}</div>
-				<div>{% blocktranslate with postal_code=user_account.postal_code %}Zip code : {{ postal_code }}{% endblocktranslate %}</div>
+				<h2 class="mb-3">{% translate "My details" %}</h2>
+				<div class="mb-2">{% blocktranslate with username=user.username %}Name : {{ username }}{% endblocktranslate %}</div>
+				<div class="mb-2">{% blocktranslate with email=user.email %}E-mail address : {{ email }}{% endblocktranslate %}</div>
+				<div class="mb-2">{% translate "Password" %} : ***************</div>
+				<div class="mb-2">{% blocktranslate with phone_number=user_account.phone_number %}Phone number : {{ phone_number }}{% endblocktranslate %}</div>
+				<div class="mb-2">{% blocktranslate with postal_code=user_account.postal_code %}Zip code : {{ postal_code }}{% endblocktranslate %}</div>
 			</div>
 			<div class="col-3 text-end d-flex flex-column justify-content-between">
 				<div class="edit">
-					<a href="{% url 'adverts:update-account' %}" title="{% translate "Edit" %}"><span class="icon-pencil"></span></a>
+					<a href="{% url 'adverts:update-account' %}" title="{% translate "Edit" %}" class="text-dark"><i class="bi bi-pencil-square" style="font-size: 2rem"></i></a>
 				</div>
 				<div class="logout">
 					<a href="{% url 'adverts:logout' %}"><span class="small">{% translate "Log out" %}</span></a>
@@ -68,7 +68,7 @@
 		<div class="container px-0">
 			<h2>{% translate "My adverts" %}</h4>
 			<div class="mt-2 mx-0">
-				<div class="px-0 me-5">
+				<div class="px-0">
 					{% for user_advert in user_adverts %}
 						<div class="w-100 d-flex my-3 advertBlock">
 							<div id="userAdvertCarousel{{ forloop.counter }}" class="carousel carousel-fade slide" data-bs-ride="carousel" data-bs-interval="false">
