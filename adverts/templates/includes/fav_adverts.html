@@ -1,0 +1,51 @@
+{% load i18n %}
+
+{% load static %}
+
+{% for user_fav in user_favs %}
+    <div class="col-12 d-flex my-3 advertBlock">
+        <div id="userAdvertCarousel{{ forloop.counter }}" class="carousel carousel-fade slide" data-bs-ride="carousel" data-bs-interval="false">
+            <div class="carousel-indicators mx-auto rounded">
+                {% for i in user_fav.picture_count %}
+                    <button type="button" data-bs-target="#userAdvertCarousel{{ forloop.parentloop.counter}}" data-bs-slide-to="{{ i }}" {% if forloop.first %}class="active" aria-current="true"{% endif %} aria-label="Slide {{ forloop.counter }}"></button>
+                {% endfor %}
+            </div>
+            <div class="carousel-inner">
+                {% for picture in user_fav.pictures %}
+                    <div class="carousel-item h-100 {% if forloop.first %}active{% endif %}" style="background-image: url('{% get_media_prefix %}images/{{ user_fav.id }}/{{ picture }}')"></div>
+                {% endfor %}
+            </div>
+            <button class="carousel-control-prev" type="button" data-bs-target="#userAdvertCarousel{{ forloop.counter }}" data-bs-slide="prev">
+                <span class="carousel-control-prev-icon rounded-circle p-4 ms-3" aria-hidden="true"></span>
+                <span class="visually-hidden">{% translate "Previous" %}</span>
+            </button>
+            <button class="carousel-control-next" type="button" data-bs-target="#userAdvertCarousel{{ forloop.counter }}" data-bs-slide="next">
+                <span class="carousel-control-next-icon rounded-circle p-4 me-3" aria-hidden="true"></span>
+                <span class="visually-hidden">{% translate "Next" %}</span>
+            </button>
+        </div>
+        <div class="px-3 py-3 d-flex flex-column justify-content-center col-12 advert-info">
+            {% if request.user.is_authenticated %}   
+                <div class="d-flex justify-content-between">
+                    <div class="h4 my-auto">{{ user_fav.price }}€</div>
+                        <a class="text-dark" href="{% url 'adverts:remove-favorite' user_fav.id %}" title="{% translate "Delete from favorites" %}">
+                            <i class="bi bi-heart-fill" style="font-size: 2rem"></i>
+                        </a>
+                </div>
+            {% else %}
+                <div class="h4">{{ user_fav.price }}€</div>
+            {% endif %}
+            <div class="fw-bold mb-2 small">{{ user_fav.service_type }} / {{ user_fav.property_type }}</div>
+            <div class="fw-bold small">{% blocktranslate with room_c=user_fav.room_count bedroom_c=user_fav.bedroom_count surface=user_fav.surface %}{{ room_c }} room(s) - {{ bedroom_c }} bedroom(s) - {{ surface }}m²{% endblocktranslate %}</div>
+            <div class="fw-bold small">
+                {% if user_fav.is_furnished %}{% translate "Furnished" %}{% endif %}
+                {% if user_fav.has_balcony %}{% translate "Balcony" %}{% endif %}
+                {% if user_fav.has_terrace %}{% translate "Terrace" %}{% endif %}
+                {% if user_fav.has_elevator %}{% translate "Elevator" %}{% endif %}
+                {% if user_fav.has_parking %}{% translate "Parking" %}{% endif %}
+            </div>   
+            <div class="mt-2 small">{{ user_fav.street_number }} {{ user_fav.street_name }}, {{ user_fav.city }} ({{ user_fav.postal_code }})</div>
+            <a class="link-info text-decoration-none mt-4" href="{% url 'adverts:details-advert' user_fav.id %}">{% translate "View the advert" %}</a>  
+        </div>
+    </div>
+{% endfor %}
