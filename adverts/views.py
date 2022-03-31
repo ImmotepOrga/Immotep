@@ -26,16 +26,17 @@ def home(request):
     props = get_other_propertries().order_by('-id')[:4]
     last_added_adverts = Advert.objects.all().order_by('-id')[:4]
     user_favs = [None] * 4
-    if request.user.is_authenticated:
-        for i in range(len(last_added_adverts)):
-            last_added_adverts[i].pictures = [pic.strip() for pic in last_added_adverts[i].pictures.name.split(',')]
-            last_added_adverts[i].picture_count = range(len(last_added_adverts[i].pictures))
+    for i in range(len(last_added_adverts)):
+        last_added_adverts[i].pictures = [pic.strip() for pic in last_added_adverts[i].pictures.name.split(',')]
+        last_added_adverts[i].picture_count = range(len(last_added_adverts[i].pictures))
+        if request.user.is_authenticated:
             if Account.favorites.through.objects.filter(advert_id = last_added_adverts[i].id, account_id = request.user.id):
                 user_favs[i] = last_added_adverts[i].id
     return render(request, "home.html", {'last_user_adverts': last_added_adverts, 'user_favs': user_favs, 'properties': props})
 
 
 # FAVORIES LIST
+@login_required(login_url="adverts:login")
 def favories(request):
     adverts = Account.objects.get(user=request.user.id).favorites.all()
     for i in range(len(adverts)):
@@ -315,10 +316,10 @@ def properties(request):
 
 
     user_favs = [None] * len(adverts)
-    if request.user.is_authenticated:
-        for i in range(len(adverts)):
-            adverts[i].pictures = [pic.strip() for pic in adverts[i].pictures.name.split(',')]
-            adverts[i].picture_count = range(len(adverts[i].pictures))
+    for i in range(len(adverts)):
+        adverts[i].pictures = [pic.strip() for pic in adverts[i].pictures.name.split(',')]
+        adverts[i].picture_count = range(len(adverts[i].pictures))
+        if request.user.is_authenticated:
             if Account.favorites.through.objects.filter(advert_id = adverts[i].id, account_id = request.user.id):
                 user_favs[i] = adverts[i].id
     return render(request, "properties_list.html", {'adverts': adverts, 'user_favs': user_favs})
