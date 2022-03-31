@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-03-31 09:55+0200\n"
+"POT-Creation-Date: 2022-03-31 16:04+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -78,53 +78,53 @@ msgstr "Energy consumption"
 msgid "Greenhouse gas emissions"
 msgstr "Greenhouse gas emissions"
 
-#: .\adverts\forms.py:39
-msgid "Phone number"
-msgstr "Phone number"
-
+#: .\adverts\forms.py:38
 msgid "Street number"
 msgstr "Street number"
 
-#: .\adverts\forms.py:40
+#: .\adverts\forms.py:39
 msgid "Street name"
 msgstr "Street name"
 
-#: .\adverts\forms.py:41 .\adverts\forms.py:89
+#: .\adverts\forms.py:40 .\adverts\forms.py:88
 msgid "Zip code"
 msgstr "Zip code"
 
-#: .\adverts\forms.py:42
+#: .\adverts\forms.py:41
 msgid "City"
 msgstr "City"
 
-#: .\adverts\forms.py:43
+#: .\adverts\forms.py:42
 msgid "Status of the advert"
 msgstr "Status of the advert"
 
-#: .\adverts\forms.py:44
+#: .\adverts\forms.py:43
 msgid "Pictures"
 msgstr "Pictures"
 
-#: .\adverts\forms.py:68 .\adverts\forms.py:107
+#: .\adverts\forms.py:67 .\adverts\forms.py:106
 msgid "Username"
 msgstr "Username"
 
-#: .\adverts\forms.py:69 .\adverts\forms.py:108
+#: .\adverts\forms.py:68 .\adverts\forms.py:107
 msgid "E-mail address"
 msgstr "E-mail address"
 
-#: .\adverts\forms.py:70
+#: .\adverts\forms.py:69 .\adverts\templates\adverts\account.html:55
 msgid "Password"
 msgstr "Password"
 
-#: .\adverts\forms.py:71
+#: .\adverts\forms.py:70
 msgid "Confirm password"
 msgstr "Confirm password"
 
+#: .\adverts\forms.py:87 .\adverts\templates\adverts\details-advert.html:90
+msgid "Phone number"
+msgstr "Phone number"
+
 #: .\adverts\templates\adverts\account.html:7
 #: .\adverts\templates\adverts\account.html:48
-#: .\adverts\templates\adverts\update_account.html:5
-#: .\adverts\templates\includes\navigation.html:62
+#: .\adverts\templates\includes\navigation.html:63
 msgid "Profile"
 msgstr "Profile"
 
@@ -263,7 +263,7 @@ msgid "View the advert"
 msgstr "View the advert"
 
 #: .\adverts\templates\adverts\change-password.html:5
-#: .\adverts\templates\adverts\change-password.html:13
+#: .\adverts\templates\adverts\change-password.html:30
 msgid "Change my password"
 msgstr "Change my password"
 
@@ -271,14 +271,8 @@ msgstr "Change my password"
 msgid "Update my password"
 msgstr "Update my password"
 
-#: .\adverts\templates\adverts\change-password.html:17
-#: .\adverts\templates\adverts\update_account.html:20
-#: .\adverts\templates\adverts\update_advert_form.html:14
-msgid "Update"
-msgstr "Update"
-
-#: .\adverts\templates\adverts\change-password.html:19
-#: .\adverts\templates\adverts\update_account.html:22
+#: .\adverts\templates\adverts\change-password.html:41
+#: .\adverts\templates\adverts\update_account.html:54
 #: .\adverts\templates\includes\confirm_modal.html:15
 msgid "Cancel"
 msgstr "Cancel"
@@ -288,6 +282,7 @@ msgid "Create an advert"
 msgstr "Create an advert"
 
 #: .\adverts\templates\adverts\create_advert_form.html:31
+#: .\adverts\templates\adverts\update_advert_form.html:27
 msgid "You are one form away from advertising your property..."
 msgstr "You are one form away from advertising your property..."
 
@@ -360,6 +355,7 @@ msgstr "Properties Overview"
 
 #: .\adverts\templates\adverts\login.html:5
 #: .\adverts\templates\adverts\login.html:30
+#: .\adverts\templates\includes\navigation.html:67
 msgid "Login"
 msgstr "Login"
 
@@ -436,23 +432,23 @@ msgstr "If you already have an account, "
 msgid "log on"
 msgstr "log on"
 
-#: .\adverts\templates\adverts\update_account.html:13
-msgid "Editing of the profile"
-msgstr "Editing of the profile"
-
 #: .\adverts\templates\adverts\update_account.html:6
 msgid "Edit profile"
 msgstr "Edit profile"
+
+#: .\adverts\templates\adverts\update_account.html:31
+msgid "Editing of the profile"
+msgstr "Editing of the profile"
 
 #: .\adverts\templates\adverts\update_account.html:55
 msgid "Update my profile"
 msgstr "Update my profile"
 
-#: .\adverts\templates\adverts\update_account.html:17
+#: .\adverts\templates\adverts\update_account.html:57
 msgid "Change your password"
 msgstr "Change your password"
 
-#: .\adverts\templates\adverts\update_advert_form.html:5
+#: .\adverts\templates\adverts\update_advert_form.html:3
 msgid "Edit an advert"
 msgstr "Edit an advert"
 
@@ -472,15 +468,15 @@ msgstr "Are you certain that you wish to delete this advert?"
 msgid "All rights reserved"
 msgstr "All rights reserved"
 
-#: .\adverts\templates\includes\navigation.html:50
+#: .\adverts\templates\includes\navigation.html:51
 msgid "Post an advert"
 msgstr "Post an advert"
 
-#: .\adverts\templates\includes\navigation.html:53
+#: .\adverts\templates\includes\navigation.html:54
 msgid "Browse the adverts"
 msgstr "Browse the adverts"
 
-#: .\adverts\templates\includes\navigation.html:59
+#: .\adverts\templates\includes\navigation.html:60
 msgid "Favorites"
 msgstr "Favorites"
 
@@ -488,14 +484,70 @@ msgstr "Favorites"
 msgid "Affiliate adverts"
 msgstr "Affiliate adverts"
 
-#: .\project\settings.py:164
+#: .\adverts\views.py:71
+msgid "You must be logged in to post an advert"
+msgstr "You must be logged in to post an advert"
+
+#: .\adverts\views.py:97
+msgid "The advert has been created successfully"
+msgstr "The advert has been created successfully"
+
+#: .\adverts\views.py:110
+msgid "You must be logged in to edit an advert"
+msgstr "You must be logged in to edit an advert"
+
+#: .\adverts\views.py:114
+msgid "You cannot edit an advert that does not belong to you"
+msgstr "You cannot edit an advert that does not belong to you"
+
+#: .\adverts\views.py:121
+msgid "The advert has been updated"
+msgstr "The advert has been updated"
+
+#: .\adverts\views.py:133
+msgid "You must be logged in to delete an advert"
+msgstr "You must be logged in to delete an advert"
+
+#: .\adverts\views.py:137
+msgid "You cannot delete an advert that does not belong to you"
+msgstr "You cannot delete an advert that does not belong to you"
+
+#: .\adverts\views.py:142
+msgid "The advert has been deleted"
+msgstr "The advert has been deleted"
+
+#: .\adverts\views.py:180
+msgid "You are logged in as"
+msgstr "You are logged in as"
+
+#: .\adverts\views.py:184 .\adverts\views.py:186
+msgid "Invalid username or password."
+msgstr "Invalid username or password."
+
+#: .\adverts\views.py:195
+msgid "You are disconnected."
+msgstr "You are disconnected."
+
+#: .\adverts\views.py:205
+msgid "Advert added in favorite"
+msgstr "Advert added in favorite"
+
+#: .\adverts\views.py:214
+msgid "Advert removed from favourites"
+msgstr "Advert removed from favourites"
+
+#: .\adverts\views.py:241
+msgid "Profile successfully modified"
+msgstr "Profile successfully modified"
+
+#: .\project\settings.py:162
 msgid "English"
 msgstr "English"
 
-#: .\project\settings.py:165
+#: .\project\settings.py:163
 msgid "French"
 msgstr "French"
 
-#: .\project\settings.py:166
+#: .\project\settings.py:164
 msgid "Spanish"
 msgstr "Spanish"

@@ -35,7 +35,6 @@ class CreateAdvertForm(ModelForm):
             "warranty_deposit": lambda: _("Deposit of guarantee"),
             "energy_use": lambda: _("Energy consumption"),
             "greenhouse_gas": lambda: _("Greenhouse gas emissions"),
-            "creator": lambda: _("Author of the advert"),
             "street_number": lambda: _("Street number"),
             "street_name": lambda: _("Street name"),
             "postal_code": lambda: _("Zip code"),

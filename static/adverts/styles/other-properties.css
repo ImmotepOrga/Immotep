@@ -1,3 +1,9 @@
+.api-advert-list {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
 .card {
     margin-bottom: 30px;
     width: 400px;
@@ -56,4 +62,10 @@
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
+}
+
+@media screen and (max-width: 990px) {
+    .api-advert-list {
+        justify-content: center;
+    }
 }

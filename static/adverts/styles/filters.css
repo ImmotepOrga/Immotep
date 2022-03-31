@@ -1,5 +1,6 @@
 .filters {
     display: flex;
+    flex-wrap: wrap;
     align-items: flex-end;
 }
 .filter {
@@ -10,10 +11,17 @@
     font-size: 16px;
     margin-right: 10px;
 }
+.double-filter {
+    display: flex;
+}
+.double-filter .filter.f-left {
+    margin-right: 0;
+}
 .f-checkbox {
     flex-direction: row;
     align-items: center;
     padding: 0 15px;
+    margin-bottom: 10px;
     height: 40px;
     font-size: 16px;
     color: #FFFFFF;
@@ -52,10 +60,66 @@
 .filter:not(.f-checkbox) label {
     font-size: 12px;
 }
+.double-filter .f-left input {
+    border-radius: 20px 0 0 20px;
+}
+.double-filter .f-right input {
+    border-radius: 0 20px 20px 0;
+}
 .f-checkbox input {
     width: 15px;
     height: 15px;
     box-shadow: none;
     background: none;
     margin-right: 10px;
+}
+.f-city {
+    position: relative;
+}
+.f-city i {
+    position: absolute;
+    bottom: 50%;
+    right: 10px;
+    transform: translateY(50%);
+    color: #FFFFFF;
+}
+
+.accordion * {
+    border: none;
+}
+.accordion-header button, .accordion-header button:focus{
+    padding: 0;
+    margin: 1rem 1.25rem;
+    font-size: 12px;
+    border: none;
+    width: auto;
+    box-shadow: none;
+    background-color: transparent !important;
+}
+.accordion-header button::after{
+    margin-left: 5px;
+    width: 0.75rem;
+    height: 0.75rem;
+    background-size: 0.75rem;
+}
+.accordion-body {
+    display: flex;
+    flex-wrap: wrap;
+    padding: 0;
+}
+
+@media screen and (max-width: 760px) {
+    form {
+        position: relative;
+    }
+    .filters > button {
+        position: absolute;
+        bottom: -10px;
+        left: 0;
+        transform: translateY(100%)
+    }
+
+    .filters input, .f-checkbox {
+      width: 150px !important;
+    }
 }
