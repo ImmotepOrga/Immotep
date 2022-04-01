@@ -58,7 +58,7 @@ def details_advert(request, id):
 
 
 def handle_uploaded_files(pictures_list, inserted_advert_id):
-    static_folder = 'static/images/adverts-pictures/'
+    static_folder = '/images/'
     if not os.path.exists(static_folder):
         os.mkdir(static_folder)
     os.mkdir(os.path.join(static_folder, inserted_advert_id))
