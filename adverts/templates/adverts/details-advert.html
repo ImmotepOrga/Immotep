@@ -86,27 +86,29 @@
 <div class="container py-5">
     <div class="mb-4 d-flex flex-wrap justify-content-between">
         <div><a href="{% url 'adverts:properties-list' %}" class="text-decoration-none text-dark"><i class="bi bi-arrow-left"></i> {% translate "Return" %}</a></div>
-        {% if advert_infos.creator.id == user.id %}
-        <div>
-            <a class="text-dark" href="{% url 'adverts:update-advert' advert_infos.id %}" title="{% translate "Modify my advert" %}">
-                <i class="bi bi-gear" style="font-size: 2rem"></i></a>
-            <a href="{% url 'adverts:delete-advert' advert_infos.id %}" class="text-dark" data-bs-toggle="modal" data-bs-target="#delete-item-modal" id="delete-item" title="{% translate "Delete my advert" %}">
-                <i class="bi bi-trash" style="font-size: 2rem"></i>
-            </a>
-        </div>
-        {% else %}
-            {% if user_favs|index:forloop.counter0 == advert_infos.id %}
-                <div>
-                    <a class="text-dark" href="{% url 'adverts:remove-favorite' advert_infos.id %}" title="{% translate "Delete from favorites" %}">
-                        <i class="bi bi-heart-fill" style="font-size: 2rem"></i>
-                    </a>
-                </div>
+        {% if request.user.is_authenticated %}  
+            {% if advert_infos.creator.id == user.id %}
+            <div>
+                <a class="text-dark" href="{% url 'adverts:update-advert' advert_infos.id %}" title="{% translate "Modify my advert" %}">
+                    <i class="bi bi-gear" style="font-size: 2rem"></i></a>
+                <a href="{% url 'adverts:delete-advert' advert_infos.id %}" class="text-dark" data-bs-toggle="modal" data-bs-target="#delete-item-modal" id="delete-item" title="{% translate "Delete my advert" %}">
+                    <i class="bi bi-trash" style="font-size: 2rem"></i>
+                </a>
+            </div>
             {% else %}
-                <div>
-                    <a class="text-dark" href="{% url 'adverts:add-favorite' advert_infos.id %}" title="{% translate "Add to favorites" %}">
-                        <i class="bi bi-heart" style="font-size: 2rem"></i>
-                    </a>
-                </div>       
+                {% if is_fav == advert_infos.id %}
+                    <div>
+                        <a class="text-dark" href="{% url 'adverts:remove-favorite' advert_infos.id %}" title="{% translate "Delete from favorites" %}">
+                            <i class="bi bi-heart-fill" style="font-size: 2rem"></i>
+                        </a>
+                    </div>
+                {% else %}
+                    <div>
+                        <a class="text-dark" href="{% url 'adverts:add-favorite' advert_infos.id %}" title="{% translate "Add to favorites" %}">
+                            <i class="bi bi-heart" style="font-size: 2rem"></i>
+                        </a>
+                    </div>       
+                {% endif %}
             {% endif %}
         {% endif %}
     </div>
