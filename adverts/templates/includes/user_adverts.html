@@ -51,7 +51,7 @@
             {% else %}
                 <div class="h3">{{ user_advert.price }}€</div>
             {% endif %}
-            <div class="fw-bold mb-2">{{ user_advert.service_type }} / {{ user_advert.property_type }}</div>
+            <div class="fw-bold mb-2">{% if user_advert.service_type == "Location" %}{% translate "Rent" %}{% else %}{% translate "Sale" %}{% endif %} - {% if user_advert.property_type == "Maison" %}{% translate "House" %}{% else %}{% translate "Apartment" %}{% endif %}</div>
             <div class="fw-bold">{% blocktranslate with room_c=user_advert.room_count bedroom_c=user_advert.bedroom_count surface=user_advert.surface %}{{ room_c }} room(s) - {{ bedroom_c }} bedroom(s) - {{ surface }}m²{% endblocktranslate %}</div>
             <div class="fw-bold">
                 {% if user_advert.is_furnished %}{% translate "Furnished" %}{% endif %}

@@ -135,7 +135,7 @@
                 </button>
             </div>
             <div class="d-flex justify-content-between mt-3">
-                <div class="fw-bold h5">{{ advert_infos.service_type }} - {{ advert_infos.property_type }}</div>
+                <div class="fw-bold h5">{% if advert_infos.service_type == "Location" %}{% translate "Rent" %}{% else %}{% translate "Sale" %}{% endif %} - {% if advert_infos.property_type == "Maison" %}{% translate "House" %}{% else %}{% translate "Apartment" %}{% endif %}</div>
                 <div class="fw-bold h3">{{ advert_infos.price }} €</div>
             </div>
             <div>{% blocktranslate with room_c=advert_infos.room_count bedroom_c=advert_infos.bedroom_count surface=advert_infos.surface %}{{ room_c }} room(s) - {{ bedroom_c }} bedroom(s) - {{ surface }}m²{% endblocktranslate %}</div>
