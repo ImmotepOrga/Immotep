@@ -12,7 +12,7 @@
             </div>
             <div class="carousel-inner">
                 {% for picture in user_advert.pictures %}
-                    <div class="carousel-item h-100 {% if forloop.first %}active{% endif %}" style="background-image: url('{% get_media_prefix %}images/{{ user_advert.id }}/{{ picture }}')"></div>
+                    <div class="carousel-item h-100 {% if forloop.first %}active{% endif %}" style="background-image: url('{% static '/images/adverts-pictures/' %}{{ user_advert.id }}/{{ picture }}')"></div>
                 {% endfor %}
             </div>
             <button class="carousel-control-prev" type="button" data-bs-target="#userAdvertCarousel{{ forloop.counter }}" data-bs-slide="prev">

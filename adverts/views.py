@@ -58,11 +58,11 @@ def details_advert(request, id):
 
 
 def handle_uploaded_files(pictures_list, inserted_advert_id):
-    media_folder = 'media/images/'
-    if not os.path.exists(media_folder):
-        os.mkdir(media_folder)
-    os.mkdir(os.path.join(media_folder, inserted_advert_id))
-    advert_folder = os.path.join(media_folder, inserted_advert_id)
+    static_folder = 'static/images/adverts-pictures/'
+    if not os.path.exists(static_folder):
+        os.mkdir(static_folder)
+    os.mkdir(os.path.join(static_folder, inserted_advert_id))
+    advert_folder = os.path.join(static_folder, inserted_advert_id)
     for i in range(len(pictures_list)):
         if (i <= 2):
             file_path = os.path.join(advert_folder, pictures_list[i].name)
