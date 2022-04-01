@@ -47,7 +47,7 @@ def favories(request):
 
 # USER ADVERTS DETAILS
 def details_advert(request, id):
-    advert = Advert.objects.get(id=id)
+    advert = get_object_or_404(Advert, id=id)
     advert.pictures = [pic.strip() for pic in advert.pictures.name.split(',')]
     advert.picture_count = range(len(advert.pictures))
     return render(request, "details-advert.html", {'advert_infos': advert})
