@@ -8,15 +8,30 @@
 
 {% block content %}
 
+<div class="px-4 py-5 text-center" style="background: linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2)), url('{% static '/images/immotep-bg.jpg' %}') no-repeat; background-size:cover">
+    <h1 class="display-5 fw-bold mt-5 text-light mb-4" style="text-shadow: black 0.1em 0.1em 0.2em">Immotep</h1>
+    <div class="col-lg-6 mx-auto mb-5">
+        <p class="lead mb-4 text-light" style="text-shadow: black 0.1em 0.1em 0.2em">{% translate "The real estate site between individuals. Whether you are looking for real estate or looking to sell, Immotep is there for you." %}</p>
+        <div class="d-grid gap-2 d-sm-flex justify-content-sm-center">
+            <a href="{% url 'adverts:properties-list' %}"><button type="button" class="buttonCustom btn-lg px-4 gap-3">{% translate 'Browse the adverts' %}</button></a>
+        </div>
+    </div>
+</div>
+
 <div class="container py-5">
     <h2 class="my-3">{% translate "Property Overview" %}</h2>
+    <h4 style="color:#5a5a5a">{% translate 'Consult our catalog of real estate and find the house of your dreams!' %}</h4>
     <div class="d-flex justify-content-between flex-wrap px-0">
 
     {% include 'includes/last_adverts.html' %}
 
     </div>
 </div>
+<div class="container py-5">
+    <h2 class="mb-3">{% translate "Affiliate adverts" %}</h2>
+    <h4 class="mb-3" style="color:#5a5a5a">{% translate 'Also consult the catalog of our Texan partner!' %}</h4>
 
-{% include 'includes/other-properties.html' %}
+    {% include 'includes/other-properties.html' %}
+</div>
 
 {% endblock %}
