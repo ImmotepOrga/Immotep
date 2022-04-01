@@ -47,10 +47,14 @@ def favories(request):
 
 # USER ADVERTS DETAILS
 def details_advert(request, id):
-    advert = Advert.objects.get(id=id)
+    advert = get_object_or_404(Advert, id=id)
     advert.pictures = [pic.strip() for pic in advert.pictures.name.split(',')]
     advert.picture_count = range(len(advert.pictures))
-    return render(request, "details-advert.html", {'advert_infos': advert})
+    user_favs = [None]
+    if request.user.is_authenticated:
+        if Account.favorites.through.objects.filter(advert_id = advert.id, account_id = request.user.id):
+            user_favs = advert.id
+    return render(request, "details-advert.html", {'advert_infos': advert, 'is_fav': user_favs})
 
 
 def handle_uploaded_files(pictures_list, inserted_advert_id):
@@ -202,7 +206,7 @@ def add_favorite(request, advert_id):
     logged_user = Account.objects.get(user=request.user.id)
     logged_user.favorites.add(advert)
     messages.success(request, _("Advert added in favorite"))
-    return redirect("adverts:home")
+    return HttpResponseRedirect(request.META.get('HTTP_REFERER'))
 
 
 # SUPPRIMER UNE ANNONCE DES FAVORIS
