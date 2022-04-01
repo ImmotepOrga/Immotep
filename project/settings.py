@@ -32,7 +32,7 @@ SECRET_KEY = os.environ.get('SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
 
-DEBUG = False
+DEBUG = True
 
 # A REMPLACER EN PROD
 ALLOWED_HOSTS = env.list('ALLOWED_HOSTS')
