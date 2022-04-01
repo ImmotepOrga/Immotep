@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-04-01 00:05+0200\n"
+"POT-Creation-Date: 2022-04-01 09:36+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -18,7 +18,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: .\adverts\forms.py:23
+#: .\adverts\forms.py:23 .\adverts\templates\adverts\properties_list.html:25
 msgid "Service type"
 msgstr "Service type"
 
@@ -388,6 +388,14 @@ msgstr "Max price."
 #: .\adverts\templates\adverts\properties_list.html:67
 msgid "Confirm"
 msgstr "Confirm"
+
+#: .\adverts\templates\adverts\properties_list.html:73
+msgid "More filters"
+msgstr "More filters"
+
+#: .\adverts\templates\adverts\properties_list.html:106
+msgid "No property corresponds to your criteria "
+msgstr "No property corresponds to your criteria "
 
 #: .\adverts\templates\adverts\register.html:5
 msgid "Register"
