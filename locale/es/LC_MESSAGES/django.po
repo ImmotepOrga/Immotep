@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-04-01 11:02+0200\n"
+"POT-Creation-Date: 2022-04-01 11:06+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -230,7 +230,7 @@ msgstr "Añadir a favoritos"
 #: .\adverts\templates\includes\all_adverts.html:20
 #: .\adverts\templates\includes\fav_adverts.html:20
 #: .\adverts\templates\includes\last_adverts.html:20
-#: .\adverts\templates\includes\other-properties.html:27
+#: .\adverts\templates\includes\other-properties.html:25
 #: .\adverts\templates\includes\user_adverts.html:20
 msgid "Previous"
 msgstr "Anterior"
@@ -239,7 +239,7 @@ msgstr "Anterior"
 #: .\adverts\templates\includes\all_adverts.html:24
 #: .\adverts\templates\includes\fav_adverts.html:24
 #: .\adverts\templates\includes\last_adverts.html:24
-#: .\adverts\templates\includes\other-properties.html:31
+#: .\adverts\templates\includes\other-properties.html:29
 #: .\adverts\templates\includes\user_adverts.html:24
 msgid "Next"
 msgstr "Siguiente"
@@ -282,12 +282,11 @@ msgstr "Apartamento"
 #: .\adverts\templates\includes\all_adverts.html:51
 #: .\adverts\templates\includes\fav_adverts.html:39
 #: .\adverts\templates\includes\last_adverts.html:51
-#: .\adverts\templates\includes\other-properties.html:40
+#: .\adverts\templates\includes\other-properties.html:38
 #: .\adverts\templates\includes\user_adverts.html:55
 #, python-format
 msgid "%(room_c)s room(s) - %(bedroom_c)s bedroom(s) - %(surface)sm²"
-msgstr ""
-"%(room_c)s habitación(es) - %(bedroom_c)s dormitorio(s) - %(surface)sm²"
+msgstr "%(room_c)s habitación(es) - %(bedroom_c)s dormitorio(s) - %(surface)sm²"
 
 #: .\adverts\templates\adverts\details-advert.html:143
 #: .\adverts\templates\adverts\properties_list.html:80
@@ -383,9 +382,34 @@ msgstr "Favoritos"
 msgid "My favorites"
 msgstr "Mis favoritos"
 
-#: .\adverts\templates\adverts\home.html:12
+#: .\adverts\templates\adverts\home.html:14
+msgid ""
+"The real estate site between individuals. Whether you are looking for real "
+"estate or looking to sell, Immotep is there for you."
+msgstr ""
+"El sitio inmobiliario entre particulares. Tanto si busca un inmueble "
+"o que busca vender, Immotep está ahí para usted."
+
+#: .\adverts\templates\adverts\home.html:16
+#: .\adverts\templates\includes\navigation.html:74
+msgid "Browse the adverts"
+msgstr "Navegar por los anuncios"
+
+#: .\adverts\templates\adverts\home.html:22
 msgid "Property Overview"
 msgstr "Resumen de propiedades"
+
+#: .\adverts\templates\adverts\home.html:23
+msgid "Consult our catalog of real estate and find the house of your dreams!"
+msgstr "¡Consulta nuestro catálogo de inmuebles y encuentra la casa de tus sueños!"
+
+#: .\adverts\templates\adverts\home.html:31
+msgid "Affiliate adverts"
+msgstr "Anuncios de afiliados"
+
+#: .\adverts\templates\adverts\home.html:32
+msgid "Also consult the catalog of our Texan partner!"
+msgstr "Consulte también el catálogo de nuestro socio tejano."
 
 #: .\adverts\templates\adverts\login.html:5
 #: .\adverts\templates\adverts\login.html:14
@@ -526,17 +550,9 @@ msgstr "Todos los derechos reservados"
 msgid "Post an advert"
 msgstr "Publicar un anuncio"
 
-#: .\adverts\templates\includes\navigation.html:74
-msgid "Browse the adverts"
-msgstr "Navegar por los anuncios"
-
 #: .\adverts\templates\includes\navigation.html:80
 msgid "Favorites"
 msgstr "Favoritos"
-
-#: .\adverts\templates\includes\other-properties.html:4
-msgid "Affiliate adverts"
-msgstr "Anuncios de afiliados"
 
 #: .\adverts\views.py:75
 msgid "You must be logged in to post an advert"
