@@ -37,16 +37,36 @@
     outline: none!important;
     box-shadow: none;
   }
+  #mainMenu .navbar-toggler{
+    border:none;
+  }
+  @media screen and (max-width:989px) {
+    #mainMenu .nav-link{
+      color:#2A4252 !important;
+      background-color: transparent !important;
+      text-align: left;
+      margin:0 !important;
+      padding-left: 0 !important;
+      padding-right: 0 !important;
+    }
+    #mainMenu #language-switcher{
+      text-align: left;
+    }
+    #mainMenu ul.navbar-nav{
+      margin-left:3rem !important;
+    }
+  }
+
 </style>
 
 <nav class="navbar navbar-expand-lg navbar-light" id="mainMenu">
   <div class="container">
     <a class="navbar-brand" href="{% url 'adverts:home' %}"><img src="{% static 'images/logo-immotep.svg' %}" alt="Logo Immotep"></a>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
+      <i class="fas fa-bars" style="color:#2A4252; font-size:28px;"></i>
     </button>
     <div class="collapse navbar-collapse text-right" id="navbarText">
-        <ul class="navbar-nav ms-5 mb-2 mb-lg-0">
+        <ul class="navbar-nav ms-5 mb-lg-0">
           <li class="nav-item">
             <a href="{% url 'adverts:create-advert' %}" class="nav-link btn rounded-pill px-3 text-white navBtn"><span class="me-2 icon-add align-middle"></span>{% translate "Post an advert" %}</a>
           </li>
@@ -54,7 +74,7 @@
             <a class="nav-link" href="{% url 'adverts:properties-list' %}">{% translate "Browse the adverts" %}</a>
           </li>
         </ul>
-        <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+        <ul class="navbar-nav ms-auto mb-lg-0">
           {% if request.user.is_authenticated %}
           <li class="nav-item">
             <a class="nav-link" href="{% url 'adverts:favories' %}" title="{% translate "Favorites" %}"><span class="icon-heart rounded-circle text-white p-2 navBtn"></span></a>
@@ -64,7 +84,7 @@
           </li>
           {% else %}
           <li class="nav-item">
-            <a href="{% url 'adverts:login' %}" class="nav-link btn rounded-pill px-4 text-white d-none d-lg-inline-block navBtn"><span class="me-2 icon-lock_outline"></span>Connexion</a>
+            <a href="{% url 'adverts:login' %}" class="nav-link btn rounded-pill px-4 text-white navBtn"><span class="me-2 icon-lock_outline"></span>{% translate "Login" %}</a>
           </li>
           {% endif %}
           <li class="dropdown " id="language-switcher">

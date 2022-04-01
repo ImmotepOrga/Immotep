@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-03-31 09:55+0200\n"
+"POT-Creation-Date: 2022-04-01 00:05+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -22,7 +22,7 @@ msgstr ""
 msgid "Service type"
 msgstr "Tipo de servicio"
 
-#: .\adverts\forms.py:24
+#: .\adverts\forms.py:24 .\adverts\templates\adverts\properties_list.html:17
 msgid "Property type"
 msgstr "Tipo de propiedad"
 
@@ -58,7 +58,7 @@ msgstr "Tiene un ascensor"
 msgid "Has a parking lot"
 msgstr "Tiene un aparcamiento"
 
-#: .\adverts\forms.py:33 .\adverts\templates\adverts\details-advert.html:109
+#: .\adverts\forms.py:33 .\adverts\templates\adverts\details-advert.html:126
 msgid "Description"
 msgstr "Descripción"
 
@@ -78,209 +78,103 @@ msgstr "Consumo de energía"
 msgid "Greenhouse gas emissions"
 msgstr "Emisiones de gases de efecto invernadero"
 
+#: .\adverts\forms.py:38
 msgid "Street number"
 msgstr "Número de la calle"
 
-#: .\adverts\forms.py:40
+#: .\adverts\forms.py:39
 msgid "Street name"
 msgstr "Nombre de la calle"
 
-#: .\adverts\forms.py:41 .\adverts\forms.py:89
+#: .\adverts\forms.py:40 .\adverts\forms.py:88
 msgid "Zip code"
 msgstr ""
 
-#: .\adverts\forms.py:42
+#: .\adverts\forms.py:41 .\adverts\templates\adverts\properties_list.html:61
 msgid "City"
 msgstr "Ciudad"
 
-#: .\adverts\forms.py:43
+#: .\adverts\forms.py:42
 msgid "Status of the advert"
 msgstr "Situación del anuncio"
 
-
-#: .\adverts\forms.py:44
+#: .\adverts\forms.py:43
 msgid "Pictures"
 msgstr "Fotos"
 
-#: .\adverts\forms.py:68 .\adverts\forms.py:107
+#: .\adverts\forms.py:67 .\adverts\forms.py:106
 msgid "Username"
 msgstr "Nombre de usuario"
 
-#: .\adverts\forms.py:69 .\adverts\forms.py:108
+#: .\adverts\forms.py:68 .\adverts\forms.py:107
 msgid "E-mail address"
 msgstr "Correo electrónico"
 
-#: .\adverts\forms.py:70
+#: .\adverts\forms.py:69 .\adverts\templates\adverts\account.html:21
 msgid "Password"
 msgstr "Contraseña"
 
-#: .\adverts\forms.py:71
+#: .\adverts\forms.py:70
 msgid "Confirm password"
 msgstr "Confirmar contraseña"
 
-#: .\adverts\forms.py:88 .\adverts\templates\adverts\details-advert.html:90
+#: .\adverts\forms.py:87 .\adverts\templates\adverts\details-advert.html:167
 msgid "Phone number"
 msgstr "Número de teléfono"
 
 #: .\adverts\templates\adverts\account.html:7
-#: .\adverts\templates\adverts\account.html:48
-#: .\adverts\templates\adverts\update_account.html:5
-#: .\adverts\templates\includes\navigation.html:62
+#: .\adverts\templates\adverts\account.html:14
+#: .\adverts\templates\includes\navigation.html:83
 msgid "Profile"
 msgstr "Perfil"
 
-#: .\adverts\templates\adverts\account.html:52
+#: .\adverts\templates\adverts\account.html:18
 msgid "My details"
 msgstr "Mis detalles"
 
-#: .\adverts\templates\adverts\account.html:53
+#: .\adverts\templates\adverts\account.html:19
 #, python-format
 msgid "Name : %(username)s"
 msgstr "Nombre : %(username)s"
 
-#: .\adverts\templates\adverts\account.html:54
+#: .\adverts\templates\adverts\account.html:20
 #, python-format
 msgid "E-mail address : %(email)s"
 msgstr "Correo electrónico : %(email)s"
 
-#: .\adverts\templates\adverts\account.html:56
+#: .\adverts\templates\adverts\account.html:22
 #, python-format
 msgid "Phone number : %(phone_number)s"
 msgstr "Número de teléfono : %(phone_number)s"
 
-#: .\adverts\templates\adverts\account.html:57
+#: .\adverts\templates\adverts\account.html:23
 #, python-format
 msgid "Zip code : %(postal_code)s"
 msgstr "Código postal : %(postal_code)s"
 
-#: .\adverts\templates\adverts\account.html:61
+#: .\adverts\templates\adverts\account.html:27
 msgid "Edit"
 msgstr "Editar"
 
-#: .\adverts\templates\adverts\account.html:64
+#: .\adverts\templates\adverts\account.html:30
 msgid "Log out"
 msgstr "Cerrar sesión"
 
-#: .\adverts\templates\adverts\account.html:69
+#: .\adverts\templates\adverts\account.html:35
 msgid "My adverts"
 msgstr "Mis anuncios"
 
-#: .\adverts\templates\adverts\account.html:87
-#: .\adverts\templates\adverts\details-advert.html:72
-#: .\adverts\templates\adverts\favories.html:66
-#: .\adverts\templates\adverts\home.html:66
-#: .\adverts\templates\adverts\properties_list.html:101
-#: .\adverts\templates\includes\other-properties.html:28
-msgid "Previous"
-msgstr "Anterior"
-
-#: .\adverts\templates\adverts\account.html:91
-#: .\adverts\templates\adverts\details-advert.html:76
-#: .\adverts\templates\adverts\favories.html:70
-#: .\adverts\templates\adverts\home.html:70
-#: .\adverts\templates\adverts\properties_list.html:105
-#: .\adverts\templates\includes\other-properties.html:32
-msgid "Next"
-msgstr "Siguiente"
-
-#: .\adverts\templates\adverts\account.html:100
-#: .\adverts\templates\adverts\home.html:78
-#: .\adverts\templates\adverts\properties_list.html:113
-msgid "Modify my advert"
-msgstr "Modificar mi anuncio"
-
-#: .\adverts\templates\adverts\account.html:102
-msgid "Delete my advert"
-msgstr "Eliminar mi anuncio"
-
-#: .\adverts\templates\adverts\account.html:108
-#: .\adverts\templates\adverts\favories.html:77
-#: .\adverts\templates\adverts\home.html:83
-#: .\adverts\templates\adverts\properties_list.html:118
-msgid "Delete from favorites"
-msgstr "Borrar de los favoritos"
-
-#: .\adverts\templates\adverts\account.html:112
-#: .\adverts\templates\adverts\home.html:87
-#: .\adverts\templates\adverts\properties_list.html:122
-msgid "Add to favorites"
-msgstr "Añadir a favoritos"
-
-#: .\adverts\templates\adverts\account.html:122
-#: .\adverts\templates\adverts\details-advert.html:100
-#: .\adverts\templates\adverts\favories.html:85
-#: .\adverts\templates\adverts\home.html:97
-#: .\adverts\templates\adverts\properties_list.html:132
-#: .\adverts\templates\includes\other-properties.html:41
-#, python-format
-msgid "%(room_c)s room(s) - %(bedroom_c)s bedroom(s) - %(surface)sm²"
-msgstr ""
-"%(room_c)s habitación(es) - %(bedroom_c)s dormitorio(s) - %(surface)sm²"
-
-#: .\adverts\templates\adverts\account.html:124
-#: .\adverts\templates\adverts\details-advert.html:102
-#: .\adverts\templates\adverts\favories.html:87
-#: .\adverts\templates\adverts\home.html:99
-#: .\adverts\templates\adverts\properties_list.html:76
-#: .\adverts\templates\adverts\properties_list.html:134
-msgid "Furnished"
-msgstr "Amueblado"
-
-#: .\adverts\templates\adverts\account.html:125
-#: .\adverts\templates\adverts\details-advert.html:103
-#: .\adverts\templates\adverts\favories.html:88
-#: .\adverts\templates\adverts\home.html:100
-#: .\adverts\templates\adverts\properties_list.html:135
-msgid "Balcony"
-msgstr "Balcón"
-
-#: .\adverts\templates\adverts\account.html:126
-#: .\adverts\templates\adverts\details-advert.html:104
-#: .\adverts\templates\adverts\favories.html:89
-#: .\adverts\templates\adverts\home.html:101
-#: .\adverts\templates\adverts\properties_list.html:136
-msgid "Terrace"
-msgstr "Terraza"
-
-#: .\adverts\templates\adverts\account.html:127
-#: .\adverts\templates\adverts\details-advert.html:105
-#: .\adverts\templates\adverts\favories.html:90
-#: .\adverts\templates\adverts\home.html:102
-#: .\adverts\templates\adverts\properties_list.html:137
-msgid "Elevator"
-msgstr "Ascensor"
-
-#: .\adverts\templates\adverts\account.html:128
-#: .\adverts\templates\adverts\details-advert.html:106
-#: .\adverts\templates\adverts\favories.html:91
-#: .\adverts\templates\adverts\home.html:103
-#: .\adverts\templates\adverts\properties_list.html:138
-msgid "Parking"
-msgstr "Aparcamiento"
-
-#: .\adverts\templates\adverts\account.html:131
-#: .\adverts\templates\adverts\home.html:106
-#: .\adverts\templates\adverts\properties_list.html:141
-msgid "View the advert"
-msgstr "Ver el anuncio"
-
 #: .\adverts\templates\adverts\change-password.html:5
-#: .\adverts\templates\adverts\change-password.html:13
+#: .\adverts\templates\adverts\change-password.html:14
 msgid "Change my password"
 msgstr "Cambiar mi contraseña"
 
-#: .\adverts\templates\adverts\change-password.html:40
+#: .\adverts\templates\adverts\change-password.html:24
 msgid "Update my password"
 msgstr "Actualizar mi contraseña"
 
-#: .\adverts\templates\adverts\change-password.html:17
-#: .\adverts\templates\adverts\update_account.html:20
-#: .\adverts\templates\adverts\update_advert_form.html:14
-msgid "Update"
-msgstr "Actualizar"
-
-#: .\adverts\templates\adverts\change-password.html:19
-#: .\adverts\templates\adverts\update_account.html:22
+#: .\adverts\templates\adverts\change-password.html:25
+#: .\adverts\templates\adverts\update_account.html:39
 #: .\adverts\templates\includes\confirm_modal.html:15
 msgid "Cancel"
 msgstr "Cancelar"
@@ -289,92 +183,157 @@ msgstr "Cancelar"
 msgid "Create an advert"
 msgstr "Crear un anuncio"
 
-#: .\adverts\templates\adverts\create_advert_form.html:31
+#: .\adverts\templates\adverts\create_advert_form.html:15
 msgid "You are one form away from advertising your property..."
 msgstr "Está a un formulario de anunciar su propiedad..."
 
-#: .\adverts\templates\adverts\create_advert_form.html:102
+#: .\adverts\templates\adverts\create_advert_form.html:86
 msgid "Create the advert"
 msgstr "Crear el anuncio"
-
-#: .\adverts\templates\adverts\delete_advert.html:5
-#: .\adverts\templates\adverts\delete_advert.html:9
-msgid "Delete an advert"
-msgstr "Borrar un anuncio"
-
-#: .\adverts\templates\adverts\delete_advert.html:10
-msgid "Are you certain that you wish to delete this advert? :"
-msgstr "¿Está seguro de que desea eliminar este anuncio?"
-
-#: .\adverts\templates\adverts\delete_advert.html:11
-#, python-format
-msgid "%(service_t)s - %(property_t)s in %(city)s for %(price)s €"
-msgstr "%(service_t)s - %(property_t)s en %(city)s por %(price)s €"
-
-#: .\adverts\templates\adverts\delete_advert.html:15
-#: .\adverts\templates\includes\confirm_modal.html:17
-msgid "Delete"
-msgstr "Borrar"
 
 #: .\adverts\templates\adverts\details-advert.html:7
 msgid "Details of the advert"
 msgstr ""
 
-#: .\adverts\templates\adverts\details-advert.html:82
+#: .\adverts\templates\adverts\details-advert.html:102
+#: .\adverts\templates\includes\all_adverts.html:20
+#: .\adverts\templates\includes\fav_adverts.html:20
+#: .\adverts\templates\includes\last_adverts.html:20
+#: .\adverts\templates\includes\other-properties.html:27
+#: .\adverts\templates\includes\user_adverts.html:20
+msgid "Previous"
+msgstr "Anterior"
+
+#: .\adverts\templates\adverts\details-advert.html:106
+#: .\adverts\templates\includes\all_adverts.html:24
+#: .\adverts\templates\includes\fav_adverts.html:24
+#: .\adverts\templates\includes\last_adverts.html:24
+#: .\adverts\templates\includes\other-properties.html:31
+#: .\adverts\templates\includes\user_adverts.html:24
+msgid "Next"
+msgstr "Siguiente"
+
+#: .\adverts\templates\adverts\details-advert.html:113
+#: .\adverts\templates\includes\all_adverts.html:51
+#: .\adverts\templates\includes\fav_adverts.html:39
+#: .\adverts\templates\includes\last_adverts.html:51
+#: .\adverts\templates\includes\other-properties.html:40
+#: .\adverts\templates\includes\user_adverts.html:55
+#, python-format
+msgid "%(room_c)s room(s) - %(bedroom_c)s bedroom(s) - %(surface)sm²"
+msgstr ""
+"%(room_c)s habitación(es) - %(bedroom_c)s dormitorio(s) - %(surface)sm²"
+
+#: .\adverts\templates\adverts\details-advert.html:115
+#: .\adverts\templates\adverts\properties_list.html:80
+#: .\adverts\templates\includes\all_adverts.html:53
+#: .\adverts\templates\includes\fav_adverts.html:41
+#: .\adverts\templates\includes\last_adverts.html:53
+#: .\adverts\templates\includes\user_adverts.html:57
+msgid "Furnished"
+msgstr "Amueblado"
+
+#: .\adverts\templates\adverts\details-advert.html:116
+#: .\adverts\templates\adverts\properties_list.html:84
+#: .\adverts\templates\includes\all_adverts.html:54
+#: .\adverts\templates\includes\fav_adverts.html:42
+#: .\adverts\templates\includes\last_adverts.html:54
+#: .\adverts\templates\includes\user_adverts.html:58
+msgid "Balcony"
+msgstr "Balcón"
+
+#: .\adverts\templates\adverts\details-advert.html:117
+#: .\adverts\templates\adverts\properties_list.html:88
+#: .\adverts\templates\includes\all_adverts.html:55
+#: .\adverts\templates\includes\fav_adverts.html:43
+#: .\adverts\templates\includes\last_adverts.html:55
+#: .\adverts\templates\includes\user_adverts.html:59
+msgid "Terrace"
+msgstr "Terraza"
+
+#: .\adverts\templates\adverts\details-advert.html:118
+#: .\adverts\templates\adverts\properties_list.html:92
+#: .\adverts\templates\includes\all_adverts.html:56
+#: .\adverts\templates\includes\fav_adverts.html:44
+#: .\adverts\templates\includes\last_adverts.html:56
+#: .\adverts\templates\includes\user_adverts.html:60
+msgid "Elevator"
+msgstr "Ascensor"
+
+#: .\adverts\templates\adverts\details-advert.html:119
+#: .\adverts\templates\adverts\properties_list.html:96
+#: .\adverts\templates\includes\all_adverts.html:57
+#: .\adverts\templates\includes\fav_adverts.html:45
+#: .\adverts\templates\includes\last_adverts.html:57
+#: .\adverts\templates\includes\user_adverts.html:61
+msgid "Parking"
+msgstr "Aparcamiento"
+
+#: .\adverts\templates\adverts\details-advert.html:122
 msgid "Address"
 msgstr "Detalles del anuncio"
 
-#: .\adverts\templates\adverts\details-advert.html:86
-msgid "Owner"
-msgstr "Propietario"
-
-#: .\adverts\templates\adverts\details-advert.html:88
-msgid "Mail"
-msgstr "Correo"
-
-#: .\adverts\templates\adverts\details-advert.html:113
+#: .\adverts\templates\adverts\details-advert.html:130
 msgid "Energy use"
 msgstr "Consumo"
 
-#: .\adverts\templates\adverts\details-advert.html:116
+#: .\adverts\templates\adverts\details-advert.html:133
 msgid "Energy performance diagnosis (DPE)"
 msgstr "Diagnóstico de rendimiento energético (DPE)"
 
-#: .\adverts\templates\adverts\details-advert.html:124
+#: .\adverts\templates\adverts\details-advert.html:141
 msgid "Greenhouse gas emission index (GHG)"
 msgstr "Índice de emisión de gases de efecto invernadero (GEI)"
 
-#: .\adverts\templates\adverts\details-advert.html:134
+#: .\adverts\templates\adverts\details-advert.html:152
 msgid "Warranty"
 msgstr "Garantía"
+
+#: .\adverts\templates\adverts\details-advert.html:161
+msgid "Contact the owner"
+msgstr "Contactar con el propietario"
+
+#: .\adverts\templates\adverts\details-advert.html:163
+msgid "Owner"
+msgstr "Propietario"
+
+#: .\adverts\templates\adverts\details-advert.html:165
+msgid "Mail"
+msgstr "Correo"
+
+#: .\adverts\templates\adverts\details-advert.html:170
+msgid "To see owner contact details you must be connected"
+msgstr "Para ver los datos de contacto del propietario debes estar conectado"
+
+#: .\adverts\templates\adverts\details-advert.html:171
+#: .\adverts\templates\adverts\login.html:29
+msgid "Log in"
+msgstr "Entrar"
 
 #: .\adverts\templates\adverts\favories.html:7
 msgid "Favourites"
 msgstr "Favoritos"
 
-#: .\adverts\templates\adverts\favories.html:48
+#: .\adverts\templates\adverts\favories.html:13
 msgid "My favorites"
 msgstr "Mis favoritos"
 
-#: .\adverts\templates\adverts\home.html:48
+#: .\adverts\templates\adverts\home.html:12
 msgid "Property Overview"
 msgstr "Resumen de propiedades"
 
 #: .\adverts\templates\adverts\login.html:5
-#: .\adverts\templates\adverts\login.html:30
+#: .\adverts\templates\adverts\login.html:14
+#: .\adverts\templates\includes\navigation.html:87
 msgid "Login"
 msgstr "Iniciar sesión"
 
-#: .\adverts\templates\adverts\login.html:45
-msgid "Log in"
-msgstr "Entrar"
-
-#: .\adverts\templates\adverts\login.html:46
+#: .\adverts\templates\adverts\login.html:30
 msgid "Don't have an account? "
 msgstr "¿No tiene una cuenta? "
 
-#: .\adverts\templates\adverts\login.html:46
-#: .\adverts\templates\adverts\register.html:57
+#: .\adverts\templates\adverts\login.html:30
+#: .\adverts\templates\adverts\register.html:41
 msgid "Sign up"
 msgstr "Inscríbete"
 
@@ -382,43 +341,52 @@ msgstr "Inscríbete"
 msgid "Adverts list"
 msgstr "Lista de anuncios"
 
-#: .\adverts\templates\adverts\properties_list.html:51
-msgid "Type"
-msgstr "Tipo"
-
-#: .\adverts\templates\adverts\properties_list.html:53
+#: .\adverts\templates\adverts\properties_list.html:19
+#: .\adverts\templates\adverts\properties_list.html:27
 msgid "All"
 msgstr "Todo"
 
-#: .\adverts\templates\adverts\properties_list.html:54
+#: .\adverts\templates\adverts\properties_list.html:20
 msgid "House"
 msgstr "Casa"
 
-#: .\adverts\templates\adverts\properties_list.html:55
+#: .\adverts\templates\adverts\properties_list.html:21
 msgid "Apartment"
 msgstr "Apartamento"
 
-#: .\adverts\templates\adverts\properties_list.html:59
+#: .\adverts\templates\adverts\properties_list.html:28
+msgid "For rent"
+msgstr "Se alquila"
+
+#: .\adverts\templates\adverts\properties_list.html:29
+msgid "For Sale"
+msgstr "En venta"
+
+#: .\adverts\templates\adverts\properties_list.html:33
 msgid "Room(s)"
 msgstr "Habitación(es)"
 
-#: .\adverts\templates\adverts\properties_list.html:63
+#: .\adverts\templates\adverts\properties_list.html:37
 msgid "Bedroom(s)"
 msgstr "Dormitorio(s)"
 
-#: .\adverts\templates\adverts\properties_list.html:67
+#: .\adverts\templates\adverts\properties_list.html:42
 msgid "Min surface."
 msgstr "Superficie mínima."
 
-#: .\adverts\templates\adverts\properties_list.html:71
+#: .\adverts\templates\adverts\properties_list.html:46
+msgid "Max surface."
+msgstr "Superficie máxima."
+
+#: .\adverts\templates\adverts\properties_list.html:52
+msgid "Min price."
+msgstr "Precio mínimo."
+
+#: .\adverts\templates\adverts\properties_list.html:56
 msgid "Max price."
 msgstr "Precio máximo."
 
-#: .\adverts\templates\adverts\properties_list.html:80
-msgid "Balcony/Ter."
-msgstr "Balcón/Ter."
-
-#: .\adverts\templates\adverts\properties_list.html:82
+#: .\adverts\templates\adverts\properties_list.html:67
 msgid "Confirm"
 msgstr "Confirmar"
 
@@ -426,41 +394,71 @@ msgstr "Confirmar"
 msgid "Register"
 msgstr "Registrar"
 
-#: .\adverts\templates\adverts\register.html:30
+#: .\adverts\templates\adverts\register.html:14
 msgid "Registration"
 msgstr "Inscripción"
 
-#: .\adverts\templates\adverts\register.html:58
+#: .\adverts\templates\adverts\register.html:42
 msgid "If you already have an account, "
 msgstr "Si ya tienes una cuenta, "
 
-#: .\adverts\templates\adverts\register.html:58
+#: .\adverts\templates\adverts\register.html:42
 msgid "log on"
 msgstr "iniciar sesión"
-
-#: .\adverts\templates\adverts\update_account.html:13
-msgid "Editing of the profile"
-msgstr "Edición del perfil"
 
 #: .\adverts\templates\adverts\update_account.html:6
 msgid "Edit profile"
 msgstr "Cambiar el perfil"
 
-#: .\adverts\templates\adverts\update_account.html:55
+#: .\adverts\templates\adverts\update_account.html:16
+msgid "Editing of the profile"
+msgstr "Edición del perfil"
+
+#: .\adverts\templates\adverts\update_account.html:40
 msgid "Update my profile"
 msgstr "Actualizar mi perfil"
 
-#: .\adverts\templates\adverts\update_account.html:17
+#: .\adverts\templates\adverts\update_account.html:42
 msgid "Change your password"
 msgstr "Cambiar la contraseña"
 
-#: .\adverts\templates\adverts\update_advert_form.html:5
+#: .\adverts\templates\adverts\update_advert_form.html:3
 msgid "Edit an advert"
 msgstr "Editar un anuncio"
 
-#: .\adverts\templates\adverts\update_advert_form.html:98
+#: .\adverts\templates\adverts\update_advert_form.html:11
+msgid "Edit my advert"
+msgstr "Editar mi anuncio"
+
+#: .\adverts\templates\adverts\update_advert_form.html:82
 msgid "Update the advert"
 msgstr "Actualizar el anuncio"
+
+#: .\adverts\templates\includes\all_adverts.html:32
+#: .\adverts\templates\includes\last_adverts.html:32
+#: .\adverts\templates\includes\user_adverts.html:33
+msgid "Modify my advert"
+msgstr "Modificar mi anuncio"
+
+#: .\adverts\templates\includes\all_adverts.html:37
+#: .\adverts\templates\includes\fav_adverts.html:31
+#: .\adverts\templates\includes\last_adverts.html:37
+#: .\adverts\templates\includes\user_adverts.html:41
+msgid "Delete from favorites"
+msgstr "Borrar de los favoritos"
+
+#: .\adverts\templates\includes\all_adverts.html:41
+#: .\adverts\templates\includes\last_adverts.html:41
+#: .\adverts\templates\includes\user_adverts.html:45
+msgid "Add to favorites"
+msgstr "Añadir a favoritos"
+
+#: .\adverts\templates\includes\all_adverts.html:60
+#: .\adverts\templates\includes\fav_adverts.html:48
+#: .\adverts\templates\includes\last_adverts.html:60
+#: .\adverts\templates\includes\user_adverts.html:64
+msgid "View the advert"
+msgstr "Ver el anuncio"
 
 #: .\adverts\templates\includes\confirm_modal.html:7
 msgid "Delete the advert"
@@ -470,19 +468,23 @@ msgstr "Borrar el anuncio"
 msgid "Are you certain that you wish to delete this advert?"
 msgstr "¿Está seguro de que desea eliminar este anuncio?"
 
+#: .\adverts\templates\includes\confirm_modal.html:17
+msgid "Delete"
+msgstr "Borrar"
+
 #: .\adverts\templates\includes\footer.html:10
 msgid "All rights reserved"
 msgstr "Todos los derechos reservados"
 
-#: .\adverts\templates\includes\navigation.html:50
+#: .\adverts\templates\includes\navigation.html:71
 msgid "Post an advert"
 msgstr "Publicar un anuncio"
 
-#: .\adverts\templates\includes\navigation.html:53
+#: .\adverts\templates\includes\navigation.html:74
 msgid "Browse the adverts"
 msgstr "Navegar por los anuncios"
 
-#: .\adverts\templates\includes\navigation.html:59
+#: .\adverts\templates\includes\navigation.html:80
 msgid "Favorites"
 msgstr "Favoritos"
 
@@ -490,14 +492,90 @@ msgstr "Favoritos"
 msgid "Affiliate adverts"
 msgstr "Anuncios de afiliados"
 
-#: .\project\settings.py:164
+#: .\adverts\templates\includes\user_adverts.html:35
+msgid "Delete my advert"
+msgstr "Eliminar mi anuncio"
+
+#: .\adverts\views.py:71
+msgid "You must be logged in to post an advert"
+msgstr "Debes estar conectado para publicar un anuncio"
+
+#: .\adverts\views.py:97
+msgid "The advert has been created successfully"
+msgstr "El anuncio se ha creado con éxito"
+
+#: .\adverts\views.py:109
+msgid "You must be logged in to edit an advert"
+msgstr "Debes estar conectado para editar un anuncio"
+
+#: .\adverts\views.py:113
+msgid "You cannot edit an advert that does not belong to you"
+msgstr "No puedes editar un anuncio que no te pertenece"
+
+#: .\adverts\views.py:120
+msgid "The advert has been updated"
+msgstr "El anuncio ha sido actualizado"
+
+#: .\adverts\views.py:132
+msgid "You must be logged in to delete an advert"
+msgstr "Debes estar conectado para eliminar un anuncio"
+
+#: .\adverts\views.py:136
+msgid "You cannot delete an advert that does not belong to you"
+msgstr "No puede eliminar un anuncio que no le pertenece"
+
+#: .\adverts\views.py:141
+msgid "The advert has been deleted"
+msgstr "El anuncio ha sido eliminado"
+
+#: .\adverts\views.py:179
+msgid "You are logged in as"
+msgstr "Estás conectado como"
+
+#: .\adverts\views.py:183 .\adverts\views.py:185
+msgid "Invalid username or password."
+msgstr "Nombre de usuario o contraseña no válidos."
+
+#: .\adverts\views.py:194
+msgid "You are disconnected."
+msgstr "Estás desconectado."
+
+#: .\adverts\views.py:204
+msgid "Advert added in favorite"
+msgstr "Anuncio añadido en favoritos"
+
+#: .\adverts\views.py:213
+msgid "Advert removed from favourites"
+msgstr "Anuncio eliminado de los favoritos"
+
+#: .\adverts\views.py:240
+msgid "Profile successfully modified"
+msgstr "Perfil modificado con éxito"
+
+#: .\project\settings.py:162
 msgid "English"
 msgstr "Inglés"
 
-#: .\project\settings.py:165
+#: .\project\settings.py:163
 msgid "French"
 msgstr "Francés"
 
-#: .\project\settings.py:166
+#: .\project\settings.py:164
 msgid "Spanish"
 msgstr "Español"
+
+#~ msgid "Delete an advert"
+#~ msgstr "Borrar un anuncio"
+
+#~ msgid "Are you certain that you wish to delete this advert? :"
+#~ msgstr "¿Está seguro de que desea eliminar este anuncio?"
+
+#, python-format
+#~ msgid "%(service_t)s - %(property_t)s in %(city)s for %(price)s €"
+#~ msgstr "%(service_t)s - %(property_t)s en %(city)s por %(price)s €"
+
+#~ msgid "Type"
+#~ msgstr "Tipo"
+
+#~ msgid "Balcony/Ter."
+#~ msgstr "Balcón/Ter."

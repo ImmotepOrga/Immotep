@@ -1,10 +1,9 @@
 {% load i18n %}
 
-<div class="container mt-5">
-    <h4 class="mb-3">{% translate "Affiliate adverts" %}</h4>
-    <div class="row">
+<div class="container py-5">
+    <h2 class="mb-3">{% translate "Affiliate adverts" %}</h2>
+    <div class="api-advert-list">
         {% for prop in properties %}
-        <div class="col-4 my-4">
             <div class="card">
                 <div id="carouselExampleIndicators{{prop.id}}" class="carousel carousel-fade slide" data-bs-ride="carousel" data-bs-interval="false">
                     <div class="carousel-indicators">
@@ -44,7 +43,6 @@
                     <a href="https://www.zillow.com/tx/" target="_blank"></a>
                 </div>
             </div>
-        </div>
         {%endfor%}
     </div>
 </div>

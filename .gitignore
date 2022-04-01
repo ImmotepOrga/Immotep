@@ -5,6 +5,9 @@
 #Docker
 docker-compose.yml
 
+# ENV
+.env
+
 ### Django ###
 *.log
 *.pot

@@ -1,5 +1,6 @@
 .filters {
     display: flex;
+    flex-wrap: wrap;
     align-items: flex-end;
 }
 .filter {
@@ -10,41 +11,34 @@
     font-size: 16px;
     margin-right: 10px;
 }
-.f-checkbox {
-    flex-direction: row;
-    align-items: center;
-    padding: 0 15px;
-    height: 40px;
-    font-size: 16px;
-    color: #FFFFFF;
-    border: none;
-    border-radius: 20px;
-    background-color: #2A4252;
-    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+.double-filter {
+    display: flex;
 }
-
+.double-filter .filter.f-left {
+    margin-right: 0;
+}
 
 .filters > button {
     padding: 0 15px;
     height: 40px;
     width: 100px;
     font-size: 16px;
-    color: #FFFFFF;
-    border: none;
-    border-radius: 20px;
-    background-color: #0D6EFD;
-    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
 }
-.filter input, .filter select {
+.filter input, .filter select, .f-checkbox {
     padding: 0 15px;
     height: 40px;
     width: 100px;
     font-size: 16px;
-    color: #FFFFFF;
-    border: none;
+    color: #2A4252;
+    border: 1px solid #2A4252;
     border-radius: 20px;
-    background-color: #2A4252;
-    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    background-color: #fff;
+}
+.f-checkbox {
+    flex-direction: row;
+    align-items: center;
+    margin-bottom: 10px;
+    width: 150px;
 }
 .filter select.large, .filter input.large {
     width: 150px;
@@ -52,10 +46,88 @@
 .filter:not(.f-checkbox) label {
     font-size: 12px;
 }
+.double-filter .f-left input {
+    border-radius: 20px 0 0 20px;
+}
+.double-filter .f-right input {
+    border-radius: 0 20px 20px 0;
+}
 .f-checkbox input {
     width: 15px;
     height: 15px;
     box-shadow: none;
     background: none;
     margin-right: 10px;
+}
+.f-city {
+    position: relative;
+}
+.f-city i {
+    position: absolute;
+    bottom: 50%;
+    right: 10px;
+    transform: translateY(50%);
+    color: #FFFFFF;
+}
+
+.accordion-item{
+    border: none;
+}
+.accordion-header button, .accordion-header button:focus{
+    padding: 0;
+    margin: 1rem 1.25rem;
+    font-size: 12px;
+    border: none;
+    width: auto;
+    box-shadow: none;
+    background-color: transparent !important;
+}
+.accordion-header button::after{
+    margin-left: 5px;
+    width: 0.75rem;
+    height: 0.75rem;
+    background-size: 0.75rem;
+}
+.accordion-body {
+    display: flex;
+    flex-wrap: wrap;
+    padding: 0;
+}
+
+@media screen and (max-width: 760px) {
+    form {
+        position: relative;
+    }
+    .filters > button {
+        position: absolute;
+        bottom: -10px;
+        left: 0;
+        transform: translateY(100%)
+    }
+
+    .filters input, .f-checkbox {
+      width: 150px;
+    }
+
+}
+@media screen and (max-width: 580px){
+    .filters > .filter, .filter.f-checkbox{
+        width:48%;
+    }
+    .filters > .double-filter, .filters > .filter.mobile-full, .filters > .filter.mobile-full > *{
+        width:100%;
+    }
+    .double-filter .f-left, .double-filter .f-right{
+        width:50%;
+    }
+    .filters > .filter select, .filters > .filter input, .double-filter .f-left input, .double-filter .f-right input{
+        width:100% !important;
+    }
+    .filter{
+        margin-right:0;
+    }
+    .filter.mobile-m{
+        margin-right:4%;
+    }
+    
 }
